@@ -29,3 +29,15 @@ export type SearchBoxProps = {
   height?: string;
   dataTestId?: string;
 };
+export type DropdownProps = {
+  children?: ReactNode;
+  content: ReactNode;
+  style?: any;
+};
+
+export type OptionProps = {
+  children: ReactNode;
+  image?: string;
+  onClick?: (data: any) => void;
+  dropStyles?: any;
+};

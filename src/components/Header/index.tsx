@@ -3,7 +3,8 @@ import styles from "./header.module.scss";
 import { useLocation } from "react-router-dom";
 import moment from "moment";
 import Avatar from "../Avatar";
-import DropdownIcon from "../../assets/arrow-down.svg";
+import Dropdown from "../Dropdown";
+import { Option } from "../Dropdown/Option";
 
 const Header = () => {
   const location = useLocation();
@@ -46,7 +47,7 @@ const Header = () => {
       <div className={styles.header__profile}>
         <div>
           {" "}
-          <Avatar name={'Temilola Peter'}/>
+          <Avatar name={"Temilola Peter"} />
         </div>
         <div>
           <p className={styles.header__profile__name}>Temilola Peter</p>
@@ -55,7 +56,24 @@ const Header = () => {
           </p>
         </div>
         <div>
-          <img src={DropdownIcon} />
+          <Dropdown content={
+            <>
+            <Option
+              image={''}
+              // onClick={}
+              >
+              <p>Profile</p>
+              <p className={styles.drop_caption}>Update your profile</p>
+            </Option>
+            <Option
+              image={''}
+              // onClick={''}
+              >
+              <p>Log out</p>
+              <p className={styles.drop_caption}>Logout of your account</p>
+            </Option>
+          </>
+          } />
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
-import { SearchBoxProps } from '@/types/index';
-import * as React from 'react';
-import Search from '../../assets/search.svg';
-import styles from './searchBox.module.scss';
+import { SearchBoxProps } from "@/types/index";
+import * as React from "react";
+import Search from "../../assets/search.svg";
+import styles from "./searchBox.module.scss";
 
 const SearchBox = ({
   onSearch,
@@ -16,13 +16,13 @@ const SearchBox = ({
       <img
         src={Search}
         alt="search"
-        width="20px"
-        height="20px"
+        width="18px"
+        height="18px"
         aria-hidden
         onClick={onSearch}
       />
       <input
-        placeholder="Search"
+        placeholder="Search name or email address"
         name={searchName}
         value={searchValue}
         height={height}

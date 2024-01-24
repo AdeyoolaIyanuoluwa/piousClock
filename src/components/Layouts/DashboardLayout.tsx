@@ -13,6 +13,7 @@ const DashboardLayout = ({ children }: ChildrenProps) => {
         <Header />
         <>
           <div className={styles.main__content}>
+  
             {children}
             </div>
         </>

@@ -1,0 +1,39 @@
+.cardWrapper {
+  width: 282px;
+  height: 140px;
+  padding: 24px;
+  border-radius: 8px;
+  border: 1px solid #F3F4F6;
+  gap: 8px;
+
+  &__detailwrapper {
+    width: 234px;
+    height: 92px;
+  }
+  &__indicator {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+  }
+  &__details {
+    display: flex;
+    gap: 8px;
+
+    h6 {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 20px;
+      letter-spacing: 0em;
+      text-align: left;
+      color: #6b7280;
+    }
+    p {
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 16px;
+      letter-spacing: 0em;
+      text-align: left;
+      color: #6b7280;
+    }
+  }
+}
