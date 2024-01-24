@@ -1,8 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
 import styles from './avatar.module.scss';
+import { AvatarProps } from '../../types';
 
-const Avatar = ({ className, profile, url }: any) => {
+const Avatar = ({ name, className, profile, url }: AvatarProps) => {
   return (
     <span className={classNames(className, 'flex')}>
       <div>
@@ -11,8 +12,8 @@ const Avatar = ({ className, profile, url }: any) => {
         ) : (
           <span
             className={classNames(profile ? styles.avatar__profile : styles.avatar__placeholder)}>
-            {/* {name.split(' ')[0]?.charAt(0)?.toUpperCase()}
-            {name.split(' ')[1]?.charAt(0)?.toUpperCase()} */}
+            {name.split(' ')[0]?.charAt(0)?.toUpperCase()}
+            {name.split(' ')[1]?.charAt(0)?.toUpperCase()}
           </span>
         )}
       </div>

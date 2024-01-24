@@ -19,17 +19,16 @@ const Header = () => {
         return "";
     }
   };
-  const FormatTime = () => {
+  const FormatDateTime = () => {
     return (
-      <div style={{ display: "flex", flexWrap: "wrap", fontWeight: "500" }}>
-        {moment().format("LT")}
-      </div>
-    );
-  };
-  const FormatDate = () => {
-    return (
-      <div style={{ display: "flex", flexWrap: "wrap", color: "#6b7280" }}>
-        {moment().format("dddd, MMMM DD, YYYY")}
+      <div>
+        <div style={{ display: "flex", flexWrap: "wrap", fontWeight: "500" }}>
+          {moment().format("LT")}
+        </div>
+        <div style={{ display: "flex", flexWrap: "wrap", color: "#6b7280" }}>
+          {" "}
+          {moment().format("dddd, MMMM DD, YYYY")}
+        </div>
       </div>
     );
   };
@@ -41,19 +40,17 @@ const Header = () => {
           <p>{headerTitle()}</p>
         </div>
         <div>
-          {" "}
-          <div>{FormatTime()}</div>
-          <div>{FormatDate()}</div>
+          <div>{FormatDateTime()}</div>
         </div>
       </div>
-      <div className={styles.header__avatar}>
+      <div className={styles.header__profile}>
         <div>
           {" "}
-          <Avatar />
+          <Avatar name={'Temilola Peter'}/>
         </div>
         <div>
-          <p className={styles.header__avatar__name}>Temilola Peter</p>
-          <p className={styles.header__avatar__email}>
+          <p className={styles.header__profile__name}>Temilola Peter</p>
+          <p className={styles.header__profile__email}>
             temilolapeter@gmail.com
           </p>
         </div>

@@ -21,6 +21,7 @@
     "sass": "^1.70.0"
   },
   "devDependencies": {
+    "@iconify/react": "^4.1.1",
     "@storybook/addon-essentials": "^7.6.10",
     "@storybook/addon-interactions": "^7.6.10",
     "@storybook/addon-links": "^7.6.10",

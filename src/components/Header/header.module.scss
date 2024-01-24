@@ -1,9 +1,6 @@
 .header {
-  width: 1169px;
-  position: relative;
-  left: 271px;
   padding: 10px 32px 10px 24px;
-  border: 1px solid #f3f4f6;
+  border-bottom: 1px solid #f3f4f6;
   display: flex;
   justify-content: space-between;
   z-index: 2;
@@ -20,7 +17,7 @@
     letter-spacing: 0em;
     text-align: left;
   }
-  &__avatar {
+  &__profile {
     display: flex;
     align-items: center;
     height: 40px;
@@ -29,8 +26,10 @@
     &__name {
       font-size: 14px;
       font-weight: 500;
+      line-height: 16.8px;
     }
     &__email {
+      line-height: 14.4px;
       font-size: 12px;
       font-weight: 400;
       color: #6b7280;

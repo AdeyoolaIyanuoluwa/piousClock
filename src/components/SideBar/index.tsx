@@ -1,4 +1,4 @@
-// import React from 'react'
+import React from 'react'
 import styles from './sideBar.module.scss'
 import Logo from '../../assets/piouslogo.svg'
 import { navLinks } from './navLinks'

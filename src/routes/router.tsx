@@ -1,14 +1,12 @@
-import React from 'react'
-import Header from '../component/Header'
-import SideBar from '../component/SideBar'
+import React from "react";
+import DashboardLayout from "../components/Layouts/DashboardLayout";
 
 const AppRouter = () => {
   return (
     <div>
-        <SideBar/>
-        <Header/>
+      <DashboardLayout />
     </div>
-  )
-}
+  );
+};
 
-export default AppRouter
+export default AppRouter;
