@@ -1,0 +1,71 @@
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+    color: #888888;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 400;
+
+    ul {
+        display: flex !important;
+        width: auto;
+        list-style-type: none;
+        color: #888888;
+        font-size: 14px;
+        line-height: 24px;
+        letter-spacing: 0.4px;
+    }
+
+    ul li {
+        margin-right: 16px;
+    }
+
+    &__count {
+        font-weight: 500;
+        color: #2D2D2D;
+        line-height: 20.3px;
+    }
+
+    &__container {
+        display: flex;
+        width: unset;
+
+        justify-content: space-between;
+        align-items: center;
+
+        input {
+            width: 40px;
+            padding: 2px;
+            font-size: 14px;
+            height: 20px;
+            text-align: center;
+        }
+    }
+}
+
+.go_to {
+    display: flex;
+    align-items: center;
+
+    p {
+        margin-right: 14px;
+    }
+
+    input {
+        padding: 8px;
+        width: 64px;
+        border-radius: 6px;
+        border: 1px solid #B0B0B0;
+        outline: none;
+    }
+}
+
+.activePaginate {
+    border: 1px solid #ED4F32;
+    border-radius: 6px;
+    padding: 0 9.5px;
+    color: #2D2D2D;
+    line-height: 20.3px;
+}

@@ -1,0 +1,44 @@
+.header {
+  padding: 10px 32px 10px 24px;
+  border-bottom: 1px solid #f3f4f6;
+  display: flex;
+  justify-content: space-between;
+  z-index: 2;
+
+  &__group {
+    gap: 40px;
+    display: flex;
+    align-items: center;
+  }
+  &__title {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+  &__profile {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    gap: 8px;
+
+    &__name {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 16.8px;
+    }
+    &__email {
+      line-height: 14.4px;
+      font-size: 12px;
+      font-weight: 400;
+      color: #6b7280;
+    }
+  }
+  &__dropProfile {
+    color: #75BC62;
+  }
+  &__dropLogout {
+    color: #E63946;
+  }
+}
