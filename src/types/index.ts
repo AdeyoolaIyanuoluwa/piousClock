@@ -84,3 +84,40 @@ export type ModalProps = {
   showSelectsPanel?: boolean;
   panelId?: any;
 };
+
+export type PaginationProps = {
+  currentPage?: number | any;
+  totalPage?: number | any;
+  changeCurrentPage?: (val: { selected: number }) => void;
+  handlePageInput?: any;
+  forcePage?: any;
+};
+export type TableProps = {
+  tableHeaders?: any[];
+  header?: { key: string; text: string };
+  tableData: any[];
+  cols?: any;
+  content?: any;
+  placeHolderImg?: ReactNode;
+  placeholderText?: string;
+  tablePlaceholderSubText?: string;
+  headers?: any;
+  mapKey: string;
+  children?: any;
+  loading?: boolean;
+  onRowClick?: (row: any) => void | undefined;
+  useChecks?: boolean;
+  checkedItems?: any[];
+  setCheckedItems?: (item: any) => void;
+  currentPage?: number;
+  totalPage?: number;
+  changeCurrentPage?: (val: { selected: number }) => void;
+  handlePageInput?: (data: any) => void;
+  paginate?: boolean;
+  forcePage: any
+};
+
+export type ToastAlertProps = {
+  type: 'success' | 'error' | 'warning' | 'info';
+  message: string;
+};

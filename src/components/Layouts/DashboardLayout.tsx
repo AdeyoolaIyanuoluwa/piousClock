@@ -4,6 +4,8 @@ import SideBar from "../SideBar";
 import classNames from "classnames";
 import Header from "../Header";
 import { ChildrenProps } from "../../types";
+import Pagination from "../Pagination";
+import Table from "../Table";
 
 const DashboardLayout = ({ children }: ChildrenProps) => {
   return (
@@ -13,7 +15,8 @@ const DashboardLayout = ({ children }: ChildrenProps) => {
         <Header />
         <>
           <div className={styles.main__content}>
-  
+              <Pagination/>
+              <Table/>
             {children}
             </div>
         </>
