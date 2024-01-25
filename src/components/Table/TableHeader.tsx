@@ -1,18 +1,19 @@
 import React from 'react';
 import styles from './table.module.scss';
 import { tableHeader } from '../../mocks/index';
+import { TableProps } from '@/types';
 
-const TableHeader = ({ sortRows } : any) => (
+const TableHeader = ({ sortRows } : TableProps) => (
   <thead className={styles.table__header}>
     <tr className={styles.table__row}>
       {tableHeader?.map((header, index) => (
         <th key={index}>
-          {header.check ? (
+          {header ? (
             <div style={{ display: 'flex', gap: '10px' }}>
               <div>{header.text}</div>
             </div>
           ) : (
-            header.text
+            ''
           )}
 
           {header.sortable && (

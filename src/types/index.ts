@@ -114,10 +114,19 @@ export type TableProps = {
   changeCurrentPage?: (val: { selected: number }) => void;
   handlePageInput?: (data: any) => void;
   paginate?: boolean;
-  forcePage: any
+  forcePage: any;
+  check?: boolean;
+  sortRows: any;
 };
 
 export type ToastAlertProps = {
   type: 'success' | 'error' | 'warning' | 'info';
   message: string;
+};
+export type AuthLayoutProps = {
+  title: string;
+  subtitle: string;
+  email?: string | null;
+  children: ReactNode;
+  forgotPassword?: boolean;
 };
