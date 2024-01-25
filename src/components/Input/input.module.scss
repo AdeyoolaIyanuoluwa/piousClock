@@ -1,0 +1,55 @@
+.input_container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  line-height: 20.3px;
+  font-size: 14px;
+  color: #2d2d2d;
+
+  &__btn {
+    height: 22%;
+    width: auto;
+    position: relative;
+    background: none;
+    border: none;
+    right: -43%;
+    cursor: pointer;
+    top: -2.2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    font-weight: 600;
+    font-size: 12px;
+    color: #667185;
+    line-height: 14.4px;
+    letter-spacing: 12%;
+    p {
+      margin: 0;
+    }
+  }
+}
+.input_container label {
+  font-weight: 400;
+  margin-bottom: 8px;
+  font-size: 12px;
+  line-height: 16px;
+}
+.input_container input {
+  height: 36px;
+  padding: 8px 16px 8px 16px;
+  line-height: 1;
+  outline: none;
+  border: 1px solid #d1d1d1;
+  border-radius: 8px;
+  &::placeholder {
+    color: #b0b0b0;
+  }
+}
+.error {
+  font-size: 12px;
+  color: red;
+  position: relative;
+  // top: -9px;
+}

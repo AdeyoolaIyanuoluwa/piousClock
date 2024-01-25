@@ -5,7 +5,8 @@ import moment from "moment";
 import Avatar from "../Avatar";
 import Dropdown from "../Dropdown";
 import { Option } from "../Dropdown/Option";
-
+import UserIcon from '../../assets/userIcon.svg'
+import LogoutIcon from '../../assets/logout.svg'
 const Header = () => {
   const location = useLocation();
   const headerTitle = () => {
@@ -59,18 +60,16 @@ const Header = () => {
           <Dropdown content={
             <>
             <Option
-              image={''}
+              image={UserIcon}
               // onClick={}
               >
-              <p>Profile</p>
-              <p className={styles.drop_caption}>Update your profile</p>
+              <p className={styles.header__dropProfile}>Admin profile</p>
             </Option>
             <Option
-              image={''}
+              image={LogoutIcon}
               // onClick={''}
               >
-              <p>Log out</p>
-              <p className={styles.drop_caption}>Logout of your account</p>
+              <p className={styles.header__dropLogout}>Log out</p>
             </Option>
           </>
           } />
