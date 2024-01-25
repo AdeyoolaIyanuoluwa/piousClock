@@ -41,3 +41,46 @@ export type OptionProps = {
   onClick?: (data: any) => void;
   dropStyles?: any;
 };
+
+export type InputProps = {
+  name?: string;
+  title?: string;
+  error?: string;
+  value?: string;
+  required?: boolean;
+  disabled?: boolean;
+  label?: string;
+  type?: string;
+  max?: any;
+  inputValue?: string | undefined;
+  formClassName?: string;
+  className?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement> | string) => void;
+  handleSearch?: (e: string) => string;
+  'data-testid'?: string;
+  darkMode?: boolean;
+  errorLogo?: boolean;
+  successLogo?: boolean;
+  loadingLogo?: boolean;
+  children?: ReactNode;
+  control?: string;
+  labelClassName?: string;
+  placeholder?: string;
+  onlyCountries?: string[];
+  country?: string;
+  setTouched?: (e: Record<string, boolean>) => void | undefined;
+  options?: { value: string; label: string }[];
+  setFieldValue?: (
+    val: string,
+    obj: Record<string, string | number | boolean | undefined>
+  ) => void;
+};
+export type ModalProps = {
+  isShown: boolean;
+  onClose: () => void;
+  width?: string;
+  children?: ReactNode;
+  onSubmit?: () => void;
+  showSelectsPanel?: boolean;
+  panelId?: any;
+};

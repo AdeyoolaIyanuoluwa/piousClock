@@ -1,0 +1,127 @@
+.modal {
+    padding: 32px 0px !important;
+  
+    &__heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+  
+      h1 {
+        font-size: 28px;
+        font-weight: 500;
+        color: #101928;
+      }
+    }
+  
+    &_headerTitle {
+      color: #2d2d2d;
+      font-size: 24px;
+      font-weight: 600;
+      text-align: center;
+    }
+  
+    &_caption {
+      color: #6d6d6d;
+      font-size: 14px;
+      font-weight: 400;
+      text-align: center;
+    }
+  
+    &_formWrapper {
+      margin: 32px 0px;
+    }
+  }
+  
+  .selectInputWrapper {
+    margin: 16px 0px;
+  }
+  
+  .selectInputContainer {
+    margin-top: 18px;
+  }
+  
+  .selectedItems {
+    background-color: #e5f1f9;
+    width: fit-content;
+    height: 21px;
+    padding: 2px 12px;
+    font-size: 12px;
+    font-family: 500;
+    border-radius: 6px;
+    color: #2d2d2d;
+    display: flex;
+    gap: 10px;
+    margin: 8px 0px;
+  }
+  
+  .full_modal,
+  .modal2 {
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    opacity: 1;
+    right: 0;
+    top: 0;
+    background: rgba(163, 156, 156, 0.56);
+    backdrop-filter: blur(0px);
+  }
+  
+  .full_modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+  }
+  
+  .full_modal__content {
+    background-color: #fff;
+    min-width: 414px;
+    // max-width: 840px;
+    min-height: 418px;
+    max-height: 700px;
+    margin: auto;
+    box-sizing: border-box;
+    position: relative;
+    padding: 15px;
+    overflow: scroll;
+  }
+  
+  .full_modal__content2 {
+    background-color: #fff;
+    max-width: 989px;
+    height: 100%;
+    margin: auto;
+    box-sizing: border-box;
+    float: right;
+    right: 0;
+    overflow: auto;
+    margin-bottom: 50px;
+  }
+  
+  .rightModal {
+    display: flex;
+    border-radius: 4px;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    opacity: 1;
+    right: 0;
+    top: 0;
+    background: rgba(163, 156, 156, 0.56);
+    backdrop-filter: blur(0px);
+  }
+  
+  .rightModal__content {
+    background-color: #fff;
+    width: 360px;
+    height: 100vh;
+    box-sizing: border-box;
+    position: relative;
+    padding: 21px 30px;
+    overflow: scroll;
+  }
