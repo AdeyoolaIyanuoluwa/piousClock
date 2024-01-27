@@ -1,39 +1,54 @@
 .cardWrapper {
-  width: 282px;
-  height: 140px;
+  background-color: white;
   padding: 24px;
   border-radius: 8px;
-  border: 1px solid #F3F4F6;
-  gap: 8px;
+  display: flex;
+  gap: 24px;
 
-  &__detailwrapper {
-    width: 234px;
-    height: 92px;
+  p {
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #6b7280;
+    margin-top: 8px;
   }
-  &__indicator {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 16px;
+  h6 {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 32px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #6b7280;
+    margin-top: 8px;
   }
-  &__details {
-    display: flex;
-    gap: 8px;
-
-    h6 {
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 20px;
-      letter-spacing: 0em;
-      text-align: left;
-      color: #6b7280;
-    }
-    p {
-      font-size: 12px;
-      font-weight: 400;
-      line-height: 16px;
-      letter-spacing: 0em;
-      text-align: left;
-      color: #6b7280;
-    }
+  &__green {
+    width: 339px;
+    height: 156px;
+    padding: 24px 24px;
+    border-radius: 8px;
+    border: 1px solid #f3f4f6;
+    background: url("../../assets/greentimer.svg");
+    background-repeat: no-repeat;
+    background-position: bottom right;
+  }
+  &__blue {
+    width: 339px;
+    height: 156px;
+    padding: 24px 24px;
+    border-radius: 8px;
+    border: 1px solid #f3f4f6;
+    background: url("../../assets/bluetimer.svg");
+    background-repeat: no-repeat;
+    background-position: bottom right;
+  }
+  &__red {
+    width: 339px;
+    height: 156px;
+    padding: 24px 24px;
+    border-radius: 8px;
+    border: 1px solid #f3f4f6;
+    background: url("../../assets/redtimer.svg");
+    background-repeat: no-repeat;
+    background-position: bottom right;
   }
 }
