@@ -1,0 +1,27 @@
+.formInput {
+  text-align: left;
+  &__input {
+    margin-bottom: 24px;
+  }
+  &__forgotPassword {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #6b7280;
+  
+    span {
+      color: #75bc62;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    p{
+        text-align: center;
+        margin-top: 32px;
+    }
+  }
+  &__btn {
+    margin-top: 40px;
+  }
+}

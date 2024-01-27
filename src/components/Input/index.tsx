@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
-import { Field } from 'formik';
-import { InputProps } from '@/types';
-import styles from './input.module.scss';
+import React, { useState } from "react";
+import { Field } from "formik";
+import { InputProps } from "@/types";
+import styles from "./input.module.scss";
+import  Closed from '../../assets/closedEye.svg';
+import Opened from '../../assets/openEye.svg'
 
 const Input = ({
   type,
@@ -35,21 +37,20 @@ const Input = ({
           {...rest}
         />
 
-        {type === 'password' && (
+        {type === "password" && (
           <button
             className={styles.input_container__btn}
             type="button"
-            data-testid="input-btn"
             aria-label="show password"
             onClick={() =>
-              setFormType(formType === 'password' ? 'text' : 'password')
+              setFormType(formType === "password" ? "text" : "password")
             }
           >
-            {formType === 'password' ? <p>SHOW</p> : <p>HIDE</p>}
+            {formType === "password" ? <img src={Opened}/> :  <img src={Closed}/>}
           </button>
         )}
         <div>
-          {' '}
+          {" "}
           {error ? <span className={styles.error}>{error}</span> : null}
         </div>
       </div>

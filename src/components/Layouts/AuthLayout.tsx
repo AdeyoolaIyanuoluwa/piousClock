@@ -8,7 +8,6 @@ const AuthLayout = ({
   title,
   subtitle,
   email,
-  forgotPassword,
 }: AuthLayoutProps) => {
   return (
     <div className={styles.formContainer}>
@@ -21,13 +20,6 @@ const AuthLayout = ({
             <p className={styles.form__paragraph}>{email}</p>
           </div>
           <div className={styles.form__children}>{children}</div>
-          {forgotPassword && (
-            <div className={styles.form__forgotPassword}>
-              <p>
-                Forgot password? <span>Reset it here</span>
-              </p>
-            </div>
-          )}
         </div>
       </div>
     </div>
