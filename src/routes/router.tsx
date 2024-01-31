@@ -5,6 +5,7 @@ import RecoverPassword from "@/pages/Auth/RecoverPassword";
 import OTP from "@/pages/Auth/OTP";
 import ResetPassword from "@/pages/Auth/ResetPassword";
 import Dashboard from "@/container/Dashboard/Dashboard";
+import ClockInHistory from "@/container/ClockInHistory/ClockInHistory";
 
 const AppRouter = () => {
   return (
@@ -15,6 +16,7 @@ const AppRouter = () => {
         <Route path="/auth/otp" element={<OTP/>}/>
         <Route path="/auth/reset-password" element={<ResetPassword/>}/>
         <Route path="/dashboard" element={<Dashboard/>}/>
+        <Route path="/history" element={<ClockInHistory/>}/>
     </Routes>
   );
 };

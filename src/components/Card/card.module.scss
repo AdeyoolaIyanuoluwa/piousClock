@@ -4,6 +4,7 @@
   border-radius: 8px;
   display: flex;
   gap: 24px;
+  margin-bottom: 24px;
 
   p {
     line-height: 20px;
@@ -22,8 +23,7 @@
     margin-top: 8px;
   }
   &__green {
-    width: 339px;
-    height: 156px;
+    width: 100%;
     padding: 24px 24px;
     border-radius: 8px;
     border: 1px solid #f3f4f6;
@@ -32,8 +32,7 @@
     background-position: bottom right;
   }
   &__blue {
-    width: 339px;
-    height: 156px;
+    width: 100%;
     padding: 24px 24px;
     border-radius: 8px;
     border: 1px solid #f3f4f6;
@@ -42,13 +41,37 @@
     background-position: bottom right;
   }
   &__red {
-    width: 339px;
-    height: 156px;
+    width: 100%;
     padding: 24px 24px;
     border-radius: 8px;
     border: 1px solid #f3f4f6;
     background: url("../../assets/redtimer.svg");
     background-repeat: no-repeat;
     background-position: bottom right;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .cardWrapper {
+    display: block;
+    &__green {
+      margin-bottom: 16px;
+    }
+    &__blue {
+      margin-bottom: 16px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .cardWrapper {
+    display: block;
+    padding: 0;
+    &__green {
+      margin-bottom: 16px;
+    }
+    &__blue {
+      margin-bottom: 16px;
+    }
   }
 }

@@ -12,6 +12,7 @@ const Avatar = ({ name, className, profile, url }: AvatarProps) => {
         ) : (
           <span
             className={classNames(profile ? styles.avatar__profile : styles.avatar__placeholder)}>
+              
             {name.split(' ')[0]?.charAt(0)?.toUpperCase()}
             {name.split(' ')[1]?.charAt(0)?.toUpperCase()}
           </span>

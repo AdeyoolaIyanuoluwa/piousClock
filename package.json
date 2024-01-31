@@ -18,11 +18,13 @@
     "formik": "^2.4.5",
     "moment": "^2.30.1",
     "react": "^18.2.0",
+    "react-datepicker": "^5.0.0",
     "react-dom": "^18.2.0",
     "react-paginate": "^8.2.0",
     "react-router-dom": "^6.21.3",
     "react-toastify": "^10.0.3",
     "sass": "^1.70.0",
+    "use-debounce": "^10.0.0",
     "yup": "^1.3.3"
   },
   "devDependencies": {
@@ -36,6 +38,7 @@
     "@storybook/react-vite": "^7.6.10",
     "@storybook/test": "^7.6.10",
     "@types/react": "^18.2.43",
+    "@types/react-datepicker": "^4.19.5",
     "@types/react-dom": "^18.2.17",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
     "@typescript-eslint/parser": "^6.14.0",

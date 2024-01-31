@@ -7,33 +7,25 @@ import PlaceholderIcon from "../../assets/placeholder.svg";
 import Pagination from "../Pagination";
 
 const Table = ({
-  headers,
+  tableHeaders,
   tableData,
   children,
-  placeHolderImg,
-  placeholderText,
   loading,
   currentPage,
   totalPage,
   changeCurrentPage,
   handlePageInput,
   paginate,
-  forcePage,
 }: TableProps) => {
   const sortRows = () => true;
 
   const table = (
     <div>
       <table className={`${styles.table}`}>
-        <TableHeader sortRows={sortRows} tableHeaders={headers} />
+        <TableHeader sortRows={sortRows} tableHeaders={tableHeaders} />
         <TableBody
-          cols={headers?.length}
           tableData={tableData}
           content={children}
-          placeHolderImg={placeHolderImg}
-          placeholderText={placeholderText}
-          mapKey={""}
-          forcePage={undefined}
         />
       </table>
 
@@ -53,7 +45,7 @@ const Table = ({
           currentPage={currentPage}
           totalPage={totalPage}
           changeCurrentPage={changeCurrentPage}
-          forcePage={forcePage}
+          // forcePage={forcePage}
           handlePageInput={handlePageInput}
         />
       ) : null}

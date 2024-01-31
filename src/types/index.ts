@@ -95,28 +95,23 @@ export type PaginationProps = {
 export type TableProps = {
   tableHeaders?: any[];
   header?: { key: string; text: string };
-  tableData: any[];
+  tableData?: any[];
   cols?: any;
   content?: any;
   placeHolderImg?: ReactNode;
   placeholderText?: string;
   tablePlaceholderSubText?: string;
   headers?: any;
-  mapKey: string;
   children?: any;
   loading?: boolean;
   onRowClick?: (row: any) => void | undefined;
-  useChecks?: boolean;
-  checkedItems?: any[];
-  setCheckedItems?: (item: any) => void;
   currentPage?: number;
   totalPage?: number;
   changeCurrentPage?: (val: { selected: number }) => void;
   handlePageInput?: (data: any) => void;
   paginate?: boolean;
-  forcePage: any;
   check?: boolean;
-  sortRows: any;
+  sortRows?: any;
 };
 
 export type ToastAlertProps = {
@@ -129,4 +124,39 @@ export type AuthLayoutProps = {
   email?: string | null;
   children: ReactNode;
   forgotPassword?: boolean;
+};
+export type SideSheetProps = {
+  isShown: boolean;
+  onCloseComplete: () => void;
+  containerProps?: object;
+  width?: string;
+  shouldAutoFocus?: boolean;
+  headingTitle?: string;
+  children: JSX.Element | JSX.Element[];
+};
+
+export type DatePickerInputProps = {
+  selected?: any;
+  className?: string;
+  dateFormat?: string;
+  placeholderText?: string;
+  type?: string;
+  label?: string;
+  onChange: (date: any) => void;
+  id?: string;
+  maxDate?: Date | null;
+  noBorder?: boolean;
+  name?: string;
+  spaceIcon?: boolean;
+  minDate?: Date | null;
+  showYearDropdown?: boolean;
+  showMonthDropdown?: boolean;
+  scrollableYearDropdown?: boolean;
+  yearDropdownItemNumber?: number;
+  selectsStart?: boolean;
+  selectsEnd?: boolean;
+  startDate?: Date | null;
+  endDate?: Date | null;
+  filterDate?: (date: Date) => boolean;
+  highlightDates?: any;
 };

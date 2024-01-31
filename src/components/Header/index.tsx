@@ -5,8 +5,8 @@ import moment from "moment";
 import Avatar from "../Avatar";
 import Dropdown from "../Dropdown";
 import { Option } from "../Dropdown/Option";
-import UserIcon from '../../assets/userIcon.svg'
-import LogoutIcon from '../../assets/logout.svg'
+import UserIcon from "../../assets/userIcon.svg";
+import LogoutIcon from "../../assets/logout.svg";
 const Header = () => {
   const location = useLocation();
   const headerTitle = () => {
@@ -42,37 +42,39 @@ const Header = () => {
           <p>{headerTitle()}</p>
         </div>
         <div>
+          <span className={styles.header__divider}></span>
+        </div>
+        <div className={styles.header__format}>
           <div>{FormatDateTime()}</div>
         </div>
       </div>
       <div className={styles.header__profile}>
+      <div>
+          <span className={styles.header__divider}></span>
+        </div>
         <div>
-          {" "}
           <Avatar name={"Temilola Peter"} />
         </div>
+       
         <div>
           <p className={styles.header__profile__name}>Temilola Peter</p>
           <p className={styles.header__profile__email}>
             temilolapeter@gmail.com
           </p>
         </div>
-        <div>
-          <Dropdown content={
-            <>
-            <Option
-              image={UserIcon}
-              // onClick={}
-              >
-              <p className={styles.header__dropProfile}>Admin profile</p>
-            </Option>
-            <Option
-              image={LogoutIcon}
-              // onClick={''}
-              >
-              <p className={styles.header__dropLogout}>Log out</p>
-            </Option>
-          </>
-          } />
+        <div className={styles.header__dropdown}>
+          <Dropdown
+            content={
+              <>
+                <Option image={UserIcon}>
+                  <p className={styles.header__dropProfile}>Admin profile</p>
+                </Option>
+                <Option image={LogoutIcon}>
+                  <p className={styles.header__dropLogout}>Log out</p>
+                </Option>
+              </>
+            }
+          />
         </div>
       </div>
     </div>
