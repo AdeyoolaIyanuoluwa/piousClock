@@ -18,7 +18,7 @@ const FilterClockInHistory = ({ isShown, onCloseComplete, onFilter }: any) => {
       <SideSheetDrawer
         isShown={isShown}
         onCloseComplete={onCloseComplete}
-        headingTitle="Filter"
+        headingTitle="Filter by"
         width="452px"
       >
         <div className={styles.filterInput}>

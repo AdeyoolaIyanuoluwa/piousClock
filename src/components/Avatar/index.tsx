@@ -5,8 +5,7 @@ import { AvatarProps } from '../../types';
 
 const Avatar = ({ name, className, profile, url }: AvatarProps) => {
   return (
-    <span className={classNames(className, 'flex')}>
-      <div>
+    <div className={classNames(className, 'flex')}>
         {url ? (
           <img src={url} className={profile ? styles.profile__img : styles.header__img} />
         ) : (
@@ -18,7 +17,6 @@ const Avatar = ({ name, className, profile, url }: AvatarProps) => {
           </span>
         )}
       </div>
-    </span>
   );
 };
 

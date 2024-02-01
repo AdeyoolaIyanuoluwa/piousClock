@@ -60,6 +60,8 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
+    border-bottom: none;
+    z-index: 50;
     &__title {
       font-weight: 600;
     }
@@ -75,16 +77,18 @@
     left: 0;
     width: 100%;
     padding: 20px;
-    border-bottom: 1px solid #ccc;
+   
   }
 
   .showSlider {
     visibility: visible;
+    
   }
 
   .hideSlider {
     visibility: hidden;
     pointer-events: none;
+
   }
   .sidebar {
     &__wrapper {

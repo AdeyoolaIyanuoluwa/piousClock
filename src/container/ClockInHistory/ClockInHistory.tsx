@@ -41,7 +41,12 @@ const ClockInHistory = () => {
           <ClockInHistoryTable />
         </div>
       </div>
-      {showFilterDrawer && (<FilterClockInHistory isShown={showFilterDrawer} onCloseComplete={()=> setShowFilterDrawer(false)}/>)}
+      {showFilterDrawer && (
+        <FilterClockInHistory
+          isShown={showFilterDrawer}
+          onCloseComplete={() => setShowFilterDrawer(false)}
+        />
+      )}
     </DashboardLayout>
   );
 };

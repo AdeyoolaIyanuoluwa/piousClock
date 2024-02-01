@@ -1,7 +1,7 @@
 import React from 'react';
 import { SideSheet, Pane, Heading } from 'evergreen-ui';
 import { SideSheetProps } from '../../types';
-// import CloseIcon from '../../assets/icons/close-icon.svg';
+import CloseIcon from '../../assets/icons/filterclose-icon.svg';
 
 const SideSheetDrawer = ({
   isShown,
@@ -40,7 +40,7 @@ const SideSheetDrawer = ({
             {headingTitle}
           </Heading>
           <div onClick={onCloseComplete}>
-            {/* <img src={CloseIcon} alt="close" /> */}
+            <img src={CloseIcon} alt="close" />
           </div>
         </Pane>
       </Pane>

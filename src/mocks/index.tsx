@@ -29,6 +29,12 @@ export const tableHeader = [
     sortable: false,
     key: "date",
   },
+  {
+    text: "",
+    alignment: "center",
+    sortable: false,
+    key: "date",
+  },
 ];
 
 export const historyHeader = [
