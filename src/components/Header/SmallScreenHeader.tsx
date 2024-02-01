@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./header.module.scss";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import Avatar from "../Avatar";
@@ -8,13 +8,12 @@ import { navLinks } from "../SideBar/navLinks";
 import Logo from "../../assets/piouslogo.svg";
 import Logout from "../../assets/fillLogout.svg";
 
-const SmallScreenHeader = () => {
-  const [visibility, setVisibility] = useState(false);
+const SmallScreenHeader = ({ visibility, setVisibility }: any) => {
 
   const location = useLocation();
 
-  const toggleVisibility = () => setVisibility((prev) => !prev);
-  const navigate = useNavigate()
+  const toggleVisibility = () => setVisibility((prev: any) => !prev);
+  const navigate = useNavigate();
 
   const headerTitle = () => {
     switch (location?.pathname) {
@@ -39,9 +38,11 @@ const SmallScreenHeader = () => {
       </div>
 
       <div className={styles.header__profile}>
+        {!visibility && (
         <div>
           <Avatar name={"Temilola Peter"} />
         </div>
+        )}
       </div>
 
       <div
@@ -65,6 +66,7 @@ const SmallScreenHeader = () => {
               />
             </div>
           </div>
+
           <div className={styles.menu}>
             {navLinks.map((i) => {
               return (
@@ -82,7 +84,7 @@ const SmallScreenHeader = () => {
           </div>
           <div className={styles.logout}>
             <img src={Logout} alt="logout" />
-            <p onClick={()=>navigate("/auth/login")}>Log Out</p>
+            <p onClick={() => navigate("/auth/login")}>Log Out</p>
           </div>
         </div>
       </div>

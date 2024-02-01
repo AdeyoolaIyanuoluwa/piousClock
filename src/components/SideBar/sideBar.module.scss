@@ -7,11 +7,16 @@
     top: 0;
     z-index: 100;
     border-right: 1px solid #e7e7e7;
+    animation-timing-function: cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    transition: all ease-in-out 0.3s;
 
     a {
       text-decoration: none;
     }
   }
+  // &__logo {
+  //   border-bottom: 1px solid blue;
+  // }
 }
 .menu {
   position: relative;
@@ -54,13 +59,13 @@
     }
   }
 }
-@media screen and (min-width: 1500px) {
-  .sidebar {
-    &__wrapper {
-      display: none;
-    }
-  }
-}
+// @media screen and (min-width: 1500px) {
+//   .sidebar {
+//     &__wrapper {
+//       display: none;
+//     }
+//   }
+// }
 
 @media screen and (max-width: 768px) {
   .sidebar {
