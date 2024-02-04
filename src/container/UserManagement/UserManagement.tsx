@@ -4,10 +4,14 @@ import React, { useState } from "react";
 import styles from "./users.module.scss";
 import { useDebounce } from "use-debounce";
 import UserManagementTable from "./UserManagementTable";
+import FilterUserManagement from "./FilterUserManagement";
+import AddMember from "./AddMember";
 
 const UserManagement = () => {
   const [searchValue, setSearchValue] = useState("");
   const [showFilterDrawer, setShowFilterDrawer] = useState(false);
+  const [addMember, setAddMember] = useState(false)
+
   const [searchDebounce] = useDebounce(searchValue, 1000);
   return (
     <div className={styles.management}>
@@ -29,18 +33,10 @@ const UserManagement = () => {
           >
             Filter
           </Button>
-          <Button
-            size={"md"}
-            theme=""
-            onClick={() => setShowFilterDrawer(true)}
-          >
+          <Button size={"md"} theme="">
             Export
           </Button>
-          <Button
-            size={"md"}
-            theme="primary"
-            onClick={() => setShowFilterDrawer(true)}
-          >
+          <Button size={"md"} theme="primary" onClick={()=> setAddMember(true)}>
             Add member
           </Button>
         </div>
@@ -48,6 +44,15 @@ const UserManagement = () => {
       <div>
         <UserManagementTable />
       </div>
+      {showFilterDrawer && (
+        <FilterUserManagement
+          isShown={showFilterDrawer}
+          onCloseComplete={() => setShowFilterDrawer(false)}
+        />
+      )}
+      {addMember && (
+        <AddMember isShown={addMember} onCloseComplete={()=> setAddMember(false)}/>
+      )}
     </div>
   );
 };

@@ -7,6 +7,7 @@ import ResetPassword from "@/pages/Auth/ResetPassword";
 import Dashboard from "@/container/Dashboard/Dashboard";
 import ClockInHistory from "@/container/ClockInHistory/ClockInHistory";
 import UserManagementRoutes from "./modules/UserManagementRoutes";
+import ProfileSetting from "@/container/ProfileSetting/ProfileSetting";
 
 const AppRouter = () => {
   return (
@@ -19,6 +20,7 @@ const AppRouter = () => {
         <Route path="/dashboard" element={<Dashboard/>}/>
         <Route path="/history" element={<ClockInHistory/>}/>
         <Route path="/user-management" element={<UserManagementRoutes/>}/>
+        <Route path="/profile" element={<ProfileSetting/>}/>
     </Routes>
   );
 };

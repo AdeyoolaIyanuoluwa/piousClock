@@ -44,6 +44,7 @@ export type OptionProps = {
 
 export type InputProps = {
   name?: string;
+  id?: string;
   title?: string;
   error?: string;
   value?: string;
@@ -55,7 +56,7 @@ export type InputProps = {
   inputValue?: string | undefined;
   formClassName?: string;
   className?: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement> | string) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement> | React.DragEvent<HTMLDivElement> | string) => void;
   handleSearch?: (e: string) => string;
   'data-testid'?: string;
   darkMode?: boolean;
@@ -159,4 +160,43 @@ export type DatePickerInputProps = {
   endDate?: Date | null;
   filterDate?: (date: Date) => boolean;
   highlightDates?: any;
+};
+export type SelectInputProps = {
+  name: string;
+  type?: string;
+  label: string;
+  selected?: string;
+  options?: { value: string; label: string }[];
+  placeholder: string | ReactNode;
+  menuIsOpen?: boolean;
+  formClassName?: string;
+  disabled?: boolean;
+  error?: boolean;
+  theme?: string;
+  isSearchable?: boolean;
+  isLoading?: boolean;
+  isClearable?: boolean;
+  isMulti?: boolean;
+  multi?: boolean;
+  styles?: object;
+  closeMenuOnSelect?: boolean;
+  controls?: Record<string, string | number>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  value?: Record<string, string | number> | any;
+  control?: string;
+  onChange?: (val: { value: string; label: string }) => any;
+  handleChange?: (val: { value: string; label: string }) => void;
+  setTouched?: (val: object) => void;
+  setFieldValue?: (
+    val: string,
+    obj: Record<string, string | number | boolean | undefined>
+  ) => void;
+};
+export type DeleteMemberModalProps = {
+  isShown: boolean;
+  onClose: () => void;
+  title?: string;
+  caption?: string;
+  onClick?: (data: any) => void;
+  loading?: boolean;
 };

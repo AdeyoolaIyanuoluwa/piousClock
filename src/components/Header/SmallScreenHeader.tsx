@@ -5,11 +5,10 @@ import Avatar from "../Avatar";
 import MenuBar from "../../assets/Menu.svg";
 import classNames from "classnames";
 import { navLinks } from "../SideBar/navLinks";
-import Logo from "../../assets/piouslogo.svg";
+import Logo from "../../assets/piousClock.svg";
 import Logout from "../../assets/fillLogout.svg";
 
 const SmallScreenHeader = ({ visibility, setVisibility }: any) => {
-
   const location = useLocation();
 
   const toggleVisibility = () => setVisibility((prev: any) => !prev);
@@ -39,9 +38,9 @@ const SmallScreenHeader = ({ visibility, setVisibility }: any) => {
 
       <div className={styles.header__profile}>
         {!visibility && (
-        <div>
-          <Avatar name={"Temilola Peter"} />
-        </div>
+          <div>
+            <Avatar name={"Temilola Peter"} />
+          </div>
         )}
       </div>
 
@@ -58,11 +57,6 @@ const SmallScreenHeader = ({ visibility, setVisibility }: any) => {
                 className={styles.sidebar__logo__menubar}
                 src={Logo}
                 alt="logo"
-              />
-              <img
-                src={MenuBar}
-                alt="menubar"
-                onClick={() => toggleVisibility()}
               />
             </div>
           </div>

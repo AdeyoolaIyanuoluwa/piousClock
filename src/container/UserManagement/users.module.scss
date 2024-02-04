@@ -1,3 +1,4 @@
+//user management scss
 .management {
   background-color: white;
   padding: 24px;
@@ -36,7 +37,110 @@
 .avatar_name {
   display: flex;
   gap: 5px;
-//   padding-left: 0 !important;
   justify-content: start;
   align-items: center;
+}
+//filterUserManagement
+.filterInput {
+  position: relative;
+  top: 12px;
+
+  &__Heading {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #6b7280;
+  }
+}
+.btnWrapperr {
+  display: flex;
+  width: 100%;
+  height: 84px;
+  padding: 24px 16px 24px 16px;
+  gap: 12px;
+  margin-top: 530px;
+  justify-content: right;
+  align-items: center;
+}
+
+//EditMember
+.formInput {
+  text-align: left;
+  &__input {
+    margin-top: 12px;
+    margin-bottom: 24px;
+  }
+  &__csv {
+    color: #6b7280;
+    font-size: 12px;
+    font-weight: 400;
+
+    &__p {
+      font-size: 14px;
+      margin: 16px 0 32px 0;
+      text-align: center;
+    }
+    button {
+      margin-top: 16px;
+    }
+  }
+}
+.btnWrapper {
+  display: flex;
+  width: 100%;
+  padding: 24px 16px 24px 16px;
+  gap: 12px;
+  margin-top: 50px;
+  justify-content: right;
+  align-items: center;
+}
+
+.editBtnWrapper {
+  display: flex;
+  width: 100%;
+  height: 84px;
+  padding: 24px 16px 24px 16px;
+  gap: 12px;
+  margin-top: 290px;
+  justify-content: right;
+  align-items: center;
+}
+
+//DeleteMemberModal
+
+.headerWrapper {
+  text-align: center;
+  padding: 24px;
+  img {
+    margin-bottom: 16px;
+  }
+}
+.headerTitle {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+.headerCaption {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #6b7280;
+  margin-top: 8px;
+}
+
+.actionWrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  margin: 28px 0px 16px 0px;
+
+  button {
+    width: 154.5px;
+  }
 }

@@ -1,15 +1,19 @@
 import Avatar from "@/components/Avatar";
 import Table from "@/components/Table";
 import { membersData, tableHeader } from "@/mocks";
-import React from "react";
+import React, {useState} from "react";
 import styles from "./users.module.scss";
 import Dropdown from "@/components/Dropdown";
 import VerticalDotIcon from "../../assets/DotsThreeVertical.svg";
 import { Option } from "@/components/Dropdown/Option";
 import EditIcon from "../../assets/editIcon.svg";
 import DeleteIcon from "../../assets/deleteIcon.svg";
+import EditMember from "./EditMember";
+import DeleteMemberModal from "./DeleteMemberModal";
 
 const UserManagementTable = () => {
+  const [editMember, setEditMember] = useState(false)
+  const [deleteMember, setDeleteMember] = useState(false)
   return (
     <div>
       <Table tableHeaders={tableHeader} tableData={membersData}>
@@ -33,8 +37,8 @@ const UserManagementTable = () => {
                   children={<img src={VerticalDotIcon} alt="vertical_dot" />}
                   content={
                     <>
-                      <Option image={EditIcon}>Edit</Option>
-                      <Option image={DeleteIcon}>Delete</Option>
+                      <Option image={EditIcon} onClick={()=>setEditMember(true)}>Edit</Option>
+                      <Option image={DeleteIcon} onClick={()=>setDeleteMember(true)}>Delete</Option>
                     </>
                   }
                 />
@@ -43,6 +47,12 @@ const UserManagementTable = () => {
           );
         }}
       </Table>
+      {editMember&&(
+          <EditMember isShown={editMember} onCloseComplete={()=>setEditMember(false)}/>
+        )}
+        {deleteMember&&(
+          <DeleteMemberModal isShown={deleteMember} onClose={()=>setDeleteMember(false)}/>
+        )}
     </div>
   );
 };
