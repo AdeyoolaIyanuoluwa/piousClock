@@ -77,22 +77,19 @@
     left: 0;
     width: 100%;
     padding: 20px;
-   
   }
 
   .showSlider {
     visibility: visible;
-    
   }
 
   .hideSlider {
     visibility: hidden;
     pointer-events: none;
-
   }
   .sidebar {
     &__wrapper {
-      width: 80%;
+      width: 70%;
       min-height: 100vh;
       position: fixed !important;
       left: 0;
@@ -106,13 +103,7 @@
       }
     }
     &__logo {
-      display: flex;
-      justify-content: space-between;
-      padding: 0 24px 0 0;
-
-      &__menubar {
-        width: 250px;
-      }
+      border-bottom: 1px solid #f3f4f6;
     }
   }
   .menu {

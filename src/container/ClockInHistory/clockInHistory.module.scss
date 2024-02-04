@@ -26,6 +26,20 @@
     }
   }
 }
+.heading {
+  display: flex;
+  gap: 8px;
+  text-align: center;
+  color: #1D3557;
+  p {
+    width: 179px;
+    height: 36px;
+    padding: 8px 16px 8px 16px;
+    border-radius: 8px;
+    border: 1px solid #1d3557;
+    gap: 32px;
+  }
+}
 
 .filterInput {
   position: relative;

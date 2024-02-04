@@ -21,6 +21,26 @@
       margin: 0;
     }
   }
+  &__file {
+    width: 366px;
+    height: 92px;
+    padding: 8px 16px 8px 16px;
+    border-radius: 8px;
+    border: 1px solid #f3f4f6;
+    gap: 8px;
+    p {
+      width: 174px;
+      height: 40px;
+      margin: auto;
+      padding: 26px 0 26px 0;
+
+      color: #9ca3af;
+    }
+    label {
+      color: #75bc62 !important;
+      text-decoration: underline;
+    }
+  }
 }
 .input_container label {
   font-weight: 400;
@@ -34,7 +54,7 @@
   padding: 8px 16px 8px 16px;
   line-height: 1;
   outline: none;
-  border: 1px solid #d1d1d1;
+  border: 1px solid #F3F4F6;
   border-radius: 8px;
   &::placeholder {
     color: #b0b0b0;
@@ -53,7 +73,7 @@
   align-items: center;
   width: 100%;
   height: 36px;
-  border: 1px solid #d1d1d1;
+  border: 1px solid #f3f4f6;
   border-radius: 8px;
   padding: 8px 16px 8px 16px;
   box-sizing: border-box;
@@ -74,7 +94,6 @@
     letter-spacing: 0em;
     color: #9ca3af;
     text-align: left;
-
     border: none;
     outline: none;
   }

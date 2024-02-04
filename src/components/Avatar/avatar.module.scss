@@ -23,13 +23,14 @@
   }
 
   &__profile {
-    background: #9cf9ff;
-    width: 94px;
-    height: 94px;
+    background: #1d3557;
+    color: #ffffff;
+    width: 80px;
+    height: 80px;
     font-weight: 500;
     font-size: 45px;
     padding: 4px;
-    box-shadow: 0 0 0 10px #e6fdff;
+    // box-shadow: 0 0 0 10px #e6fdff;
     box-sizing: border-box;
     border-radius: 100%;
     display: flex;

@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./header.module.scss";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import moment from "moment";
 import Avatar from "../Avatar";
 import Dropdown from "../Dropdown";
@@ -9,6 +9,7 @@ import UserIcon from "../../assets/userIcon.svg";
 import LogoutIcon from "../../assets/logout.svg";
 const Header = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const headerTitle = () => {
     switch (location?.pathname) {
       case "/dashboard":
@@ -49,13 +50,13 @@ const Header = () => {
         </div>
       </div>
       <div className={styles.header__profile}>
-      <div>
+        <div>
           <span className={styles.header__divider}></span>
         </div>
         <div>
           <Avatar name={"Temilola Peter"} />
         </div>
-       
+
         <div>
           <p className={styles.header__profile__name}>Temilola Peter</p>
           <p className={styles.header__profile__email}>
@@ -67,7 +68,12 @@ const Header = () => {
             content={
               <>
                 <Option image={UserIcon}>
-                  <p className={styles.header__dropProfile}>Admin profile</p>
+                  <p
+                    className={styles.header__dropProfile}
+                    onClick={() => navigate("/profile")}
+                  >
+                    Admin profile
+                  </p>
                 </Option>
                 <Option image={LogoutIcon}>
                   <p className={styles.header__dropLogout}>Log out</p>

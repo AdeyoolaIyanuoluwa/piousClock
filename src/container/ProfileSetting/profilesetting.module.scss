@@ -1,0 +1,47 @@
+.profile {
+  color: #2f3644;
+  background-color: #ffffff;
+  padding: 24px 24px 100px 24px;
+  border-radius: 8px;
+
+  &__heading {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 32px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-bottom: 24px;
+  }
+  &__avatar {
+    width: 214px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    label {
+      color: #75bc62;
+      text-decoration: underline;
+    }
+  }
+  &__edit {
+    margin: 24px 0 24px 0;
+    width: 746px;
+    height: 167px;
+    p {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 24px;
+    }
+  }
+  &__form {
+    &__input {
+      display: flex;
+      gap: 24px;
+    }
+  }
+  button {
+    float: right;
+  }
+  &__btn {
+    margin-top: 24px;
+  }
+}

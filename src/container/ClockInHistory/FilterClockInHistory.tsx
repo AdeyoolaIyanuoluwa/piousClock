@@ -3,6 +3,7 @@ import DatePickerInput from "@/components/Input/DatePickerInput";
 import SideSheetDrawer from "@/components/SideSheetDrawer";
 import React, { useState } from "react";
 import styles from "./clockInHistory.module.scss";
+import SelectInput from "@/components/SelectInput";
 
 const FilterClockInHistory = ({ isShown, onCloseComplete, onFilter }: any) => {
   const [filters, setFilters] = useState({
@@ -21,8 +22,12 @@ const FilterClockInHistory = ({ isShown, onCloseComplete, onFilter }: any) => {
         headingTitle="Filter by"
         width="452px"
       >
+        <div className={styles.heading}>
+          <p>Today</p>
+          <p>Yesterday</p>
+        </div>
         <div className={styles.filterInput}>
-          <p className={styles.filterInput__Heading}>Date added</p>
+          <p className={styles.filterInput__Heading}>Date</p>
           <div>
             <DatePickerInput
               placeholderText="dd | mm | yyyy"
@@ -34,6 +39,17 @@ const FilterClockInHistory = ({ isShown, onCloseComplete, onFilter }: any) => {
                 }))
               }
             />
+          </div>
+          <div className={styles.filterInput}>
+            {" "}
+            {/* <p className={styles.filterInput__Heading}>Month</p> */}
+            <div>
+              <SelectInput  name={'panel'}
+              label="Month"
+              placeholder="January"
+              options={[]}
+              onChange={() => {}}/>
+            </div>
           </div>
 
           <div className={styles.btnWrapper}>
