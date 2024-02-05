@@ -38,7 +38,8 @@ const ProfileSetting = () => {
               {(formik) => (
                 <Form className={styles.profile__form}>
                   <div className={styles.profile__form__input}>
-                    <div className={styles.profile__form__input__inp}>
+                    
+                    <div className={styles.profile__form__input}>
                       <Input
                         title="Full name"
                         placeholder="Temilola Peter"
@@ -48,7 +49,7 @@ const ProfileSetting = () => {
                         onChange={formik.handleChange}
                       />
                     </div>
-                    <div className={styles.profile__form__input__inp}>
+                    <div className={styles.profile__form__input}>
                     <Input
                       title="Email address"
                       placeholder="temilolapeter@email.com"
