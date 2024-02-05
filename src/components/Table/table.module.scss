@@ -30,6 +30,12 @@
       text-align: center;
       color: #6b7280;
     }
+    &__btn {
+      margin-top: 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
   }
 
   &__row {

@@ -54,7 +54,7 @@ const Header = () => {
           <span className={styles.header__divider}></span>
         </div>
         <div>
-          <Avatar name={"Temilola Peter"} />
+          <Avatar name={"Temilola Peter"} size={'md'}/>
         </div>
 
         <div>

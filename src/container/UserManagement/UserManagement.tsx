@@ -6,6 +6,7 @@ import { useDebounce } from "use-debounce";
 import UserManagementTable from "./UserManagementTable";
 import FilterUserManagement from "./FilterUserManagement";
 import AddMember from "./AddMember";
+import UserManagementMobile from "./UserManagementMobile";
 
 const UserManagement = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -41,8 +42,11 @@ const UserManagement = () => {
           </Button>
         </div>
       </div>
-      <div>
-        <UserManagementTable />
+      <div className={styles.management__header__table}>
+        <UserManagementTable/>
+      </div>
+      <div className={styles.management__header__mobile}>
+        <UserManagementMobile/>
       </div>
       {showFilterDrawer && (
         <FilterUserManagement

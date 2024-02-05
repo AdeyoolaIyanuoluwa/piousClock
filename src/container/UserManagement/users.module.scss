@@ -32,6 +32,9 @@
       width: 283px;
       gap: 12px;
     }
+    &__mobile {
+      display: none;
+    }
   }
 }
 .avatar_name {
@@ -142,5 +145,73 @@
 
   button {
     width: 154.5px;
+  }
+}
+//usermanagementMobile
+.user {
+  margin-top: 32px;
+  &__members {
+    padding: 24px 16px 24px 16px;
+    border: 1px solid #f3f4f6;
+    &__avatar {
+      display: flex;
+      justify-content: space-between;
+      color: #6b7280;
+
+      &__name {
+        display: flex;
+        gap: 8px;
+        text {
+          color: #6b7280;
+          font-size: 14px;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+  &__empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 68px 0;
+    text-align: center;
+    background-color: #ffffff;
+    p {
+      line-height: 20px;
+      letter-spacing: 0em;
+      text-align: center;
+      color: #6b7280;
+    }
+    &__btn {
+      margin-top: 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .management {
+    padding: 0px;
+    &__header {
+      display: block;
+      margin-bottom: 24px;
+
+      &__search {
+        width: 345px;
+        display: block;
+
+        p {
+          margin-bottom: 16px;
+        }
+      }
+      &__table {
+        display: none;
+      }
+      &__mobile {
+        display: block;
+      }
+    }
   }
 }

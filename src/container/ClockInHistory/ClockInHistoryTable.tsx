@@ -6,14 +6,14 @@ import styles from "./clockInHistory.module.scss";
 
 const ClockInHistoryTable = () => {
   return (
-    <Table tableHeaders={historyHeader} tableData={history} paginate>
+    <Table tableHeaders={historyHeader} tableData={history} paginate user>
       {(row: any) => {
         return (
           <>
           <td>
             <div className={styles.avatar_name}>
               <div>
-                <Avatar name={row.full_name} />
+                <Avatar name={row.full_name} size="sm"/>
               </div>
               {row.full_name}
             </div>

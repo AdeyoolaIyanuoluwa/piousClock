@@ -29,3 +29,10 @@
     color: #9ca3af;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .search {
+    width: 345px;
+    margin-bottom: 16px;
+  }
+}

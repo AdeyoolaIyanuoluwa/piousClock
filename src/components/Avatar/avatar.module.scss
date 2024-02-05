@@ -1,5 +1,5 @@
 .avatar {
-  &__placeholder {
+  &__sm {
     height: 32px;
     width: 32px;
     border-radius: 100%;
@@ -7,7 +7,7 @@
     font-size: 12px;
     border: 2px solid #eef5ff;
     color: #ffffff;
-    background: #2f3644;
+    background: #1d3557;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -22,20 +22,34 @@
     cursor: pointer;
   }
 
-  &__profile {
-    background: #1d3557;
-    color: #ffffff;
+  &__lg {
     width: 80px;
     height: 80px;
+    background: #1d3557;
+    color: #ffffff;
     font-weight: 500;
     font-size: 45px;
     padding: 4px;
-    // box-shadow: 0 0 0 10px #e6fdff;
     box-sizing: border-box;
     border-radius: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  &__md{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    font-weight: 500;
+    font-size: 12px;
+    border: 2px solid #eef5ff;
+    color: #ffffff;
+    background: #1d3557;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0;
+    position: relative;
   }
 }
 

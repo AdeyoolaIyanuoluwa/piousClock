@@ -38,7 +38,7 @@ const ClockInHistory = () => {
           </div>
         </div>
         <div>
-          <ClockInHistoryTable />
+          <ClockInHistoryTable/>
         </div>
       </div>
       {showFilterDrawer && (

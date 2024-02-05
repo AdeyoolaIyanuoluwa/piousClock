@@ -16,7 +16,7 @@ const ProfileSetting = () => {
       <div className={styles.profile}>
         <p className={styles.profile__heading}>Admin profile</p>
         <div className={styles.profile__avatar}>
-          <Avatar name={"Temilola Peter"} profile />
+          <Avatar name={"Temilola Peter"} profile size="lg" />
           <label htmlFor="profile-image">Edit profile image</label>
           <input
             hidden
@@ -28,7 +28,7 @@ const ProfileSetting = () => {
 
         <div className={styles.profile__edit}>
           <p>Edit profile details</p>
-          
+
           <div>
             <Formik
               initialValues={{ firstname: "", email: "" }}
@@ -55,11 +55,11 @@ const ProfileSetting = () => {
                       disabled
                     />
                   </div>
-                  
+
                   <div className={styles.profile__btn}>
-                  <Button size={"md"} theme={"primary"} >
-                    Save changes
-                  </Button>
+                    <Button size={"md"} theme={"primary"}>
+                      Save changes
+                    </Button>
                   </div>
                 </Form>
               )}
@@ -69,7 +69,7 @@ const ProfileSetting = () => {
 
         <div className={styles.profile__edit}>
           <p>Change password</p>
-          
+
           <div>
             <Formik
               initialValues={{ password: "", confirmPassword: "" }}
@@ -104,7 +104,6 @@ const ProfileSetting = () => {
             </Formik>
           </div>
         </div>
-
       </div>
     </DashboardLayout>
   );
