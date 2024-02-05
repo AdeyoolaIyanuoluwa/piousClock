@@ -25,12 +25,16 @@
       }
     }
   }
+  &__mobile {
+    display: none;
+  }
 }
+
 .heading {
   display: flex;
   gap: 8px;
   text-align: center;
-  color: #1D3557;
+  color: #1d3557;
   p {
     width: 179px;
     height: 36px;
@@ -71,4 +75,58 @@
   padding-left: 0 !important;
   justify-content: start;
   align-items: center;
+}
+
+//ClockInHistoryMobile
+.history {
+  &__members {
+    padding: 24px 16px 24px 16px;
+    color: #6b7280;
+    border: 1px solid #f3f4f6;
+    &__avatar {
+      display: flex;
+      justify-content: space-between;
+
+      &__name {
+        display: flex;
+        gap: 8px;
+        text {
+          font-size: 14px;
+          font-weight: 500;
+        }
+      }
+    }
+    &__clock {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-left: 48px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .history {
+    padding: 0;
+    &__table {
+      display: none;
+    }
+    &__mobile {
+      display: block;
+    }
+    &__header {
+      display: block;
+      margin-top: 40px;
+
+      &__search {
+        width: 345px;
+        display: block;
+        margin-bottom: 16px;
+
+        p {
+          margin-bottom: 24px;
+        }
+      }
+    }
+  }
 }

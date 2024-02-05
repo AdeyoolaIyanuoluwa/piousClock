@@ -42,10 +42,10 @@ const UserManagement = () => {
           </Button>
         </div>
       </div>
-      <div className={styles.management__header__table}>
+      <div className={styles.management__table}>
         <UserManagementTable/>
       </div>
-      <div className={styles.management__header__mobile}>
+      <div className={styles.management__mobile}>
         <UserManagementMobile/>
       </div>
       {showFilterDrawer && (

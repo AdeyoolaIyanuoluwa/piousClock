@@ -11,12 +11,13 @@
     position: relative;
     background: none;
     border: none;
-    right: -43%;
+    left: 85%;
     cursor: pointer;
     top: -1.9rem;
     font-weight: 600;
     font-size: 12px;
     color: #667185;
+    width: 15%;
     p {
       margin: 0;
     }
@@ -54,7 +55,7 @@
   padding: 8px 16px 8px 16px;
   line-height: 1;
   outline: none;
-  border: 1px solid #F3F4F6;
+  border: 1px solid #f3f4f6;
   border-radius: 8px;
   &::placeholder {
     color: #b0b0b0;
@@ -101,3 +102,4 @@
 .date_picker input:hover {
   outline: none;
 }
+

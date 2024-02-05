@@ -26,6 +26,7 @@
     margin: 24px 0 24px 0;
     width: 746px;
     height: 167px;
+
     p {
       font-size: 16px;
       font-weight: 500;
@@ -43,5 +44,26 @@
   }
   &__btn {
     margin-top: 24px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .profile {
+    padding: 0;
+    &__edit {
+      width: 100%;
+      margin-bottom: 90px;
+    }
+    &__form {
+      &__input {
+        display: block;
+        &__inp {
+          margin-bottom: 16px;
+        }
+      }
+    }
+    &__btn {
+      margin-top: 0px;
+    }
   }
 }

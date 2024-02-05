@@ -38,14 +38,17 @@ const ProfileSetting = () => {
               {(formik) => (
                 <Form className={styles.profile__form}>
                   <div className={styles.profile__form__input}>
-                    <Input
-                      title="Full name"
-                      placeholder="Temilola Peter"
-                      name="firstname"
-                      type="text"
-                      value={formik.values.firstname}
-                      onChange={formik.handleChange}
-                    />
+                    <div className={styles.profile__form__input__inp}>
+                      <Input
+                        title="Full name"
+                        placeholder="Temilola Peter"
+                        name="firstname"
+                        type="text"
+                        value={formik.values.firstname}
+                        onChange={formik.handleChange}
+                      />
+                    </div>
+                    <div className={styles.profile__form__input__inp}>
                     <Input
                       title="Email address"
                       placeholder="temilolapeter@email.com"
@@ -54,6 +57,7 @@ const ProfileSetting = () => {
                       value={formik.values.email}
                       disabled
                     />
+                    </div>
                   </div>
 
                   <div className={styles.profile__btn}>

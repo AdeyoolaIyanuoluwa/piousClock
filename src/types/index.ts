@@ -10,6 +10,7 @@ export type AvatarProps = {
   profile?: boolean;
   url?: string;
   size?: string;
+  onClick?: (data: any) => void;
 };
 
 export type ButtonProps = {

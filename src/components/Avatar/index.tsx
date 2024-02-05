@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import styles from './avatar.module.scss';
 import { AvatarProps } from '../../types';
 
-const Avatar = ({ name, className, profile, url ,size }: AvatarProps) => {
+const Avatar = ({ name, className, profile, url ,size,onClick }: AvatarProps) => {
   return (
     <div className={classNames(className, 'flex')}>
         {url ? (
@@ -11,7 +11,7 @@ const Avatar = ({ name, className, profile, url ,size }: AvatarProps) => {
         ) : (
           <span
             // className={classNames(profile ? styles.avatar__profile : styles.avatar__placeholder)}>
-            className={classNames(styles.avatar, styles[`avatar__${size}`])}>
+            className={classNames(styles.avatar, styles[`avatar__${size}`])}onClick={onClick} >
               
               
             {name.split(' ')[0]?.charAt(0)?.toUpperCase()}

@@ -32,9 +32,9 @@
       width: 283px;
       gap: 12px;
     }
-    &__mobile {
-      display: none;
-    }
+  }
+  &__mobile {
+    display: none;
   }
 }
 .avatar_name {
@@ -206,12 +206,12 @@
           margin-bottom: 16px;
         }
       }
-      &__table {
-        display: none;
-      }
-      &__mobile {
-        display: block;
-      }
+    }
+    &__table {
+      display: none;
+    }
+    &__mobile {
+      display: block;
     }
   }
 }

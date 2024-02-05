@@ -39,7 +39,11 @@ const SmallScreenHeader = ({ visibility, setVisibility }: any) => {
       <div className={styles.header__profile}>
         {!visibility && (
           <div>
-            <Avatar name={"Temilola Peter"} size="sm" />
+            <Avatar
+              name={"Temilola Peter"}
+              size="sm"
+              onClick={() => navigate("/profile")}
+            />
           </div>
         )}
       </div>

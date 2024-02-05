@@ -7,6 +7,7 @@ import Button from "@/components/Button";
 import ClockInHistoryTable from "./ClockInHistoryTable";
 import { useDebounce } from "use-debounce";
 import FilterClockInHistory from "./FilterClockInHistory";
+import ClockInHistoryMobile from "./ClockInHistoryMobile";
 
 const ClockInHistory = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -37,8 +38,11 @@ const ClockInHistory = () => {
             </Button>
           </div>
         </div>
-        <div>
+        <div  className={styles.history__table}>
           <ClockInHistoryTable/>
+        </div>
+        <div className={styles.history__mobile}>
+          <ClockInHistoryMobile/>
         </div>
       </div>
       {showFilterDrawer && (
