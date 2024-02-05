@@ -8,7 +8,7 @@ import PlaceholderIcon from "../../assets/placeholder.svg";
 import { useNavigate } from "react-router";
 
 const Dashboard = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <DashboardLayout>
       <Card />
@@ -16,12 +16,12 @@ const Dashboard = () => {
         <div className={styles.dashboard__members}>
           <div className={styles.dashboard__members__header}>
             <text>Recently added members</text>
-            <p onClick={()=>navigate('/user-management')}>See more</p>
+            <p onClick={() => navigate("/user-management")}>See more</p>
           </div>
           {membersData.slice(0, 5).map((i) => (
             <div className={styles.dashboard__members__data}>
               <div className={styles.dashboard__members__data__avatar}>
-                <Avatar name={i.last_name} />
+                <Avatar name={i.last_name} size="sm" />
                 <div>
                   <text>
                     {i.first_name} {i.last_name}
@@ -51,13 +51,13 @@ const Dashboard = () => {
         <div className={styles.dashboard__members}>
           <div className={styles.dashboard__members__header}>
             <text>Recent clock-ins</text>
-            <p onClick={()=>navigate('/history')}>See more</p>
+            <p onClick={() => navigate("/history")}>See more</p>
           </div>
 
           {history.slice(0, 5).map((i) => (
             <div className={styles.dashboard__members__data}>
               <div className={styles.dashboard__members__data__avatar}>
-                <Avatar name={i.full_name} />
+                <Avatar name={i.full_name} size="sm" />
                 <div>
                   <text>{i.full_name}</text>
                   <p>{i.address}</p>

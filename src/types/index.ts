@@ -9,6 +9,7 @@ export type AvatarProps = {
   className?: string;
   profile?: boolean;
   url?: string;
+  size?: string;
 };
 
 export type ButtonProps = {
@@ -92,6 +93,7 @@ export type PaginationProps = {
   changeCurrentPage?: (val: { selected: number }) => void;
   handlePageInput?: any;
   forcePage?: any;
+  displayed?: number | any;
 };
 export type TableProps = {
   tableHeaders?: any[];
@@ -113,6 +115,7 @@ export type TableProps = {
   paginate?: boolean;
   check?: boolean;
   sortRows?: any;
+  user?: any
 };
 
 export type ToastAlertProps = {
