@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./dashboard.module.scss";
-import DashboardLayout from "@/components/Layouts/DashboardLayout";
 import Card from "@/components/Card";
 import Avatar from "@/components/Avatar";
 import { history, membersData } from "@/mocks";
@@ -10,7 +9,7 @@ import { useNavigate } from "react-router";
 const Dashboard = () => {
   const navigate = useNavigate();
   return (
-    <DashboardLayout>
+    <div>
       <Card />
       <div className={styles.dashboard}>
         <div className={styles.dashboard__members}>
@@ -88,7 +87,7 @@ const Dashboard = () => {
           )}
         </div>
       </div>
-    </DashboardLayout>
+    </div>
   );
 };
 

@@ -1,21 +1,22 @@
 import Input from "@/components/Input";
 import { Formik, Form } from "formik";
-import React, { useState } from "react";
+import React, { useRef} from "react";
 import { EmailSchema } from "@/utils/validation";
 import Button from "@/components/Button";
 import styles from './index.module.scss'
+import { useForgotPassword } from "@/hooks/mutations/useForgotPassword";
 
 const ForgotPassword = () => {
-  const [loading, setLoading] = useState(false);
-  const forgotPassword = () => {
-    setLoading(true);
-  };
+const formRef = useRef<any>()
+ const {mutate: forgotPassword, isPending} = useForgotPassword()
+ 
   return (
     <div>
       <Formik
         initialValues={{ email: "" }}
         validationSchema={EmailSchema}
         onSubmit={forgotPassword}
+        innerRef={formRef}
       >
         {(formik) => (
           <Form  className={styles.formInput}>
@@ -34,7 +35,7 @@ const ForgotPassword = () => {
                 theme="primary"
                 size="lg"
                 disabled={!formik.isValid || !formik.dirty}
-                loading={loading}
+                loading={isPending}
               > Get OTP</Button>
             </div>
           </Form>

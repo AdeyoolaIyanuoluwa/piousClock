@@ -14,7 +14,7 @@ const ClockInHistory = () => {
   const [showFilterDrawer, setShowFilterDrawer] = useState(false);
   const [searchDebounce] = useDebounce(searchValue, 1000);
   return (
-    <DashboardLayout>
+    <div>
       <Card />
 
       <div className={styles.history}>
@@ -51,7 +51,7 @@ const ClockInHistory = () => {
           onCloseComplete={() => setShowFilterDrawer(false)}
         />
       )}
-    </DashboardLayout>
+    </div>
   );
 };
 

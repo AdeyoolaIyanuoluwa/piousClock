@@ -1,17 +1,17 @@
 import DashboardLayout from "@/components/Layouts/DashboardLayout";
-import DashboardPage from "@/pages/Dashboard";
+import ProfileSettingPage from "@/pages/ProfileSetting";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 
-const DashboardRoutes = () => {
+const ProfileSettingRoutes = () => {
   return (
     <div>
       <Routes>
         <Route
           path="/"
           element={
-            <DashboardLayout>
-              <DashboardPage />
+            <DashboardLayout profile>
+              <ProfileSettingPage />
             </DashboardLayout>
           }
         />
@@ -20,4 +20,4 @@ const DashboardRoutes = () => {
   );
 };
 
-export default DashboardRoutes;
+export default ProfileSettingRoutes;

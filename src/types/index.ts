@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 
 export type ChildrenProps = {
   children?: ReactNode;
+  profile?: boolean
 };
 
 export type AvatarProps = {
@@ -203,4 +204,8 @@ export type DeleteMemberModalProps = {
   caption?: string;
   onClick?: (data: any) => void;
   loading?: boolean;
+};
+export type CountDownProps = {
+  minutes: any;
+  seconds: any;
 };

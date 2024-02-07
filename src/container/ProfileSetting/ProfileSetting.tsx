@@ -12,7 +12,7 @@ const ProfileSetting = () => {
     onChange?.(e.target?.files?.[0]);
   };
   return (
-    <DashboardLayout>
+    <div>
       <div className={styles.profile}>
         <p className={styles.profile__heading}>Admin profile</p>
         <div className={styles.profile__avatar}>
@@ -110,7 +110,7 @@ const ProfileSetting = () => {
           </div>
         </div>
       </div>
-    </DashboardLayout>
+    </div>
   );
 };
 
