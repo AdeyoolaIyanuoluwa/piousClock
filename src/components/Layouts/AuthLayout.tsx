@@ -1,14 +1,9 @@
 import React from "react";
 import styles from "./layout.module.scss";
-import Logo from "../../assets/piouslogo.svg";
+import Logo from "../../assets/piousClock.svg";
 import { AuthLayoutProps } from "@/types";
 
-const AuthLayout = ({
-  children,
-  title,
-  subtitle,
-  email,
-}: AuthLayoutProps) => {
+const AuthLayout = ({ children, title, subtitle, email }: AuthLayoutProps) => {
   return (
     <div className={styles.formContainer}>
       <div className={styles.form}>

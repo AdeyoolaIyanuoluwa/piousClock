@@ -21,6 +21,24 @@
   &__smallscreen {
     display: none;
   }
+  //profile back
+  &__back {
+    display: flex;
+    gap: 40px;
+    height: 63px;
+    padding: 20px 32px 20px 24px;
+
+    button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: none;
+      background: none;
+    }
+    &__divider {
+      border-right: 1px solid #E5E7EB;
+    }
+  }
 }
 
 .formContainer {
@@ -100,5 +118,8 @@
       background: #000;
       z-index: 10;
     }
+  }
+  .formContainer {
+    background-color: #ffffff;
   }
 }
