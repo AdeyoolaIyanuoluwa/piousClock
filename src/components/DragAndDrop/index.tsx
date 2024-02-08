@@ -1,24 +1,24 @@
-import React, { ChangeEvent, DragEvent } from "react";
+import React, { DragEvent, useState } from "react";
 import styles from "../Input/input.module.scss";
 
-const DragAndDrop = ({
-  id,
-  onChange,
-}: {
-  id: string;
-  onChange?: (e: Record<string, any>) => void;
-}) => {
+const DragAndDrop = ({ id, onChange }: any) => {
+  const [fileName, setFileName] = useState("");
   const handleDragOver = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
   };
 
   const handleDrop = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
-    onChange?.(Array.from(e.dataTransfer.files)[0]);
+    const file = Array.from(e.dataTransfer.files)[0];
+    onChange?.(file);
+    setFileName(file.name);
   };
+  // ChangeEvent<FileList>
 
-  const handleFileChange = (e: ChangeEvent<FileList>) => {
-    onChange?.(e.target?.files?.[0]);
+  const handleFileChange = (e: any) => {
+    const file = e.target?.files?.[0];
+    onChange?.(file);
+    setFileName(file.name);
   };
 
   return (
@@ -28,15 +28,22 @@ const DragAndDrop = ({
         onDragOver={handleDragOver}
         onDrop={handleDrop}
       >
-        <p>
-          Drag image here or <label htmlFor={id}>Browse from computer</label>
-          <input
-            id={id}
-            type="file"
-            hidden
-            onChange={(e) => handleFileChange(e)}
-          />
-        </p>
+        {fileName ? (
+          <div className={styles.input_container__file__label}>
+            <label htmlFor={id}>{fileName}</label>
+          </div>
+        ) : (
+          <p>
+            Drag image here or <label htmlFor={id}>Browse from computer</label>
+          </p>
+        )}
+
+        <input
+          id={id}
+          type="file"
+          hidden
+          onChange={(e: any) => handleFileChange(e)}
+        />
       </div>
     </>
   );

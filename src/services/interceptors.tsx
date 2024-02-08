@@ -1,7 +1,7 @@
-import NProgress from 'nprogress';
-import instance from '../services/axiosInstance';
-import { useUserContext } from '../context/userContexts';
-import useAlert from '../hooks/useAlert';
+import NProgress from "nprogress";
+import instance from "../services/axiosInstance";
+import { useUserContext } from "../context/userContexts";
+import useAlert from "../admin/hooks/useAlert";
 
 const Interceptor = ({ component }: any) => {
   const { isLoggedIn, userData, logoutUser }: any = useUserContext();
@@ -26,8 +26,8 @@ const Interceptor = ({ component }: any) => {
     (error) => {
       NProgress.done();
 
-      if (error.code === 'ECONNABORTED') {
-        toast({ type: 'error', message: error.response.data.message });
+      if (error.code === "ECONNABORTED") {
+        toast({ type: "error", message: error.response.data.message });
         return error;
       }
 
@@ -36,13 +36,16 @@ const Interceptor = ({ component }: any) => {
         error.config &&
         !error.config.__isRetryRequest
       ) {
-        toast({ type: 'error', message: error.response.data.message });
-        return !error.response.data.message?.startsWith('Account deactivated') && logoutUser();
+        toast({ type: "error", message: error.response.data.message });
+        return (
+          !error.response.data.message?.startsWith("Account deactivated") &&
+          logoutUser()
+        );
       }
 
       if (error?.response?.data?.code === 500) {
-        error.response.data.message = 'Something went wrong, Please try again!';
-        toast({ type: 'error', message: error.response.data.message });
+        error.response.data.message = "Something went wrong, Please try again!";
+        toast({ type: "error", message: error.response.data.message });
       }
       return Promise.reject(error);
     }

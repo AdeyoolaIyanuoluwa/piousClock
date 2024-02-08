@@ -1,5 +1,6 @@
 import React from 'react';
-import styles from '../container/Onboarding/index.module.scss';
+// import styles from '../../container/Onboarding/index.module.scss';
+import styles from '../admin/container/Onboarding/index.module.scss'
 import { CountDownProps } from '../types';
 const CountDown = ({ minutes, seconds }: CountDownProps) => {
   const [over, setOver] = React.useState(false);

@@ -1,9 +1,9 @@
-import Login from "@/pages/Auth/Login";
+import Login from "@/admin/pages/Auth/Login";
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import RecoverPassword from "@/pages/Auth/RecoverPassword";
-import OTP from "@/pages/Auth/OTP";
-import ResetPassword from "@/pages/Auth/ResetPassword";
+import RecoverPassword from "@/admin/pages/Auth/RecoverPassword";
+import OTP from "@/admin/pages/Auth/OTP";
+import ResetPassword from "@/admin/pages/Auth/ResetPassword";
 import UserManagementRoutes from "./modules/UserManagementRoutes";
 import PrivateRoute from "./private";
 import DashboardRoutes from "./modules/DashboardRoutes";
@@ -35,7 +35,6 @@ const AppRouter = () => {
         path="/profile"
         element={<PrivateRoute component={ProfileSettingRoutes} />}
       />
-
     </Routes>
   );
 };

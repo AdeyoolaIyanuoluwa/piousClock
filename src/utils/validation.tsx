@@ -39,13 +39,13 @@ export const PasswordSchema = yup.object().shape({
     .oneOf([yup.ref("password")], "Your passwords do not match."),
 });
 export const ProfileSchema = yup.object({
-  firstname: yup.string().required("first name is required"),
-  lastname: yup.string().required("last name is required"),
+  first_name: yup.string().required("first name is required"),
+  last_name: yup.string().required("last name is required"),
   email: yup.string().email().trim().required("email is required"),
   phone_number: yup
     .string()
     .required("Phone number is required")
-    .matches(/^[0-9]{10}$/, "Invalid phone number"),
+    .matches(/^[0-9]{11}$/, "Invalid phone number"),
   // image: yup
   //   .mixed()
   //   .required("Image is required")

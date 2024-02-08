@@ -6,7 +6,7 @@ import { TableProps } from "@/types";
 import PlaceholderIcon from "../../assets/placeholder.svg";
 import Pagination from "../Pagination";
 import Button from "../Button";
-import AddMember from "@/container/UserManagement/AddMember";
+import AddMember from "@/admin/container/UserManagement/AddMember";
 
 const Table = ({
   tableHeaders,

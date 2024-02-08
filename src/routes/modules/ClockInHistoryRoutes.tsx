@@ -1,5 +1,5 @@
 import DashboardLayout from "@/components/Layouts/DashboardLayout";
-import ClockInHistoryPage from "@/pages/ClockInHistory";
+import ClockInHistoryPage from "@/admin/pages/ClockInHistory";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 

@@ -1,5 +1,5 @@
 import DashboardLayout from "@/components/Layouts/DashboardLayout";
-import UserManagementPage from "@/pages/UserManagement";
+import UserManagementPage from "@/admin/pages/UserManagement";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 

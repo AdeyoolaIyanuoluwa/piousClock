@@ -3,7 +3,7 @@ import styles from "./card.module.scss";
 import GreenLogin from "../../assets/icons/greenLoginIcon.svg";
 import BlueLogin from "../../assets/icons/blueLoginIcon.svg";
 import ContactIcon from "../../assets/icons/contactIcon.svg";
-import { history, membersData } from "@/mocks";
+import { history, membersData } from "@/admin/mocks";
 const Card = () => {
   return (
     <div className={styles.cardWrapper}>

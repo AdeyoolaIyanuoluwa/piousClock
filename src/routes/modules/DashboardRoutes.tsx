@@ -1,5 +1,5 @@
 import DashboardLayout from "@/components/Layouts/DashboardLayout";
-import DashboardPage from "@/pages/Dashboard";
+import DashboardPage from "@/admin/pages/Dashboard";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 
