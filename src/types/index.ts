@@ -31,6 +31,8 @@ export type SearchBoxProps = {
   onChange: (data: any) => void;
   height?: string;
   dataTestId?: string;
+  width?: string;
+  size?: string;
 };
 export type DropdownProps = {
   children?: ReactNode;

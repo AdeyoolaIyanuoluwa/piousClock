@@ -1,0 +1,37 @@
+.container {
+  position: relative;
+  top: 123px;
+  text-align: center;
+  p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #2f3644;
+    margin-top: 28px;
+  }
+  &__search {
+    margin-top: 32px;
+  }
+  &__content {
+    margin: auto;
+    width: 458px;
+    height: 338px;
+  }
+  &__footer {
+    background-color: #f1faee;
+    width: 100%;
+    height: 108px;
+    text-align: left;
+    &__content {
+      p {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        position: relative;
+        bottom: 30px;
+        line-height: 1px;
+        padding-left: 120px;
+      }
+    }
+  }
+}

@@ -9,6 +9,7 @@ import PrivateRoute from "./private";
 import DashboardRoutes from "./modules/DashboardRoutes";
 import ClockInHistoryRoutes from "./modules/ClockInHistoryRoutes";
 import ProfileSettingRoutes from "./modules/ProfileSettingRoutes";
+import Members from "@/members/container";
 
 const AppRouter = () => {
   return (
@@ -35,6 +36,7 @@ const AppRouter = () => {
         path="/profile"
         element={<PrivateRoute component={ProfileSettingRoutes} />}
       />
+      <Route path="/members" element={<Members />} />
     </Routes>
   );
 };
