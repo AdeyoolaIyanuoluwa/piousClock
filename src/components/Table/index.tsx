@@ -8,6 +8,18 @@ import Pagination from "../Pagination";
 import Button from "../Button";
 import AddMember from "@/admin/container/UserManagement/AddMember";
 
+export const TableLoader = ({ headers }: any) => (
+  <div className={styles.skeleton}>
+    <div className={styles.skeleton__head} />
+    {headers?.slice(0, 4).map((header: any) => (
+      <div key={header?.id} className={styles.skeleton__row}>
+        {headers?.map((header: any) => (
+          <div key={header?.id} className={styles.skeleton__item} />
+        ))}
+      </div>
+    ))}
+  </div>
+);
 const Table = ({
   tableHeaders,
   tableData,
@@ -19,6 +31,8 @@ const Table = ({
   handlePageInput,
   paginate,
   user,
+  displayed,
+  headers
 }: TableProps) => {
   const sortRows = () => true;
 
@@ -27,7 +41,7 @@ const Table = ({
     <div>
       <table className={`${styles.table}`}>
         <TableHeader sortRows={sortRows} tableHeaders={tableHeaders} />
-        <TableBody tableData={tableData} content={children} />
+        <TableBody cols={headers} tableData={tableData} content={children} />
       </table>
 
       {!tableData?.length && (
@@ -68,8 +82,7 @@ const Table = ({
           currentPage={currentPage}
           totalPage={totalPage}
           changeCurrentPage={changeCurrentPage}
-          // forcePage={forcePage}
-          handlePageInput={handlePageInput}
+          displayed={displayed}
         />
       ) : null}
 
@@ -81,7 +94,7 @@ const Table = ({
       )}
     </div>
   );
-  return table;
+  return loading? <TableLoader headers={tableHeaders}/>: table;
 };
 
 export default Table;

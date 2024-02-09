@@ -4,14 +4,14 @@ import { useUserContext } from "../context/userContexts";
 import useAlert from "../admin/hooks/useAlert";
 
 const Interceptor = ({ component }: any) => {
-  const { isLoggedIn, userData, logoutUser }: any = useUserContext();
+  const { isLoggedIn, memberData, logoutUser }: any = useUserContext();
   const { toast } = useAlert();
 
   instance.interceptors.request.use((config) => {
     NProgress.start();
     if (isLoggedIn)
       Object.assign(config.headers, {
-        Authorization: `Bearer ${userData?.token}`,
+        Authorization: `Bearer ${memberData?.token}`,
       });
 
     return config;

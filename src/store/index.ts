@@ -1,2 +1,2 @@
 export * from './localStorageTypes';
-// export * from './queryTypes';
+export * from './queryTypes';

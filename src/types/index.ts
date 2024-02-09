@@ -120,6 +120,7 @@ export type TableProps = {
   check?: boolean;
   sortRows?: any;
   user?: any
+  displayed?: number
 };
 
 export type ToastAlertProps = {

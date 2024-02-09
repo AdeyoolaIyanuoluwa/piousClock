@@ -1,7 +1,7 @@
 import Avatar from "@/components/Avatar";
 import Table from "@/components/Table";
-import { membersData, tableHeader } from "@/admin/mocks";
-import React, { useState } from "react";
+import { tableHeader } from "@/admin/mocks";
+import React, { useState, useEffect } from "react";
 import styles from "./users.module.scss";
 import Dropdown from "@/components/Dropdown";
 import VerticalDotIcon from "../../../assets/DotsThreeVertical.svg";
@@ -10,13 +10,44 @@ import EditIcon from "../../../assets/editIcon.svg";
 import DeleteIcon from "../../../assets/deleteIcon.svg";
 import EditMember from "./EditMember";
 import DeleteMemberModal from "./DeleteMemberModal";
+import { useFetchMembers } from "@/admin/hooks/queries/useFetchMembers";
+// import { useUserContext } from "@/context/userContexts";
+import useAlert from "@/admin/hooks/useAlert";
+import moment from "moment";
 
 const UserManagementTable = () => {
   const [editMember, setEditMember] = useState(false);
   const [deleteMember, setDeleteMember] = useState(false);
+  const { toast } = useAlert();
+  const [page, setPage] = useState(1);
+  const [allMemberData, setAllMemberData] = useState([]);
+  const { data, isError, isSuccess, isFetching, error } = useFetchMembers({
+    query: { page: page, per_page: 10 },
+  });
+
+  useEffect(() => {
+    if (isError) {
+      toast({
+        type: "error",
+        message: error?.response?.data?.message,
+      });
+    }
+  }, [isError]);
+
+  useEffect(() => {
+    if (isSuccess) {
+      const members = data?.members;
+      console.log(data?.members, "aaaaa");
+      if (members?.length || members?.length == 0) {
+        setAllMemberData(members);
+        return;
+      }
+    }
+  }, [isFetching]);
+
   return (
     <div>
-      <Table tableHeaders={tableHeader} tableData={membersData} paginate>
+      <Table tableHeaders={tableHeader} tableData={allMemberData} paginate>
         {(row: any) => {
           return (
             <>
@@ -32,9 +63,9 @@ const UserManagementTable = () => {
                 </div>
               </td>
               <td>{row.last_name}</td>
-              <td>{row.address}</td>
+              <td>{row.email}</td>
               <td>{row.phone_number}</td>
-              <td>{row.date}</td>
+              <td>{moment(row.date_added).format(" MMM D, YYYY")}</td>
               <td>
                 <Dropdown
                   children={<img src={VerticalDotIcon} alt="vertical_dot" />}

@@ -1,13 +1,14 @@
 //user management scss
 .management {
-  background-color: white;
   padding: 24px;
+  background-color: white;
 
   &__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 24px;
+    background-color: white;
 
     &__search {
       width: 499px;

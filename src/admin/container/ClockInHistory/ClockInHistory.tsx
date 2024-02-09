@@ -1,5 +1,5 @@
 import Card from "@/components/Card";
-import DashboardLayout from "@/components/Layouts/DashboardLayout";
+
 import React, { useState } from "react";
 import styles from "./clockInHistory.module.scss";
 import SearchBox from "@/components/SearchBox";
