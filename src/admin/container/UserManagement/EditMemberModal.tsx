@@ -4,38 +4,31 @@ import { Formik, Form } from "formik";
 import React, { useRef } from "react";
 import styles from "./users.module.scss";
 import Button from "@/components/Button";
-import { ProfileSchema } from "@/utils/validation";
-import { useAddMember } from "@/admin/hooks/mutations/useAddMember";
+import { EditMemberSchema } from "@/utils/validation";
+import { useEditMemberDetails } from "@/admin/hooks/mutations/useEditMemberDetails";
 
-const AddMember = ({ isShown, onCloseComplete }: any) => {
+const EditMember = ({ isShown, setIsShown, onCloseComplete, singleMemberId, refetch }: any) => {
   const formRef = useRef<any>();
-  const { mutate: addMember, isPending } = useAddMember();
-  const handleAddMember = (values: any) => {
-    console.log(values, "oooooo");
-    const formData = new FormData();
-    formData.append("first_name", values.first_name);
-    formData.append("last_name", values.last_name);
-    formData.append("email", values.email);
-    formData.append(
-      "phone_number",
-      `+234${String(parseInt(values.phone_number))}`
-    );
+  const { mutate: editMember, isPending } = useEditMemberDetails({
+    id: singleMemberId,
+    setIsShown,
+    refetch
+  });
 
-    formData.append("profile_image", values.profile_image);
-    addMember(formData);
-  };
-
-  const changeFile = (e: any, formik: any) => {
-    console.log(e);
-    formik.setFieldValue("profile_image", e);
-  };
-
+  const handleEdit =(values: any)=>{
+          editMember({
+            first_name: values.first_name,
+            last_name:  values.last_name,
+            // email: values.email,
+            phone_number: `+234${String(parseInt(values.phone_number))}`,
+          })
+  }
   return (
     <div>
       <SideSheetDrawer
         isShown={isShown}
         onCloseComplete={onCloseComplete}
-        headingTitle="Add member"
+        headingTitle="Edit member details"
         width="452px"
       >
         <div>
@@ -43,12 +36,11 @@ const AddMember = ({ isShown, onCloseComplete }: any) => {
             initialValues={{
               first_name: "",
               last_name: "",
-              email: "",
+              // email: "",
               phone_number: "",
-              profile_image: "",
             }}
-            validationSchema={ProfileSchema}
-            onSubmit={handleAddMember}
+            validationSchema={EditMemberSchema}
+            onSubmit={handleEdit}
             innerRef={formRef}
           >
             {(formik) => (
@@ -75,7 +67,7 @@ const AddMember = ({ isShown, onCloseComplete }: any) => {
                     error={formik.errors.last_name}
                   />
                 </div>
-                <div className={styles.formInput__input}>
+                {/* <div className={styles.formInput__input}>
                   <Input
                     title="Email address"
                     placeholder="abrahamdelacy@email.com"
@@ -85,44 +77,25 @@ const AddMember = ({ isShown, onCloseComplete }: any) => {
                     onChange={formik.handleChange}
                     error={formik.errors.email}
                   />
-                </div>
+                </div> */}
                 <div className={styles.formInput__input}>
                   <Input
                     title="Phone number"
                     placeholder="08124576169"
                     name="phone_number"
-                    type="text"
+                    type="number"
                     value={formik.values.phone_number}
                     onChange={formik.handleChange}
                     error={formik.errors.phone_number}
                   />
                 </div>
-                <div className={styles.formInput__input}>
-                  <Input
-                    title="Profile image"
-                    name="profile_image"
-                    type="file"
-                    id="profile_image"
-                    value={formik.values.profile_image}
-                    onChange={(e) => changeFile(e, formik)}
-                  />
-                </div>
-                <div className={styles.formInput__csv}>
-                  <p className={styles.formInput__csv__p}>Or</p>
-                  <p>
-                    Import csv file containing member details to bulk upload
-                    members
-                  </p>{" "}
-                  <Button size={"md"} theme={"primary"} type="button">
-                    Import csv file
-                  </Button>
-                </div>
 
-                <div className={styles.btnWrapper}>
+                <div className={styles.editBtnWrapper}>
                   <Button
                     size={"sm"}
                     theme={"primary"}
                     type="submit"
+                    disabled={!formik.isValid || !formik.dirty}
                     loading={isPending}
                   >
                     Save
@@ -144,4 +117,4 @@ const AddMember = ({ isShown, onCloseComplete }: any) => {
   );
 };
 
-export default AddMember;
+export default EditMember;

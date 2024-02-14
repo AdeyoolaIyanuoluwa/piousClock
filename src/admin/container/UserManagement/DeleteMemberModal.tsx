@@ -4,14 +4,23 @@ import { DeleteMemberModalProps } from "@/types/index";
 import styles from "./users.module.scss";
 import Button from "@/components/Button";
 import DeleteVector from "../../../assets/icons/deleteVector.svg";
+import { useDeleteMember } from "@/admin/hooks/mutations/useDeleteMember";
 
 const DeleteMemberModal = ({
   isShown,
   onClose,
   title,
-  onClick,
   loading,
+  setIsShown,
+  singleMemberId,
+  refetch
 }: DeleteMemberModalProps) => {
+  
+  const { mutate: handleDelete, isPending } = useDeleteMember({
+    id: singleMemberId,
+    setIsShown,
+    refetch
+  });
   return (
     <div>
       {" "}
@@ -25,7 +34,8 @@ const DeleteMemberModal = ({
           </p>
         </div>
         <div className={styles.actionWrapper}>
-          <Button size={"md"} theme="" type="button" onClick={onClose}>
+          <Button size={"md"} theme="" type="button" onClick={handleDelete}
+          loading={isPending}>
             Yes, proceed
           </Button>
           <Button
@@ -34,7 +44,7 @@ const DeleteMemberModal = ({
             theme="primary"
             type="submit"
             // disabled={""}
-            onClick={onClick}
+            onClick={onClose}
           >
             Cancel
           </Button>

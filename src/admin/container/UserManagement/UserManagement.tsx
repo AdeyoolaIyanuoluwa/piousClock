@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./users.module.scss";
 import { useDebounce } from "use-debounce";
 import FilterUserManagement from "./FilterUserManagement";
-import AddMember from "./AddMember";
+import AddMember from "./AddMemberModal";
 import UserManagementMobile from "./UserManagementMobile";
 import Avatar from "@/components/Avatar";
 import Table from "@/components/Table";
@@ -14,7 +14,7 @@ import VerticalDotIcon from "../../../assets/DotsThreeVertical.svg";
 import { Option } from "@/components/Dropdown/Option";
 import EditIcon from "../../../assets/editIcon.svg";
 import DeleteIcon from "../../../assets/deleteIcon.svg";
-import EditMember from "./EditMember";
+import EditMember from "./EditMemberModal";
 import DeleteMemberModal from "./DeleteMemberModal";
 import { useFetchMembers } from "@/admin/hooks/queries/useFetchMembers";
 import useAlert from "@/admin/hooks/useAlert";
@@ -32,7 +32,8 @@ const UserManagement = () => {
   const { toast } = useAlert();
   const [page, setPage] = useState(1);
   const [allMemberData, setAllMemberData] = useState([]);
-  const { data, isError, isSuccess, isFetching, error, refetch } =
+  const [singleMemberId, setSingleMemberId] = useState("");
+  const { data, isError, isSuccess, isFetching, error, isPending,refetch } =
     useFetchMembers({
       query: { page: page, per_page: 10, search: searchDebounce },
     });
@@ -49,7 +50,6 @@ const UserManagement = () => {
   useEffect(() => {
     if (isSuccess) {
       const members = data?.members;
-      console.log(data?.members, "aaaaa");
       if (members?.length || members?.length == 0) {
         setAllMemberData(members);
         return;
@@ -59,6 +59,14 @@ const UserManagement = () => {
   useSecondRunEffect(() => {
     refetch();
   }, [searchDebounce, page]);
+  const handleEditModal = (row: any) => {
+    setSingleMemberId(row?.id);
+    setEditMember(true);
+  };
+  const handleDeleteModal = (row: any) => {
+    setSingleMemberId(row?.id);
+    setDeleteMember(true);
+  };
   return (
     <div className={styles.management}>
       <div className={styles.management__header}>
@@ -75,12 +83,11 @@ const UserManagement = () => {
             size={"md"}
             theme="secondary"
             onClick={() => setShowFilterDrawer(true)}
+            // disabled={isPending? disabled }
           >
             Filter
           </Button>
-          <Button size={"md"} theme="">
-            Export
-          </Button>
+
           <Button
             size={"md"}
             theme="primary"
@@ -99,6 +106,7 @@ const UserManagement = () => {
             totalPage={data.total_pages}
             currentPage={data.total_pages}
             displayed={data.total_count}
+            totalCount={data.total_count}
             loading={isFetching}
           >
             {(row: any) => {
@@ -110,6 +118,7 @@ const UserManagement = () => {
                         <Avatar
                           name={`${row.first_name} ${row.last_name}`}
                           size="sm"
+                          url={row.profile_image}
                         />
                       </div>
                       {row.first_name}
@@ -128,13 +137,13 @@ const UserManagement = () => {
                         <>
                           <Option
                             image={EditIcon}
-                            onClick={() => setEditMember(true)}
+                            onClick={() => handleEditModal(row)}
                           >
                             Edit
                           </Option>
                           <Option
                             image={DeleteIcon}
-                            onClick={() => setDeleteMember(true)}
+                            onClick={() => handleDeleteModal(row)}
                           >
                             Delete
                           </Option>
@@ -149,13 +158,18 @@ const UserManagement = () => {
           {editMember && (
             <EditMember
               isShown={editMember}
+              refetch={refetch}
+              setIsShown={setEditMember}
               onCloseComplete={() => setEditMember(false)}
+              singleMemberId={singleMemberId}
             />
           )}
           {deleteMember && (
             <DeleteMemberModal
               isShown={deleteMember}
               onClose={() => setDeleteMember(false)}
+              setIsShown={setDeleteMember}
+              singleMemberId={singleMemberId}
             />
           )}
         </div>
@@ -171,8 +185,10 @@ const UserManagement = () => {
       )}
       {addMember && (
         <AddMember
+        refetch={refetch}
           isShown={addMember}
           onCloseComplete={() => setAddMember(false)}
+          setIsShown={setAddMember}
         />
       )}
     </div>

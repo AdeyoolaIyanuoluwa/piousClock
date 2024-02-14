@@ -1,17 +1,53 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./users.module.scss";
 import { membersData } from "@/admin/mocks";
 import Avatar from "@/components/Avatar";
 import PlaceholderIcon from "../../../assets/placeholder.svg";
 import Button from "@/components/Button";
-import AddMember from "./AddMember";
+import AddMember from "./AddMemberModal";
 import Pagination from "@/components/Pagination";
+import { useFetchMembers } from "@/admin/hooks/queries/useFetchMembers";
+import useAlert from "@/admin/hooks/useAlert";
+import { useDebounce } from "use-debounce";
+import useSecondRunEffect from "@/admin/hooks/queries/useSecondRunEffect";
+import moment from "moment";
 
 const UserManagementMobile = () => {
   const [addMember, setAddMember] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+  const [searchDebounce] = useDebounce(searchValue, 1000);
+  const { toast } = useAlert();
+  const [page, setPage] = useState(1);
+  const [allMemberData, setAllMemberData] = useState([]);
+  const { data, isError, isSuccess, isFetching, error, refetch } =
+    useFetchMembers({
+      query: { page: page, per_page: 10, search: searchDebounce },
+    });
+
+  useEffect(() => {
+    if (isError) {
+      toast({
+        type: "error",
+        message: error?.response?.data?.message,
+      });
+    }
+  }, [isError]);
+
+  useEffect(() => {
+    if (isSuccess) {
+      const members = data?.members;
+      if (members?.length || members?.length == 0) {
+        setAllMemberData(members);
+        return;
+      }
+    }
+  }, [isFetching]);
+  useSecondRunEffect(() => {
+    refetch();
+  }, [searchDebounce, page]);
   return (
     <div className={styles.user}>
-      {membersData.slice(0, 10).map((i) => (
+      {allMemberData.slice(0, 10).map((i: any) => (
         <div className={styles.user__members}>
           <div className={styles.user__members__avatar}>
             <div className={styles.user__members__avatar__name}>
@@ -20,13 +56,13 @@ const UserManagementMobile = () => {
                 <text>
                   {i.first_name} {i.last_name}
                 </text>
-                <p>{i.address}</p>
+                <p>{i.email}</p>
                 <p>{i.phone_number}</p>
               </div>
             </div>
             <div>
               {" "}
-              <p>{i.date}</p>
+              <p>{moment(i.date_added).format(" MMM D, YYYY")}</p>
             </div>
           </div>
         </div>
@@ -60,7 +96,11 @@ const UserManagementMobile = () => {
           onCloseComplete={() => setAddMember(false)}
         />
       )}
-      <Pagination />
+      <Pagination
+        totalPage={data.total_pages}
+        currentPage={data.total_pages}
+        displayed={data.total_count}
+      />
     </div>
   );
 };

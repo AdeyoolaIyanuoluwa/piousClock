@@ -8,7 +8,7 @@ import VerticalDotIcon from "../../../assets/DotsThreeVertical.svg";
 import { Option } from "@/components/Dropdown/Option";
 import EditIcon from "../../../assets/editIcon.svg";
 import DeleteIcon from "../../../assets/deleteIcon.svg";
-import EditMember from "./EditMember";
+import EditMember from "./EditMemberModal";
 import DeleteMemberModal from "./DeleteMemberModal";
 import { useFetchMembers } from "@/admin/hooks/queries/useFetchMembers";
 // import { useUserContext } from "@/context/userContexts";
@@ -37,7 +37,7 @@ const UserManagementTable = () => {
   useEffect(() => {
     if (isSuccess) {
       const members = data?.members;
-      console.log(data?.members, "aaaaa");
+      // console.log(data?.members, "aaaaa");
       if (members?.length || members?.length == 0) {
         setAllMemberData(members);
         return;
