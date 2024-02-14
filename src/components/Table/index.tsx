@@ -6,7 +6,7 @@ import { TableProps } from "@/types";
 import PlaceholderIcon from "../../assets/placeholder.svg";
 import Pagination from "../Pagination";
 import Button from "../Button";
-import AddMember from "@/admin/container/UserManagement/AddMember";
+import AddMember from "@/admin/container/UserManagement/AddMemberModal";
 
 export const TableLoader = ({ headers }: any) => (
   <div className={styles.skeleton}>
@@ -28,11 +28,11 @@ const Table = ({
   currentPage,
   totalPage,
   changeCurrentPage,
-  handlePageInput,
   paginate,
   user,
   displayed,
-  headers
+  headers,
+  totalCount
 }: TableProps) => {
   const sortRows = () => true;
 
@@ -83,6 +83,7 @@ const Table = ({
           totalPage={totalPage}
           changeCurrentPage={changeCurrentPage}
           displayed={displayed}
+          totalCount={totalCount}
         />
       ) : null}
 
@@ -94,7 +95,7 @@ const Table = ({
       )}
     </div>
   );
-  return loading? <TableLoader headers={tableHeaders}/>: table;
+  return loading ? <TableLoader headers={tableHeaders} /> : table;
 };
 
 export default Table;

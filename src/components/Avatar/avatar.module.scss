@@ -23,20 +23,21 @@
   }
 
   &__lg {
-    width: 80px;
-    height: 80px;
+    width: 64px;
+    height: 64px;
     background: #1d3557;
     color: #ffffff;
     font-weight: 500;
-    font-size: 45px;
+    font-size: 20px;
     padding: 4px;
     box-sizing: border-box;
     border-radius: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: auto;
   }
-  &__md{
+  &__md {
     width: 40px;
     height: 40px;
     border-radius: 100%;
@@ -69,8 +70,8 @@
 }
 
 .header__img {
-  height: 40px;
-  width: 40px;
+  height: 32px;
+  width: 32px;
   border-radius: 100%;
   font-weight: 500;
   font-size: 14px;

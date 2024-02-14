@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 export type ChildrenProps = {
   children?: ReactNode;
-  profile?: boolean
+  profile?: boolean;
 };
 
 export type AvatarProps = {
@@ -61,9 +61,14 @@ export type InputProps = {
   inputValue?: string | undefined;
   formClassName?: string;
   className?: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement> | React.DragEvent<HTMLDivElement> | string) => void;
+  onChange?: (
+    e:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.DragEvent<HTMLDivElement>
+      | string
+  ) => void;
   handleSearch?: (e: string) => string;
-  'data-testid'?: string;
+  "data-testid"?: string;
   darkMode?: boolean;
   errorLogo?: boolean;
   successLogo?: boolean;
@@ -98,6 +103,7 @@ export type PaginationProps = {
   handlePageInput?: any;
   forcePage?: any;
   displayed?: number | any;
+  totalCount?: number | any
 };
 export type TableProps = {
   tableHeaders?: any[];
@@ -119,12 +125,13 @@ export type TableProps = {
   paginate?: boolean;
   check?: boolean;
   sortRows?: any;
-  user?: any
-  displayed?: number
+  user?: any;
+  displayed?: number;
+  totalCount?: number;
 };
 
 export type ToastAlertProps = {
-  type: 'success' | 'error' | 'warning' | 'info';
+  type: "success" | "error" | "warning" | "info";
   message: string;
 };
 export type AuthLayoutProps = {
@@ -207,6 +214,19 @@ export type DeleteMemberModalProps = {
   caption?: string;
   onClick?: (data: any) => void;
   loading?: boolean;
+  // setIsShown?: (val: boolean) => void;
+  singleMemberId?: any
+  // refetch: ()=>void
+};
+export type ClockInModalProps = {
+  isShown: boolean;
+  onClose: () => void;
+  title?: string;
+  caption?: string;
+  onClick?: (data: any) => void;
+  loading?: boolean;
+  member?: any;
+  disabled?: boolean;
 };
 export type CountDownProps = {
   minutes: any;

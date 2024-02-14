@@ -10,7 +10,6 @@ const Avatar = ({ name, className, profile, url ,size,onClick }: AvatarProps) =>
           <img src={url} className={profile ? styles.profile__img : styles.header__img} />
         ) : (
           <span
-            // className={classNames(profile ? styles.avatar__profile : styles.avatar__placeholder)}>
             className={classNames(styles.avatar, styles[`avatar__${size}`])}onClick={onClick} >
               
               

@@ -1,5 +1,4 @@
 import Avatar from "@/components/Avatar";
-import DashboardLayout from "@/components/Layouts/DashboardLayout";
 import React, { ChangeEvent } from "react";
 import styles from "./profilesetting.module.scss";
 import { Formik, Form } from "formik";
