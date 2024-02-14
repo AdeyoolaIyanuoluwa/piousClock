@@ -11,11 +11,12 @@ const Pagination = ({
   changeCurrentPage,
   forcePage,
   displayed,
+  totalCount
 }: PaginationProps) => {
   return (
     <div className={styles.pagination}>
       <p className={styles.pagination__count}>
-        1-{displayed} of {totalPage}
+        1-{displayed} of {totalCount}
       </p>
       <div className={styles.go_to}>
         <p>

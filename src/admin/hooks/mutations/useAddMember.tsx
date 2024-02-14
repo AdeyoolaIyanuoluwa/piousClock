@@ -1,20 +1,25 @@
 import { useMutation } from "@tanstack/react-query";
 import useAlert from "../useAlert";
 import { addMember } from "@/admin/queries/user";
-import { useNavigate } from "react-router-dom";
 
-export const useAddMember = () => {
+export const useAddMember = ({
+  setIsShown,
+  refetch
+}: {
+  setIsShown: (val: boolean) => void;
+  refetch: () => void;
+}) =>{
   const { toast } = useAlert();
-  const navigate = useNavigate()
   return useMutation({
     mutationFn: addMember,
     onSuccess: () => {
+      refetch()
       toast({
         type: "success",
         message: "Member has been added successfully",
         title: "Member added",
       });
-      navigate(-1)
+      setIsShown(false);
     },
     onError: (error: { response: { data: { message: any } } }) => {
       toast({ type: "error", message: error.response.data.message });

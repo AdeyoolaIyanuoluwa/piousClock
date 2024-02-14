@@ -54,3 +54,12 @@ export const ProfileSchema = yup.object({
   //     return ["image/jpeg", "image/png", "image/gif"].includes(value.type);
   //   }),
 });
+export const EditMemberSchema = yup.object({
+  first_name: yup.string().required("first name is required"),
+  last_name: yup.string().required("last name is required"),
+  // email: yup.string().email().trim().required("email is required"),
+  phone_number: yup
+    .string()
+    .required("Phone number is required")
+    .matches(/^[0-9]{10}$/, "Invalid phone number"),
+});
