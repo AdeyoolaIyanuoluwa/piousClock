@@ -17,21 +17,22 @@ const ClockInModal = ({
   disabled,
 }: ClockInModalProps) => {
   const [clockInDisabled, setClockInDisabled] = useState(false);
-  // const [clockOutDisabled, setClockOutDisabled] = useState(true);
   const { mutate: clockIn, isPending: isClockInPending } = useClockInMembers();
 
   const handleClockIn = () => {
     clockIn(member.id);
-    setClockInDisabled(false);
-    // setClockOutDisabled(true);
+    member.clock_in === true
+      ? setClockInDisabled(false)
+      : setClockInDisabled(true);
   };
+  console.log(member.clock_in, 'ooo');
+  
   const { mutate: clockOut, isPending: isClockOutPending } =
     useClockOutMember();
 
   const handleClockOut = () => {
     clockOut(member.id);
-    // setClockOutDisabled(false);
-    setClockInDisabled(true);
+    setClockInDisabled(false);
   };
 
   return (
@@ -61,7 +62,7 @@ const ClockInModal = ({
               theme="primary"
               type="button"
               onClick={() => handleClockIn()}
-              disabled={clockInDisabled}
+              disabled={clockInDisabled || disabled}
             >
               Clock-In
             </Button>
@@ -70,7 +71,7 @@ const ClockInModal = ({
               size={"md"}
               theme="primary"
               type="submit"
-              disabled={clockInDisabled || disabled}
+              disabled={!clockInDisabled || disabled}
               onClick={handleClockOut}
             >
               Clock-out

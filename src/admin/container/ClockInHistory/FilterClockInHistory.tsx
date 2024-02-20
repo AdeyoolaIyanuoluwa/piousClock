@@ -3,15 +3,19 @@ import DatePickerInput from "@/components/Input/DatePickerInput";
 import SideSheetDrawer from "@/components/SideSheetDrawer";
 import React, { useState } from "react";
 import styles from "./clockInHistory.module.scss";
-import SelectInput from "@/components/SelectInput";
+import moment from "moment";
 
-const FilterClockInHistory = ({ isShown, onCloseComplete, onFilter }: any) => {
-  const [filters, setFilters] = useState({
-    date: null,
-  });
+const FilterClockInHistory = ({ isShown, onCloseComplete, setFilteredData, position }: any) => {
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+
 
   const handleFilter = () => {
-    onFilter(filters);
+    setFilteredData({
+      date: startDate ? moment(startDate).format('YYYY-MM-DD') : '',
+      to_date: endDate ? moment(endDate).format('YYYY-MM-DD') : '',
+  });
+  onCloseComplete();
   };
 
   return (
@@ -21,35 +25,28 @@ const FilterClockInHistory = ({ isShown, onCloseComplete, onFilter }: any) => {
         onCloseComplete={onCloseComplete}
         headingTitle="Filter by"
         width="452px"
+        position={position}
       >
-        <div className={styles.heading}>
-          <p>Today</p>
-          <p>Yesterday</p>
-        </div>
         <div className={styles.filterInput}>
           <p className={styles.filterInput__Heading}>Date</p>
-          <div>
+          <div className={styles.filterInput__dateInput}>
             <DatePickerInput
-              placeholderText="dd | mm | yyyy"
-              selected={filters.date}
-              onChange={(date) =>
-                setFilters((prev) => ({
-                  ...prev,
-                  date,
-                }))
-              }
+               selected={startDate}
+               selectsStart
+               startDate={startDate}
+               endDate={endDate}
+               onChange={(date: any) => setStartDate(date)}
+               placeholderText="dd | mm | yyyy"
             />
-          </div>
-          <div className={styles.filterInput}>
-            {" "}
-            {/* <p className={styles.filterInput__Heading}>Month</p> */}
-            <div>
-              <SelectInput  name={'panel'}
-              label="Month"
-              placeholder="January"
-              options={[]}
-              onChange={() => {}}/>
-            </div>
+            <DatePickerInput
+             selected={endDate}
+             selectsEnd
+             startDate={startDate}
+             endDate={endDate}
+             minDate={startDate}
+             onChange={(date: any) => setEndDate(date)}
+             placeholderText="dd | mm | yyyy"
+            />
           </div>
 
           <div className={styles.btnWrapper}>
@@ -62,7 +59,7 @@ const FilterClockInHistory = ({ isShown, onCloseComplete, onFilter }: any) => {
             </Button>
             <Button
               size={"md"}
-              theme={"secondary"}
+              theme={"second"}
               onClick={() => onCloseComplete()}
             >
               Close
