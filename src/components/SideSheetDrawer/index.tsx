@@ -9,6 +9,7 @@ const SideSheetDrawer = ({
   children,
   width,
   headingTitle,
+  position
 }: SideSheetProps) => {
   return (
     <SideSheet
@@ -20,6 +21,7 @@ const SideSheetDrawer = ({
         flexDirection: "column",
         paddingX: "32px",
       }}
+      position={position}
       width={width}
     >
       <Pane

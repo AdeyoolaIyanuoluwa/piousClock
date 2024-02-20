@@ -7,13 +7,17 @@ import classNames from "classnames";
 import { navLinks } from "../SideBar/navLinks";
 import Logo from "../../assets/piousClock.svg";
 import Logout from "../../assets/fillLogout.svg";
+import { useUserContext } from "@/context/userContexts";
 
 const SmallScreenHeader = ({ visibility, setVisibility }: any) => {
   const location = useLocation();
 
   const toggleVisibility = () => setVisibility((prev: any) => !prev);
   const navigate = useNavigate();
-
+  interface UserContext {
+    logoutUser: () => void;
+  }
+  const { logoutUser }: any = useUserContext() as UserContext;
   const headerTitle = () => {
     switch (location?.pathname) {
       case "/dashboard":
@@ -82,7 +86,7 @@ const SmallScreenHeader = ({ visibility, setVisibility }: any) => {
           </div>
           <div className={styles.logout}>
             <img src={Logout} alt="logout" />
-            <p onClick={() => navigate("/auth/login")}>Log Out</p>
+            <p onClick={() => logoutUser()}>Log Out</p>
           </div>
         </div>
       </div>

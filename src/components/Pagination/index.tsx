@@ -11,7 +11,7 @@ const Pagination = ({
   changeCurrentPage,
   forcePage,
   displayed,
-  totalCount
+  totalCount,
 }: PaginationProps) => {
   return (
     <div className={styles.pagination}>
@@ -23,13 +23,19 @@ const Pagination = ({
           Page {currentPage} of {totalPage}
         </p>
         <ReactPaginate
-          previousLabel={<img src={PreviousIcon} alt="" />}
-          nextLabel={<img src={NextIcon} alt="" />}
+          previousLabel={
+            totalPage > 1 ? <img src={PreviousIcon} alt="" /> : null
+          }
+          nextLabel={
+            totalPage > currentPage ? <img src={NextIcon} alt="" /> : null
+          }
           pageRangeDisplayed={1}
           onPageChange={changeCurrentPage}
           marginPagesDisplayed={1}
-          forcePage={forcePage} 
-          pageCount={0}        />
+          forcePage={forcePage}
+          pageCount={totalPage}
+          activeClassName={styles.activePaginate}
+        />
       </div>
     </div>
   );
