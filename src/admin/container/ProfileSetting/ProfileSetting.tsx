@@ -1,29 +1,27 @@
-import Avatar from "@/components/Avatar";
-import React, { ChangeEvent } from "react";
+import React, { useRef } from "react";
 import styles from "./profilesetting.module.scss";
 import { Formik, Form } from "formik";
 import Input from "@/components/Input";
-import { PasswordSchema, ProfileSchema } from "@/utils/validation";
+import { ChangePasswordSchema, ProfileSchema } from "@/utils/validation";
 import Button from "@/components/Button";
+import { useChangePassword } from "@/admin/hooks/mutations/useChangePassword";
 
 const ProfileSetting = () => {
-  const handleFileChange = (e: ChangeEvent<FileList>) => {
-    onChange?.(e.target?.files?.[0]);
+  const formRef = useRef<any>();
+  const email: any = localStorage.getItem("email");
+  const { mutate: changePassword, isPending } = useChangePassword();
+  const handleChangePassword = (values: any) => {
+    changePassword({
+      email,
+      old_password: values.old_password,
+      new_password: values.new_password,
+      confirm_password: values.confirm_password,
+    });
   };
   return (
     <div>
       <div className={styles.profile}>
         <p className={styles.profile__heading}>Admin profile</p>
-        <div className={styles.profile__avatar}>
-          <Avatar name={"Temilola Peter"} profile size="lg" />
-          <label htmlFor="profile-image">Edit profile image</label>
-          <input
-            hidden
-            id="profile-image"
-            type="file"
-            onChange={(e) => handleFileChange(e)}
-          />
-        </div>
 
         <div className={styles.profile__edit}>
           <p>Edit profile details</p>
@@ -37,7 +35,6 @@ const ProfileSetting = () => {
               {(formik) => (
                 <Form className={styles.profile__form}>
                   <div className={styles.profile__form__input}>
-                    
                     <div className={styles.profile__form__input}>
                       <Input
                         title="Full name"
@@ -46,25 +43,21 @@ const ProfileSetting = () => {
                         type="text"
                         value={formik.values.firstname}
                         onChange={formik.handleChange}
+                        disabled
                       />
                     </div>
                     <div className={styles.profile__form__input}>
-                    <Input
-                      title="Email address"
-                      placeholder="temilolapeter@email.com"
-                      name="email"
-                      type="text"
-                      value={formik.values.email}
-                      disabled
-                    />
+                      <Input
+                        title="Email address"
+                        placeholder="temilolapeter@email.com"
+                        name="email"
+                        type="text"
+                        value={formik.values.email}
+                        disabled
+                      />
                     </div>
                   </div>
 
-                  <div className={styles.profile__btn}>
-                    <Button size={"md"} theme={"primary"}>
-                      Save changes
-                    </Button>
-                  </div>
                 </Form>
               )}
             </Formik>
@@ -76,31 +69,56 @@ const ProfileSetting = () => {
 
           <div>
             <Formik
-              initialValues={{ password: "", confirmPassword: "" }}
-              validationSchema={PasswordSchema}
-              onSubmit={() => {}}
+              initialValues={{
+                email: email || "",
+                old_password: "",
+                new_password: "",
+                confirm_password: "",
+              }}
+              validationSchema={ChangePasswordSchema}
+              onSubmit={handleChangePassword}
+              innerRef={formRef}
             >
               {(formik) => (
                 <Form className={styles.profile__form}>
+                  <div className={styles.profile__form__old}>
+                    <Input
+                      title="Old password"
+                      placeholder="Liquidfire77"
+                      name="old_password"
+                      type="password"
+                      value={formik.values.old_password}
+                      onChange={formik.handleChange}
+                      error={formik.errors.old_password}
+                    />
+                  </div>
                   <div className={styles.profile__form__input}>
                     <Input
                       title="New password"
                       placeholder="Liquidfire77"
-                      name="password"
+                      name="new_password"
                       type="password"
-                      value={formik.values.password}
+                      value={formik.values.new_password}
                       onChange={formik.handleChange}
+                      error={formik.errors.new_password}
                     />
                     <Input
                       title="Confirm password"
                       placeholder="Liquidfire77"
-                      name="password"
+                      name="confirm_password"
                       type="password"
-                      value={formik.values.confirmPassword}
+                      value={formik.values.confirm_password}
                       onChange={formik.handleChange}
+                      error={formik.errors.confirm_password}
                     />
                   </div>
-                  <Button size={"md"} theme={"primary"}>
+                  <Button
+                    size={"md"}
+                    theme={"primary"}
+                    disabled={!formik.isValid || !formik.dirty}
+                    type="submit"
+                    loading={isPending}
+                  >
                     Save changes
                   </Button>
                 </Form>

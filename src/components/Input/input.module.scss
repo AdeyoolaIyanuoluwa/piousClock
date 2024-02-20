@@ -40,7 +40,6 @@
     label {
       color: #75bc62 !important;
       text-decoration: underline;
-      
     }
     &__label {
       text-align: center;
@@ -82,9 +81,10 @@
   height: 36px;
   border: 1px solid #f3f4f6;
   border-radius: 8px;
-  padding: 8px 16px 8px 16px;
-  box-sizing: border-box;
-  margin-top: 4px;
+  // margin: 8px 0px 0px 32px;
+  padding: 8px 16px 8px 0px;
+  // box-sizing: border-box;
+  // margin-top: 4px;
 }
 
 .date_picker input {

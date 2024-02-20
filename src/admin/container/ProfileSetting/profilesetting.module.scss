@@ -1,7 +1,7 @@
 .profile {
   color: #2f3644;
   background-color: #ffffff;
-  padding: 24px 24px 100px 24px;
+  padding: 24px 24px 170px 24px;
   border-radius: 8px;
 
   &__heading {
@@ -34,6 +34,9 @@
     }
   }
   &__form {
+    &__old {
+      width: 48.5%;
+    }
     &__input {
       width: 100%;
       display: flex;
@@ -50,15 +53,19 @@
 
 @media screen and (max-width: 768px) {
   .profile {
-    padding: 0;
+    padding: 0 0 100px 0;
     &__edit {
       width: 100%;
       margin-bottom: 90px;
     }
     &__form {
       &__input {
+        width: 100%;
         display: block;
         margin-bottom: 16px;
+      }
+      &__old {
+        width: 100%;
       }
     }
     &__btn {
