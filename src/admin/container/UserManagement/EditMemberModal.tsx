@@ -19,7 +19,6 @@ const EditMember = ({ isShown, setIsShown, onCloseComplete, singleMemberId, refe
           editMember({
             first_name: values.first_name,
             last_name:  values.last_name,
-            // email: values.email,
             phone_number: `+234${String(parseInt(values.phone_number))}`,
           })
   }
@@ -36,7 +35,6 @@ const EditMember = ({ isShown, setIsShown, onCloseComplete, singleMemberId, refe
             initialValues={{
               first_name: "",
               last_name: "",
-              // email: "",
               phone_number: "",
             }}
             validationSchema={EditMemberSchema}
@@ -67,17 +65,6 @@ const EditMember = ({ isShown, setIsShown, onCloseComplete, singleMemberId, refe
                     error={formik.errors.last_name}
                   />
                 </div>
-                {/* <div className={styles.formInput__input}>
-                  <Input
-                    title="Email address"
-                    placeholder="abrahamdelacy@email.com"
-                    name="email"
-                    type="text"
-                    value={formik.values.email}
-                    onChange={formik.handleChange}
-                    error={formik.errors.email}
-                  />
-                </div> */}
                 <div className={styles.formInput__input}>
                   <Input
                     title="Phone number"
@@ -102,7 +89,7 @@ const EditMember = ({ isShown, setIsShown, onCloseComplete, singleMemberId, refe
                   </Button>
                   <Button
                     size={"md"}
-                    theme={"secondary"}
+                    theme={"second"}
                     onClick={() => onCloseComplete()}
                   >
                     Cancel

@@ -10,16 +10,16 @@ import { useSearchParams } from 'react-router-dom';
 const ResetPasswordForm = () => {
   const formRef = useRef<any>();
   const [params]: any = useSearchParams();
-  const token = params.get('token');
+  const token = params.get('passwordToken');
   const { mutate: resetPassword, isPending } = useResetPassword();
 
-  const handleResetPassword = (values: { password: string }) => {
+  const handleResetPassword = (values: { password: string}) => {
     resetPassword({ password: values.password, token });
   };
   return (
     <div>
       <Formik
-        initialValues={{ password: "", confirmPassword: "" }}
+        initialValues={{ password: "", confirmPassword: "",}}
         validationSchema={PasswordSchema}
         onSubmit={handleResetPassword}
         innerRef={formRef}

@@ -6,11 +6,20 @@ import styles from "./users.module.scss";
 import Button from "@/components/Button";
 import { ProfileSchema } from "@/utils/validation";
 import { useAddMember } from "@/admin/hooks/mutations/useAddMember";
-
-const AddMember = ({ isShown, onCloseComplete,refetch,setIsShown}: any) => {
+const AddMember = ({
+  isShown,
+  onCloseComplete,
+  refetch,
+  setIsShown,
+  position,
+  id
+}: any) => {
   const formRef = useRef<any>();
-  const { mutate: addMember, isPending } = useAddMember({refetch, setIsShown});
-  const handleAddMember = (values: any) => {
+  const { mutate: addMember, isPending } = useAddMember({
+    refetch,
+    setIsShown,
+  });
+  const handleAddMember = (values: any ,) => {
     const formData = new FormData();
     formData.append("first_name", values.first_name);
     formData.append("last_name", values.last_name);
@@ -36,6 +45,7 @@ const AddMember = ({ isShown, onCloseComplete,refetch,setIsShown}: any) => {
         onCloseComplete={onCloseComplete}
         headingTitle="Add member"
         width="452px"
+        position={position}
       >
         <div>
           <Formik
@@ -112,9 +122,12 @@ const AddMember = ({ isShown, onCloseComplete,refetch,setIsShown}: any) => {
                     Import csv file containing member details to bulk upload
                     members
                   </p>{" "}
-                  <Button size={"md"} theme={"primary"} type="button">
-                    Import csv file
-                  </Button>
+                 <div className={styles.formInput__label}> <label htmlFor='id'>Import csv file</label></div>
+                  <input
+                  hidden
+                    id='id'
+                    type="file"
+                  />
                 </div>
 
                 <div className={styles.btnWrapper}>
@@ -128,7 +141,7 @@ const AddMember = ({ isShown, onCloseComplete,refetch,setIsShown}: any) => {
                   </Button>
                   <Button
                     size={"md"}
-                    theme={"secondary"}
+                    theme={"second"}
                     onClick={() => onCloseComplete()}
                   >
                     Cancel

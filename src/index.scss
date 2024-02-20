@@ -1,4 +1,4 @@
-@import './styles/libs/toastify.scss';
+@import "./styles/libs/toastify.scss";
 * {
   margin: 0;
   box-sizing: border-box;
@@ -22,4 +22,10 @@
 }
 .css-1u9des2-indicatorSeparator {
   display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .ub-bs_kymczs {
+    height: 90vh !important;
+  }
 }

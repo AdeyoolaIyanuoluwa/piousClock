@@ -138,14 +138,14 @@
     }
   }
 }
-@media screen and (min-width: 1500px) {
-  .dashboard {
-    display: block;
-    &__members {
-      border-radius: 0px;
-    }
-  }
-}
+// @media screen and (min-width: 1500px) {
+//   .dashboard {
+//     display: block;
+//     &__members {
+//       border-radius: 0px;
+//     }
+//   }
+// }
 
 @media screen and (max-width: 768px) {
   .dashboard {

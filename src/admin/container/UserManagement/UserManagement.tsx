@@ -20,22 +20,33 @@ import { useFetchMembers } from "@/admin/hooks/queries/useFetchMembers";
 import useAlert from "@/admin/hooks/useAlert";
 import moment from "moment";
 import useSecondRunEffect from "@/admin/hooks/queries/useSecondRunEffect";
+import { Position } from "evergreen-ui";
+import FilterTags from "@/components/FilterTag";
 
 const UserManagement = () => {
   const [searchValue, setSearchValue] = useState("");
   const [showFilterDrawer, setShowFilterDrawer] = useState(false);
   const [addMember, setAddMember] = useState(false);
   const [searchDebounce] = useDebounce(searchValue, 1000);
-
+  const [filteredData, setFilteredData] = useState<any>({
+    date: "",
+    to_date: "",
+  });
   const [editMember, setEditMember] = useState(false);
+  const [isMatched, setIsMatched] = useState(false);
   const [deleteMember, setDeleteMember] = useState(false);
   const { toast } = useAlert();
   const [page, setPage] = useState(1);
   const [allMemberData, setAllMemberData] = useState([]);
   const [singleMemberId, setSingleMemberId] = useState("");
-  const { data, isError, isSuccess, isFetching, error, isPending,refetch } =
+  const { data, isError, isSuccess, isFetching, error, refetch } =
     useFetchMembers({
-      query: { page: page, per_page: 10, search: searchDebounce },
+      query: {
+        page: page,
+        per_page: 10,
+        search: searchDebounce,
+        ...filteredData,
+      }
     });
 
   useEffect(() => {
@@ -59,6 +70,7 @@ const UserManagement = () => {
   useSecondRunEffect(() => {
     refetch();
   }, [searchDebounce, page]);
+
   const handleEditModal = (row: any) => {
     setSingleMemberId(row?.id);
     setEditMember(true);
@@ -66,6 +78,35 @@ const UserManagement = () => {
   const handleDeleteModal = (row: any) => {
     setSingleMemberId(row?.id);
     setDeleteMember(true);
+  };
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
+
+    const handleMediaQueryChange = (e: any) => {
+      setIsMatched(e.matches);
+    };
+
+    mediaQuery.addEventListener("change", handleMediaQueryChange);
+    setIsMatched(mediaQuery.matches);
+    return () => {
+      mediaQuery.removeEventListener("change", handleMediaQueryChange);
+    };
+  }, []);
+
+  const handleCancelFilter = (filterKey: any) => {
+    setFilteredData((prevFilteredData: any) => {
+      const newFilteredData = { ...prevFilteredData };
+
+      if (filterKey === "date") {
+        newFilteredData["date"] = "";
+        newFilteredData["to_date"] = "";
+      } else {
+        newFilteredData[filterKey] = "";
+      }
+      refetch();
+      return newFilteredData;
+    });
   };
   return (
     <div className={styles.management}>
@@ -83,7 +124,6 @@ const UserManagement = () => {
             size={"md"}
             theme="secondary"
             onClick={() => setShowFilterDrawer(true)}
-            // disabled={isPending? disabled }
           >
             Filter
           </Button>
@@ -97,6 +137,20 @@ const UserManagement = () => {
           </Button>
         </div>
       </div>
+      <div>
+        {filteredData?.date && (
+          <div className={styles.tag}>
+          <FilterTags
+            name={`${moment(filteredData?.date).format(
+              "D MMMM, YYYY"
+            )} - ${moment(filteredData?.to_date).format("D MMMM, YYYY")}`}
+            filterKey="date"
+            filteredData={filteredData}
+            handleCancelFilter={() => handleCancelFilter("date")}
+          />
+          </div>
+        )}
+      </div>
       <div className={styles.management__table}>
         <div>
           <Table
@@ -104,10 +158,13 @@ const UserManagement = () => {
             tableData={allMemberData}
             paginate
             totalPage={data.total_pages}
-            currentPage={data.total_pages}
-            displayed={data.total_count}
+            currentPage={page}
+            displayed={allMemberData.length}
             totalCount={data.total_count}
             loading={isFetching}
+            changeCurrentPage={(num: { selected: number }) =>
+            setPage(num?.selected + 1)
+          }
           >
             {(row: any) => {
               return (
@@ -181,14 +238,17 @@ const UserManagement = () => {
         <FilterUserManagement
           isShown={showFilterDrawer}
           onCloseComplete={() => setShowFilterDrawer(false)}
+          position={isMatched ? Position.BOTTOM : Position.RIGHT}
+          setFilteredData={setFilteredData}
         />
       )}
       {addMember && (
         <AddMember
-        refetch={refetch}
+          refetch={refetch}
           isShown={addMember}
           onCloseComplete={() => setAddMember(false)}
           setIsShown={setAddMember}
+          position={isMatched ? Position.BOTTOM : Position.RIGHT}
         />
       )}
     </div>

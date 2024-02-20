@@ -31,6 +31,7 @@
       justify-content: space-between;
       align-items: center;
       gap: 12px;
+      margin-top: 16px;
     }
   }
   &__mobile {
@@ -47,14 +48,14 @@
 .filterInput {
   position: relative;
   top: 12px;
-
   &__Heading {
     font-size: 12px;
     font-weight: 400;
-    line-height: 16px;
-    letter-spacing: 0em;
-    text-align: left;
     color: #6b7280;
+  }
+  &__dateInput {
+    display: flex;
+    gap: 8px;
   }
 }
 .btnWrapperr {
@@ -88,6 +89,17 @@
     button {
       margin-top: 16px;
     }
+  }
+  &__label {
+    background-color: #1D3557;
+    width: 125px;
+    height: 36px;
+    padding: 8px 16px 8px 16px;
+    border-radius: 8px;
+    gap: 32px;
+    text-align: center;
+    color: #ffffff;
+    margin-top: 16px;
   }
 }
 .btnWrapper {
@@ -149,7 +161,36 @@
 }
 //usermanagementMobile
 .user {
-  margin-top: 32px;
+  &__header {
+    display: block;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    background-color: white;
+
+    &__search {
+      width: 345px;
+      display: block;
+      gap: 40px;
+
+      p {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+        letter-spacing: 0em;
+        text-align: left;
+        color: #2f3644;
+        margin-bottom: 16px;
+      }
+    }
+    &__button {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 12px;
+      margin-top: 16px;
+    }
+  }
   &__members {
     padding: 24px 16px 24px 16px;
     border: 1px solid #f3f4f6;
@@ -166,6 +207,12 @@
           font-size: 14px;
           font-weight: 500;
         }
+        p {
+          font-size: 12px;
+        }
+      }
+      &__dateAdded {
+        font-size: 12px;
       }
     }
   }
@@ -189,23 +236,45 @@
       gap: 16px;
     }
   }
+  .skeleton {
+    &__head {
+      height: 100px;
+      background: linear-gradient(
+        to right,
+        #eff1f3 4%,
+        #f8f9fb 25%,
+        #eff1f3 36%
+      );
+      background-size: 1000px 100%;
+      animation: shimmer 1s infinite linear;
+      margin-bottom: 2rem;
+    }
+  }
 }
-
+@media screen and (min-width: 1500px) {
+  .btnWrapper {
+    margin-top: 170px;
+  }
+  .btnWrapperr {
+    margin-top: 710px;
+    background-color: red;
+  }
+  .editBtnWrapper {
+    display: flex;
+    width: 100%;
+    height: 84px;
+    padding: 24px 16px 24px 16px;
+    gap: 12px;
+    margin-top: 530px;
+    justify-content: right;
+    align-items: center;
+  }
+}
 @media screen and (max-width: 768px) {
   .management {
     padding: 0px;
     &__header {
-      display: block;
-      margin-bottom: 24px;
-
-      &__search {
-        width: 345px;
-        display: block;
-
-        p {
-          margin-bottom: 16px;
-        }
-      }
+      display: none;
     }
     &__table {
       display: none;
@@ -213,5 +282,12 @@
     &__mobile {
       display: block;
     }
+  }
+
+  .btnWrapperr {
+    margin-top: 390px;
+  }
+  .tag {
+    display: none;
   }
 }

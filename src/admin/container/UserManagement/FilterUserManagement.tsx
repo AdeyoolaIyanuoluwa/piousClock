@@ -3,16 +3,25 @@ import DatePickerInput from "@/components/Input/DatePickerInput";
 import SideSheetDrawer from "@/components/SideSheetDrawer";
 import React, { useState } from "react";
 import styles from "./users.module.scss";
+import moment from "moment";
 
-const FilterUserManagement = ({ isShown, onCloseComplete, onFilter }: any) => {
-  const [filters, setFilters] = useState({
-    date: null,
-  });
+const FilterUserManagement = ({ isShown, onCloseComplete, setFilteredData, position }: any) => {
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+ 
 
+  
   const handleFilter = () => {
-    onFilter(filters);
+    setFilteredData({
+      date: startDate ? moment(startDate).format('YYYY-MM-DD') : '',
+      to_date: endDate ? moment(endDate).format('YYYY-MM-DD') : '',
+  });
+  console.log(moment(startDate).format('YYYY-MM-DD'));
+  console.log( moment(endDate).format('YYYY-MM-DD'));
+  
+  
+  onCloseComplete();
   };
-
   return (
     <div>
       <SideSheetDrawer
@@ -20,19 +29,27 @@ const FilterUserManagement = ({ isShown, onCloseComplete, onFilter }: any) => {
         onCloseComplete={onCloseComplete}
         headingTitle="Filter by"
         width="452px"
+        position={position}
       >
         <div className={styles.filterInput}>
           <p className={styles.filterInput__Heading}>Date added</p>
-          <div>
+          <div className={styles.filterInput__dateInput}>
             <DatePickerInput
-              placeholderText="dd | mm | yyyy"
-              selected={filters.date}
-              onChange={(date) =>
-                setFilters((prev) => ({
-                  ...prev,
-                  date,
-                }))
-              }
+                 selected={startDate}
+                 selectsStart
+                 startDate={startDate}
+                 endDate={endDate}
+                 onChange={(date: any) => setStartDate(date)}
+                 placeholderText="dd | mm | yyyy"
+            />
+            <DatePickerInput
+             selected={endDate}
+             selectsEnd
+             startDate={startDate}
+             endDate={endDate}
+             minDate={startDate}
+             onChange={(date: any) => setEndDate(date)}
+             placeholderText="dd | mm | yyyy"
             />
           </div>
 
@@ -46,7 +63,7 @@ const FilterUserManagement = ({ isShown, onCloseComplete, onFilter }: any) => {
             </Button>
             <Button
               size={"md"}
-              theme={"secondary"}
+              theme={"second"}
               onClick={() => onCloseComplete()}
             >
               Close
