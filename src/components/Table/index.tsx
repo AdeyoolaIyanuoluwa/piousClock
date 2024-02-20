@@ -32,7 +32,7 @@ const Table = ({
   user,
   displayed,
   headers,
-  totalCount
+  totalCount,forcePage
 }: TableProps) => {
   const sortRows = () => true;
 
@@ -68,7 +68,7 @@ const Table = ({
                   >
                     Add manually
                   </Button>
-                  <Button size="md" theme="secondary">
+                  <Button size="md" theme="second">
                     Import CSV file
                   </Button>
                 </div>
@@ -84,6 +84,7 @@ const Table = ({
           changeCurrentPage={changeCurrentPage}
           displayed={displayed}
           totalCount={totalCount}
+          forcePage={forcePage}
         />
       ) : null}
 

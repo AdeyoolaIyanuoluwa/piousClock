@@ -63,3 +63,31 @@ export const EditMemberSchema = yup.object({
     .required("Phone number is required")
     .matches(/^[0-9]{10}$/, "Invalid phone number"),
 });
+export const ChangePasswordSchema = yup.object().shape({
+  old_password: yup
+    .string()
+    .required("Password is required")
+    .min(8, "Can not be less than eight characters")
+    .max(30, "Too Long")
+    .matches(atLeastOneSpecialChar, "Must contain special character")
+    .matches(atLeastOneUppercase, "Must contain uppercase")
+    .matches(atLeastOneLowercase, "Must contain lowercase")
+    .matches(eightCharsOrMore, "Must contain eight characters or more")
+    .matches(atLeastOneNumeric, "Must Contain Number")
+    .trim(),
+  new_password: yup
+    .string()
+    .required("Password is required")
+    .min(8, "Can not be less than eight characters")
+    .max(30, "Too Long")
+    .matches(atLeastOneSpecialChar, "Must contain special character")
+    .matches(atLeastOneUppercase, "Must contain uppercase")
+    .matches(atLeastOneLowercase, "Must contain lowercase")
+    .matches(eightCharsOrMore, "Must contain eight characters or more")
+    .matches(atLeastOneNumeric, "Must Contain Number")
+    .trim(),
+  confirm_password: yup
+    .string()
+    .required("Please confirm your password.")
+    .oneOf([yup.ref("new_password")], "Your passwords do not match."),
+});

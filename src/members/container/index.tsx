@@ -12,19 +12,26 @@ import { useDebounce } from "use-debounce";
 import useSecondRunEffect from "@/admin/hooks/queries/useSecondRunEffect";
 import ClockInModal from "./ClockInModal";
 
+export const CardLoader = () => (
+  <div className={styles.skeleton}>
+    <div className={styles.skeleton__head} />
+  </div>
+);
 const Members = () => {
   const [searchValue, setSearchValue] = useState("");
   const [clockIn, setClockIn] = useState(false);
   const [searchDebounce] = useDebounce(searchValue, 1000);
   const [selectedMember, setSelectedMember] = useState(null);
-  const { data, refetch,isPending } = useFetchMember({
+  const { data, refetch, isPending, isFetching } = useFetchMember({
     query: { search: searchDebounce },
     enabled: !!searchDebounce,
   });
-  const members = data?.getMember;
+  const members = searchDebounce?.length > 0 ? data?.getMember : [];
 
   useSecondRunEffect(() => {
-    if (searchDebounce) refetch();
+    if (searchDebounce?.length > 0) {
+      refetch();
+    }
   }, [searchDebounce]);
   return (
     <div className={styles.container}>
@@ -43,48 +50,57 @@ const Members = () => {
         </div>
 
         <section>
-          {members?.slice(0, 3).map((member: any) => (
-            <div
-              className={styles.container__content}
-              key={member.id}
-              onClick={() => {
-                setSelectedMember(member);
-                 setClockIn(true);
-              }}
-            >
-              <Avatar
-                name={member.first_name}
-                size="md"
-                url={member.profile_image}
-              />
-              <div>
-                <text>
-                  {member.first_name} {member.last_name}
-                </text>
-                <p>{member.email}</p>
-                <p>{member.phone_number}</p>
+          {isFetching ? (
+            <CardLoader />
+          ) : (
+            members?.slice(0, 3).map((member: any) => (
+              <div
+                className={styles.container__content}
+                key={member.id}
+                onClick={() => {
+                  setSelectedMember(member);
+                  setClockIn(true);
+                }}
+              >
+                <Avatar
+                  name={member.first_name}
+                  size="md"
+                  url={member.profile_image}
+                />
+                <div>
+                  <text>
+                    {member.first_name} {member.last_name}
+                  </text>
+                  <p>{member.email}</p>
+                  <p>{member.phone_number}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))
+          )}
+
+          {isFetching ? (
+            <CardLoader />
+          ) : (
+            !members?.length && (
+              <>
+                <div className={styles.container__emptystate}>
+                  <img
+                    className={styles.container__emptystate}
+                    src={Timer}
+                    alt=""
+                  />
+                </div>
+                <div>
+                  <img
+                    className={styles.container__smallemptystate}
+                    src={SmallTimer}
+                    alt=""
+                  />
+                </div>
+              </>
+            )
+          )}
         </section>
-        {!members?.length && (
-          <>
-            <div className={styles.container__emptystate}>
-              <img
-                className={styles.container__emptystate}
-                src={Timer}
-                alt=""
-              />
-            </div>
-            <div>
-              <img
-                className={styles.container__smallemptystate}
-                src={SmallTimer}
-                alt=""
-              />
-            </div>
-          </>
-        )}
         <div className={styles.container__footer}>
           <img
             style={{ paddingLeft: "77px" }}
@@ -101,11 +117,11 @@ const Members = () => {
 
       {clockIn && selectedMember && (
         <ClockInModal
-        loading={isPending}
+          loading={isPending}
           isShown={clockIn}
           onClose={() => {
             setSelectedMember(null);
-             setClockIn(false);
+            setClockIn(false);
           }}
           member={selectedMember}
         />
