@@ -165,6 +165,7 @@ const UserManagement = () => {
             changeCurrentPage={(num: { selected: number }) =>
             setPage(num?.selected + 1)
           }
+          forcePage={page-1}
           >
             {(row: any) => {
               return (

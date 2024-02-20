@@ -110,14 +110,14 @@ const UserManagementMobile = () => {
       </div>
       {filteredData?.date && (
         <div>
-        <FilterTags
-          name={`${moment(filteredData?.date).format(
-            "D MMMM, YYYY"
-          )} - ${moment(filteredData?.to_date).format("D MMMM, YYYY")}`}
-          filterKey="date"
-          filteredData={filteredData}
-          handleCancelFilter={() => handleCancelFilter("date")}
-        />
+          <FilterTags
+            name={`${moment(filteredData?.date).format(
+              "D MMMM, YYYY"
+            )} - ${moment(filteredData?.to_date).format("D MMMM, YYYY")}`}
+            filterKey="date"
+            filteredData={filteredData}
+            handleCancelFilter={() => handleCancelFilter("date")}
+          />
         </div>
       )}
       {isFetching ? (
@@ -182,21 +182,26 @@ const UserManagementMobile = () => {
       )}
       {addMember && (
         <AddMember
-        refetch={refetch}
+          refetch={refetch}
           isShown={addMember}
           onCloseComplete={() => setAddMember(false)}
           position={Position.BOTTOM}
           setIsShown={setAddMember}
         />
       )}
-      {isFetching ? (
+      {isFetching && allMemberData?.length===0 ? (
         <CardLoader />
       ) : (
         <Pagination
           totalPage={data.total_pages}
-          currentPage={data.total_pages}
-          displayed={data.total_count}
+          currentPage={page}
+          displayed={allMemberData.length}
           totalCount={data.total_count}
+          loading={isFetching}
+          changeCurrentPage={(num: { selected: number }) =>
+            setPage(num?.selected + 1)
+          }
+          forcePage={page - 1}
         />
       )}
     </div>

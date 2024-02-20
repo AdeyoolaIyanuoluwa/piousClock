@@ -163,9 +163,14 @@ const ClockInHistoryMobile = () => {
       ) : (
         <Pagination
           totalPage={data.total_pages}
-          currentPage={data.total_pages}
-          displayed={data.total_count}
+          currentPage={page}
+          displayed={allHistory.length}
           totalCount={data.total_count}
+          loading={isFetching}
+          changeCurrentPage={(num: { selected: number }) =>
+            setPage(num?.selected + 1)
+          }
+          forcePage={page - 1}
         />
       )}
     </div>

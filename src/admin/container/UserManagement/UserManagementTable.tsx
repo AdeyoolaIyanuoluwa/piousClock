@@ -37,7 +37,6 @@ const UserManagementTable = () => {
   useEffect(() => {
     if (isSuccess) {
       const members = data?.members;
-      // console.log(data?.members, "aaaaa");
       if (members?.length || members?.length == 0) {
         setAllMemberData(members);
         return;
