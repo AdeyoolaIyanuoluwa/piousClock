@@ -28,3 +28,6 @@ export const FETCH_RECENT_CLOCKIN_API = "/admin/get-recent-clock-in";
 export const FETCH_TOTAL_API = 'admin/get-total'
  
 export const FETCH_RECENT_MEMBERS_API ='admin/get-recent-members'
+
+//SETTINGS
+export const CHANGE_PASSWORD_API ='admin/change-password'

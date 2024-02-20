@@ -7,9 +7,15 @@ import Dropdown from "../Dropdown";
 import { Option } from "../Dropdown/Option";
 import UserIcon from "../../assets/userIcon.svg";
 import LogoutIcon from "../../assets/logout.svg";
+import { useUserContext } from "@/context/userContexts";
 const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
+
+  interface UserContext {
+    logoutUser: () => void;
+  }
+  const { logoutUser }: any = useUserContext() as UserContext;
   const headerTitle = () => {
     switch (location?.pathname) {
       case "/dashboard":
@@ -76,7 +82,7 @@ const Header = () => {
                   </p>
                 </Option>
                 <Option image={LogoutIcon}>
-                  <p className={styles.header__dropLogout}>Log out</p>
+                  <p className={styles.header__dropLogout} onClick={()=>logoutUser()}>Log out</p>
                 </Option>
               </>
             }

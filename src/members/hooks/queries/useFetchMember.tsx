@@ -5,21 +5,27 @@ import { useQuery } from "@tanstack/react-query";
 export const useFetchMember = ({
   query,
   enabled,
+  date,
+  to_date,
   ...props
 }: {
   query: any;
   enabled?: boolean;
+  date: any;
+  to_date: any;
 }) => {
   return useQuery({
-    queryKey: ONE_MEMBER_QUERY_NAME,
+    queryKey: ["all_members", query.date, query.to_date],
     queryFn: async () => {
       const data = await fetchMember({ query });
+      console.log(query);
+
       return data?.data?.data;
     },
     initialData: {
       members: [],
     },
     ...props,
-    enabled: false,
+    enabled: query?.search?.length > 0,
   });
 };

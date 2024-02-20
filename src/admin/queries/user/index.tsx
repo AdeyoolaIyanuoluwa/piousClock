@@ -16,6 +16,7 @@ export const addMember = (payload: object) =>
   instance.get(urlToSearchParams(`admin/fetch-members/`, query));
 
   export const fetchTotal = ()=> instance.get(FETCH_TOTAL_API)
+  
   export const fetchClockInHistory = ({ query }: { query: any }) =>
   instance.get(urlToSearchParams(`admin/get-clocks-time/`, query));
 

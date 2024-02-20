@@ -30,6 +30,13 @@
     }
   }
   &__secondary {
+    width: 66px;
+    background-color: transparent;
+    color: #1d3557;
+    padding: 8px 16px 8px 16px;
+    border: 1px solid #1d3557;
+  }
+  &__second {
     background-color: transparent;
     color: #1d3557;
     padding: 8px 16px 8px 16px;
@@ -38,6 +45,6 @@
 }
 button:disabled,
 button[disabled] {
-  background-color: #8BA7CF;
+  background-color: #8ba7cf;
   color: #ffffff;
 }

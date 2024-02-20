@@ -25,9 +25,11 @@ export const useOtp = () => {
   return useMutation({
     mutationFn: validateOtp,
     onSuccess: (res) => {
-      const token = res?.data?.data?.token;
+      const token = res?.data?.data?.passwordToken;
+      // console.log(res?.data?.data?.passwordToken, 'lll');
+      
       toast({ type: "success", message: res.data.message });
-      navigate(`/auth/reset-password?token=${token}`);
+      navigate(`/auth/reset-password?passwordToken=${token}`);
     },
     onError: (error: any) => {
       toast({ type: "error", message: error.response.data.message });
@@ -42,8 +44,8 @@ export const useResetPassword = () => {
   return useMutation({
     mutationFn: resetPassword,
     onSuccess: (res) => {
-      toast({ type: 'success', message: res.data.message });
-      navigate('/auth/login');
+        toast({ type: 'success', message: res.data.message });
+        navigate('/auth/login');
     },
     onError: (error: any) => {
       toast({ type: 'error', message: error.response.data.message });

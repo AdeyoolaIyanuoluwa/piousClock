@@ -51,17 +51,17 @@
   }
 }
 
-@media screen and (min-width: 1500px) {
-  .cardWrapper {
-    display: block;
-    &__green {
-      margin-bottom: 16px;
-    }
-    &__blue {
-      margin-bottom: 16px;
-    }
-  }
-}
+// @media screen and (min-width: 1500px) {
+//   .cardWrapper {
+//     display: block;
+//     &__green {
+//       margin-bottom: 16px;
+//     }
+//     &__blue {
+//       margin-bottom: 16px;
+//     }
+//   }
+// }
 
 @media screen and (max-width: 768px) {
   .cardWrapper {

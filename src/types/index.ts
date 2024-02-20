@@ -19,6 +19,7 @@ export type ButtonProps = {
   type?: string | any;
   size: string;
   loading?: boolean;
+  isPending?: boolean;
   theme: string;
   disabled?: boolean;
   onClick?: (data: any) => void;
@@ -128,6 +129,7 @@ export type TableProps = {
   user?: any;
   displayed?: number;
   totalCount?: number;
+  forcePage?: any
 };
 
 export type ToastAlertProps = {
@@ -149,6 +151,7 @@ export type SideSheetProps = {
   shouldAutoFocus?: boolean;
   headingTitle?: string;
   children: JSX.Element | JSX.Element[];
+  position?: any 
 };
 
 export type DatePickerInputProps = {
