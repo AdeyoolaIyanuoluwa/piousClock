@@ -2,20 +2,20 @@
   background-color: white;
   padding: 24px;
 
-  &__header {
+  &__headerTable {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 40px;
     margin-bottom: 24px;
 
     &__search {
-      width: 499px;
-      gap: 40px;
+      width: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
 
-      p {
+      &__p {
         font-size: 16px;
         font-weight: 500;
         line-height: 24px;
@@ -57,6 +57,10 @@
     text-align: left;
     color: #6b7280;
   }
+  &__dateInput {
+    display: flex;
+    gap: 8px;
+  }
 }
 .btnWrapper {
   display: flex;
@@ -79,6 +83,33 @@
 
 //ClockInHistoryMobile
 .history {
+  &__header {
+    display: block;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    margin: 40px 0 40px 0;
+
+    &__search {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      margin-top: 16px;
+
+      &__p {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+        letter-spacing: 0em;
+        text-align: left;
+        color: #2f3644;
+        margin-bottom: 24px;
+      }
+    }
+  }
+
   &__members {
     padding: 24px 16px 24px 16px;
     color: #6b7280;
@@ -94,6 +125,12 @@
           font-size: 14px;
           font-weight: 500;
         }
+        p {
+          font-size: 12px;
+        }
+      }
+      &__dateAdded {
+        font-size: 12px;
       }
     }
     &__clock {
@@ -101,10 +138,47 @@
       align-items: center;
       gap: 8px;
       padding-left: 48px;
+      p {
+        font-size: 12px;
+      }
+    }
+  }
+  &__empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 68px 0;
+    text-align: center;
+    background-color: #ffffff;
+    p {
+      line-height: 20px;
+      letter-spacing: 0em;
+      text-align: center;
+      color: #6b7280;
+    }
+    &__btn {
+      margin-top: 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
     }
   }
 }
+.skeleton {
+  &__head {
+    height: 100px;
+    background: linear-gradient(to right, #eff1f3 4%, #f8f9fb 25%, #eff1f3 36%);
+    background-size: 1000px 100%;
+    animation: shimmer 1s infinite linear;
+    margin-bottom: 2rem;
+  }
+}
 
+@media screen and (min-width: 1500px) {
+  .btnWrapper {
+    margin-top: 700px;
+  }
+}
 @media screen and (max-width: 768px) {
   .history {
     padding: 0;
@@ -114,19 +188,11 @@
     &__mobile {
       display: block;
     }
-    &__header {
-      display: block;
-      margin-top: 40px;
-
-      &__search {
-        width: 345px;
-        display: block;
-        margin-bottom: 16px;
-
-        p {
-          margin-bottom: 24px;
-        }
-      }
+    &__headerTable {
+      display: none;
     }
+  }
+  .btnWrapper {
+    margin-top: 410px;
   }
 }
