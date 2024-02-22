@@ -27,7 +27,7 @@ const ClockInHistoryMobile = () => {
   const { toast } = useAlert();
   const [showFilterDrawer, setShowFilterDrawer] = useState(false);
   const [filteredData, setFilteredData] = useState<any>({date: "", to_date: ""});
-  const { data, isError, isSuccess, isFetching, error, refetch } =
+  const { data, isError, isSuccess, isFetching, refetch } =
     useFetchClockInHistory({
       query: { page: page, per_page: 10, search: searchDebounce,  ...filteredData, },
     });
@@ -45,7 +45,7 @@ const ClockInHistoryMobile = () => {
 
   useEffect(() => {
     if (isError) {
-      toast({ type: "error", message: error?.res?.data?.message });
+      toast({ type: "error", message: "Bad request" });
     }
   }, [isError]);
   useSecondRunEffect(() => {
@@ -166,7 +166,7 @@ const ClockInHistoryMobile = () => {
           currentPage={page}
           displayed={allHistory.length}
           totalCount={data.total_count}
-          loading={isFetching}
+          // loading={isFetching}
           changeCurrentPage={(num: { selected: number }) =>
             setPage(num?.selected + 1)
           }

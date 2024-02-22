@@ -18,8 +18,8 @@ export const useLogin = () => {
       $storage.save(LOGGED_IN, true);
       navigate("/dashboard");
     },
-    onError: (error: any) => {
-      toast({ type: "error", message: error.response.data.message });
+    onError: () => {
+      toast({ type: "error", message: "Invalid Credentials" });
     },
   });
 };

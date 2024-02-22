@@ -15,7 +15,6 @@ import useSecondRunEffect from "@/admin/hooks/queries/useSecondRunEffect";
 import moment from "moment";
 import { Position } from "evergreen-ui";
 import FilterTags from "@/components/FilterTag";
-import getTotalPages from "@/utils/getTotalPages";
 
 const ClockInHistory = () => {
   const [isMatched, setIsMatched] = useState(false);
@@ -29,7 +28,7 @@ const ClockInHistory = () => {
   const [searchDebounce] = useDebounce(searchValue, 1000);
   const [allHistory, setAllHistory] = useState([]);
   const { toast } = useAlert();
-  const { data, isError, isSuccess, isFetching, error, refetch } =
+  const { data, isError, isSuccess, isFetching, refetch } =
     useFetchClockInHistory({
       query: {
         page: page,
@@ -51,7 +50,7 @@ const ClockInHistory = () => {
 
   useEffect(() => {
     if (isError) {
-      toast({ type: "error", message: error?.res?.data?.message });
+      toast({ type: "error", message: "Bad request"});
     }
   }, [isError]);
 
@@ -73,7 +72,10 @@ const ClockInHistory = () => {
     };
   }, []);
 
-  
+  // if(isPending)return 'loading'
+
+  // const allHistory = data.members
+
   const handleCancelFilter = (filterKey: any) => {
     setFilteredData((prevFilteredData: any) => {
       const newFilteredData = { ...prevFilteredData };
@@ -135,9 +137,9 @@ const ClockInHistory = () => {
             changeCurrentPage={(num: { selected: number }) =>
               setPage(num?.selected + 1)
             }
-            forcePage={page-1}
+            forcePage={page - 1}
             currentPage={page}
-            displayed={allHistory.length}
+            displayed={allHistory?.length}
             loading={isFetching}
             totalCount={data.total_count}
           >
@@ -170,7 +172,11 @@ const ClockInHistory = () => {
                       : "-"}
                   </td>
 
-                  <td>{row.date_added? moment(row.date_added).format(" MMM D, YYYY"): "-"}</td>
+                  <td>
+                    {row.date_added
+                      ? moment(row.date_added).format(" MMM D, YYYY")
+                      : "-"}
+                  </td>
                 </>
               );
             }}
