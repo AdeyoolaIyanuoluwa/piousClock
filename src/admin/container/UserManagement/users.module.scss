@@ -91,7 +91,7 @@
     }
   }
   &__label {
-    background-color: #1D3557;
+    background-color: #1d3557;
     width: 125px;
     height: 36px;
     padding: 8px 16px 8px 16px;
@@ -118,7 +118,7 @@
   height: 84px;
   padding: 24px 16px 24px 16px;
   gap: 12px;
-  margin-top: 290px;
+  margin-top: 350px;
   justify-content: right;
   align-items: center;
 }
@@ -257,7 +257,6 @@
   }
   .btnWrapperr {
     margin-top: 710px;
-    background-color: red;
   }
   .editBtnWrapper {
     display: flex;
@@ -289,5 +288,8 @@
   }
   .tag {
     display: none;
+  }
+  .editBtnWrapper {
+    margin-top: 230px;
   }
 }

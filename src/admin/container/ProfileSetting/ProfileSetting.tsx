@@ -8,11 +8,9 @@ import { useChangePassword } from "@/admin/hooks/mutations/useChangePassword";
 
 const ProfileSetting = () => {
   const formRef = useRef<any>();
-  const email: any = localStorage.getItem("email");
   const { mutate: changePassword, isPending } = useChangePassword();
   const handleChangePassword = (values: any) => {
     changePassword({
-      email,
       old_password: values.old_password,
       new_password: values.new_password,
       confirm_password: values.confirm_password,
@@ -70,7 +68,6 @@ const ProfileSetting = () => {
           <div>
             <Formik
               initialValues={{
-                email: email || "",
                 old_password: "",
                 new_password: "",
                 confirm_password: "",

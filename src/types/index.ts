@@ -104,7 +104,7 @@ export type PaginationProps = {
   handlePageInput?: any;
   forcePage?: any;
   displayed?: number | any;
-  totalCount?: number | any
+  totalCount?: number | any;
 };
 export type TableProps = {
   tableHeaders?: any[];
@@ -127,9 +127,9 @@ export type TableProps = {
   check?: boolean;
   sortRows?: any;
   user?: any;
-  displayed?: number;
+  displayed?: any;
   totalCount?: number;
-  forcePage?: any
+  forcePage?: any;
 };
 
 export type ToastAlertProps = {
@@ -151,7 +151,7 @@ export type SideSheetProps = {
   shouldAutoFocus?: boolean;
   headingTitle?: string;
   children: JSX.Element | JSX.Element[];
-  position?: any 
+  position?: any;
 };
 
 export type DatePickerInputProps = {
@@ -217,9 +217,9 @@ export type DeleteMemberModalProps = {
   caption?: string;
   onClick?: (data: any) => void;
   loading?: boolean;
-  // setIsShown?: (val: boolean) => void;
-  singleMemberId?: any
-  // refetch: ()=>void
+  setIsShown?: any;
+  singleMemberId?: any;
+  refetch?: any;
 };
 export type ClockInModalProps = {
   isShown: boolean;

@@ -31,3 +31,6 @@ export const FETCH_RECENT_MEMBERS_API ='admin/get-recent-members'
 
 //SETTINGS
 export const CHANGE_PASSWORD_API ='admin/change-password'
+
+//BULK UPLOAD
+export const BULK_UPLOAD_API = 'admin/bulk-upload'

@@ -36,8 +36,10 @@ const Table = ({
 }: TableProps) => {
   const sortRows = () => true;
 
+
   const [addMember, setAddMember] = useState(false);
   const table = (
+    
     <div>
       <table className={`${styles.table}`}>
         <TableHeader sortRows={sortRows} tableHeaders={tableHeaders} />

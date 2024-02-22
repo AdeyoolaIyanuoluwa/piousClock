@@ -52,7 +52,7 @@ const DashboardLayout = ({ children, profile }: ChildrenProps) => {
         <>
           <div
             className={styles.main__content}
-            style={{ position: visibility && "fixed" }}
+            style={{ position: visibility ? "fixed" : undefined}}
           >
             {children}
           </div>

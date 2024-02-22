@@ -23,7 +23,9 @@
 .css-1u9des2-indicatorSeparator {
   display: none;
 }
-
+.ub-ovflw-y_scroll {
+  overflow-y: visible !important;
+}
 @media screen and (max-width: 768px) {
   .ub-bs_kymczs {
     height: 90vh !important;

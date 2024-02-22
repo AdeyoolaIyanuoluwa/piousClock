@@ -26,7 +26,6 @@ const DatePickerInput = ({
 }: DatePickerInputProps) => {
   return (
     <div className={styles.input_date}>
-      <img src={Calender} alt="calender" className={styles.calendarIcon} />
       <DatePicker
         selected={selected}
         onChange={onChange}
@@ -47,7 +46,7 @@ const DatePickerInput = ({
         highlightDates={highlightDates}
         wrapperClassName={styles.date_picker}
       />
-  
+      <img src={Calender} alt="calender" className={styles.calendarIcon} />
     </div>
   );
 };

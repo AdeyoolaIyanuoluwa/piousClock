@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import styles from "./dashboard.module.scss";
 import Card from "@/components/Card";
 import Avatar from "@/components/Avatar";
@@ -18,18 +18,32 @@ export const CardLoader = () => (
 const Dashboard = () => {
   const navigate = useNavigate();
   const { toast } = useAlert();
-  const { data, isPending, isError, error } = useFetchRecentMembers();
-  const { data: clockIn } = useFetchRecentClockIn();
 
+  const {data: recentMembers,isPending: isRecentPending,isError} = useFetchRecentMembers();
+
+  const { data: clockIn, isPending: isClockInPending, isError: clockInIsError, error: clockInError } = useFetchRecentClockIn();
+
+  console.log(recentMembers, "data");
+
+  console.log(clockIn, "clockin");
 
   useEffect(() => {
     if (isError) {
       toast({
         type: "error",
-        message: error?.response?.data?.message,
+        message: "Bad request",
       });
     }
   }, [isError]);
+
+  useEffect(() => {
+    if (clockInIsError) {
+      toast({
+        type: "error",
+        message: "Bad request",
+      });
+    }
+  }, [clockInError]);
   return (
     <div>
       <Card />
@@ -40,34 +54,34 @@ const Dashboard = () => {
             <p onClick={() => navigate("/user-management")}>See more</p>
           </div>
 
-          {isPending ? (
+          {isRecentPending ? (
             <CardLoader />
           ) : (
-            data?.slice(0, 5).map((i: any) => (
+            recentMembers?.slice(0, 5).map((members: any) => (
               <div className={styles.dashboard__members__data}>
                 <div className={styles.dashboard__members__data__avatar}>
-                  <Avatar name={i.last_name} size="sm" url={i.profile_image} />
+                  <Avatar name={members.last_name} size="sm" url={members.profile_image} />
                   <div>
                     <text>
-                      {i.first_name} {i.last_name}
+                      {members.first_name} {members.last_name}
                     </text>
-                    <p>{i.email}</p>
+                    <p>{members.email}</p>
                   </div>
                 </div>
                 <div>
                   <p>Date added:</p>
                   <p style={{ color: "#1F2937" }}>
-                    {moment(i.created_at).format(" MMM D, YYYY")}
+                    {moment(members.created_at).format(" MMM D, YYYY")}
                   </p>
                 </div>
               </div>
             ))
           )}
 
-          {isPending ? (
+          {isRecentPending ? (
             <CardLoader />
           ) : (
-            !data?.length && (
+            !recentMembers?.length && (
               <>
                 <div className={styles.dashboard__members__empty}>
                   <div>
@@ -79,33 +93,43 @@ const Dashboard = () => {
               </>
             )
           )}
+
         </div>
+
         <div className={styles.dashboard__members}>
           <div className={styles.dashboard__members__header}>
             <text>Recent clock-ins</text>
             <p onClick={() => navigate("/history")}>See more</p>
           </div>
 
-          {isPending ? (
+          {isClockInPending ? (
             <CardLoader />
           ) : (
             clockIn?.slice(0, 5).map((i: any) => (
               <div className={styles.dashboard__members__data}>
                 <div className={styles.dashboard__members__data__avatar}>
-                  <Avatar name={i.first_name} size="sm" />
+                  <Avatar name={i.full_name} size="sm" url={i.profile_image}/>
                   <div>
-                    <text>
-                      {i.first_name} {i.last_name}
-                    </text>
+                    <text>{i.full_name}</text>
                     <p>{i.email}</p>
                   </div>
                 </div>
                 <div>
                   <p>Clock-in:</p>
-                  <p style={{ color: "#1F2937" }}>
-                    {moment(i.created_at).format(" MMM D, YYYY")}
+
+                  <p
+                    style={{
+                      color: "#1F2937",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "3px",
+                    }}
+                  >
+                    {i.created_at
+                      ? moment(i.created_at).format(" MMM D, YYYY")
+                      : "-"}
                     <span className={styles.dashboard__divider}>
-                    {moment(i?.created_at).format("LT")}
+                      {i?.created_at ? moment(i?.created_at).format("LT") : "-"}
                     </span>
                   </p>
                 </div>
@@ -113,7 +137,7 @@ const Dashboard = () => {
             ))
           )}
 
-          {isPending ? (
+          {isClockInPending ? (
             <CardLoader />
           ) : (
             !clockIn?.length && (

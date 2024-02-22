@@ -1,4 +1,4 @@
-import { ADD_MEMBER_API, DELETE_MEMBER_API, EDIT_MEMBER_API, FETCH_RECENT_MEMBERS_API, FETCH_TOTAL_API } from "@/services/api";
+import { ADD_MEMBER_API, BULK_UPLOAD_API, DELETE_MEMBER_API, EDIT_MEMBER_API, FETCH_RECENT_MEMBERS_API, FETCH_TOTAL_API } from "@/services/api";
 import instance from "@/services/axiosInstance";
 import { urlToSearchParams } from '../../../utils/index';
 
@@ -23,4 +23,6 @@ export const addMember = (payload: object) =>
 
   export const recentClockIns = ()=>instance.get('admin/get-recent-clock-in')
   export const fetchRecentMembers = ()=> instance.get(FETCH_RECENT_MEMBERS_API)
+
+  export const bulkUpload =(payload: object)=> instance.post(BULK_UPLOAD_API, payload)
   
