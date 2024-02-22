@@ -2,6 +2,7 @@ import { SearchBoxProps } from "@/types/index";
 import * as React from "react";
 import Search from "../../assets/search.svg";
 import styles from "./searchBox.module.scss";
+import classNames from "classnames";
 
 const SearchBox = ({
   onSearch,
@@ -9,10 +10,11 @@ const SearchBox = ({
   searchValue,
   onChange,
   height,
-  dataTestId,
+  width,
+  size
 }: SearchBoxProps) => {
   return (
-    <div className={styles.search}>
+    <div className={classNames(styles.search, styles[`search__${size}`])}>
       <img
         src={Search}
         alt="search"
@@ -26,7 +28,7 @@ const SearchBox = ({
         name={searchName}
         value={searchValue}
         height={height}
-        data-testid={dataTestId}
+        width={width}
         onChange={(e) => {
           onChange(e.target && e.target.value);
         }}

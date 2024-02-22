@@ -1,51 +1,82 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./table.module.scss";
 import TableHeader from "../Table/TableHeader";
 import TableBody from "../Table/TableBody";
 import { TableProps } from "@/types";
 import PlaceholderIcon from "../../assets/placeholder.svg";
 import Pagination from "../Pagination";
+import Button from "../Button";
+import AddMember from "@/admin/container/UserManagement/AddMemberModal";
 
+export const TableLoader = ({ headers }: any) => (
+  <div className={styles.skeleton}>
+    <div className={styles.skeleton__head} />
+    {headers?.slice(0, 4).map((header: any) => (
+      <div key={header?.id} className={styles.skeleton__row}>
+        {headers?.map((header: any) => (
+          <div key={header?.id} className={styles.skeleton__item} />
+        ))}
+      </div>
+    ))}
+  </div>
+);
 const Table = ({
-  headers,
+  tableHeaders,
   tableData,
   children,
-  placeHolderImg,
-  placeholderText,
   loading,
   currentPage,
   totalPage,
   changeCurrentPage,
-  handlePageInput,
   paginate,
-  forcePage,
+  user,
+  displayed,
+  headers,
+  totalCount,forcePage
 }: TableProps) => {
   const sortRows = () => true;
 
+
+  const [addMember, setAddMember] = useState(false);
   const table = (
+    
     <div>
       <table className={`${styles.table}`}>
-        <TableHeader sortRows={sortRows} tableHeaders={headers} />
-        <TableBody
-          cols={headers?.length}
-          tableData={tableData}
-          content={children}
-          placeHolderImg={placeHolderImg}
-          placeholderText={placeholderText}
-          mapKey={""}
-          forcePage={undefined}
-        />
+        <TableHeader sortRows={sortRows} tableHeaders={tableHeaders} />
+        <TableBody cols={headers} tableData={tableData} content={children} />
       </table>
 
       {!tableData?.length && (
         <>
-          <div className={styles.table__empty}>
-            <div>
-              {<img src={PlaceholderIcon} alt="" />}{" "}
-              <p>You have no recent activity.</p>
-              <p>Go to “User management” to add members</p>
+          {user ? (
+            <div className={styles.table__empty}>
+              <div>
+                {<img src={PlaceholderIcon} alt="PlaceholderIcon" />}{" "}
+                <p>You have no recent activity.</p>
+                <p>Go to “User management” to add members</p>
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className={styles.table__empty}>
+              <div>
+                {<img src={PlaceholderIcon} alt="PlaceholderIcon" />}{" "}
+                <p>You have no members</p>
+                <p>Start by adding new members</p>
+                <div className={styles.table__empty__btn}>
+                  <Button
+                    size="md"
+                    theme="primary"
+                    onClick={() => setAddMember(true)}
+                  >
+                    Add manually
+                  </Button>
+                  <Button size="md" theme="second">
+                    Import CSV file
+                  </Button>
+                </div>
+              </div>
+            </div>
+          )}
         </>
       )}
       {paginate && !loading && tableData?.length ? (
@@ -53,13 +84,21 @@ const Table = ({
           currentPage={currentPage}
           totalPage={totalPage}
           changeCurrentPage={changeCurrentPage}
+          displayed={displayed}
+          totalCount={totalCount}
           forcePage={forcePage}
-          handlePageInput={handlePageInput}
         />
       ) : null}
+
+      {addMember && (
+        <AddMember
+          isShown={addMember}
+          onCloseComplete={() => setAddMember(false)}
+        />
+      )}
     </div>
   );
-  return table;
+  return loading ? <TableLoader headers={tableHeaders} /> : table;
 };
 
 export default Table;

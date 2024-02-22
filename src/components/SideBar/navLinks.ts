@@ -9,13 +9,13 @@ export const navLinks = [
     url: '/dashboard'
   },
   {
-    title: "Clock-in History",
-    icon: HistoryIcon,
-    url: '/history'
-  },
-  {
     title: "User Management",
     icon: UserIcon,
     url: '/user-management'
+  },
+  {
+    title: "Clock-in History",
+    icon: HistoryIcon,
+    url: '/history'
   },
 ];

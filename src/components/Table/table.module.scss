@@ -7,13 +7,14 @@
   background-color: white;
   &__header {
     th {
-      padding: 16px;
+      padding: 12px 16px 12px 16px;
       text-align: left;
       font-weight: 500;
       font-size: 14px;
       color: #2f3644;
       background: #f3f4f6;
       border-bottom: 1px solid #c1c2c4;
+      
     }
   }
 
@@ -30,14 +31,19 @@
       text-align: center;
       color: #6b7280;
     }
+    &__btn {
+      margin-top: 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
   }
 
   &__row {
     position: relative;
-
     td {
       border-bottom: 1px solid #edf2f7;
-      padding: 24px 16px;
+      padding: 12px 16px 12px 16px;
       font-size: 14px;
       vertical-align: middle;
       color: #425466;

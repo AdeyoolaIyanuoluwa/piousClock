@@ -1,0 +1,295 @@
+//user management scss
+.management {
+  padding: 24px;
+  background-color: white;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    background-color: white;
+
+    &__search {
+      width: 499px;
+      gap: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      p {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+        letter-spacing: 0em;
+        text-align: left;
+        color: #2f3644;
+      }
+    }
+    &__button {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: 16px;
+    }
+  }
+  &__mobile {
+    display: none;
+  }
+}
+.avatar_name {
+  display: flex;
+  gap: 5px;
+  justify-content: start;
+  align-items: center;
+}
+//filterUserManagement
+.filterInput {
+  position: relative;
+  top: 12px;
+  &__Heading {
+    font-size: 12px;
+    font-weight: 400;
+    color: #6b7280;
+  }
+  &__dateInput {
+    display: flex;
+    gap: 8px;
+  }
+}
+.btnWrapperr {
+  display: flex;
+  width: 100%;
+  height: 84px;
+  padding: 24px 16px 24px 16px;
+  gap: 12px;
+  margin-top: 530px;
+  justify-content: right;
+  align-items: center;
+}
+
+//EditMember
+.formInput {
+  text-align: left;
+  &__input {
+    margin-top: 12px;
+    margin-bottom: 24px;
+  }
+  &__csv {
+    color: #6b7280;
+    font-size: 12px;
+    font-weight: 400;
+
+    &__p {
+      font-size: 14px;
+      margin: 16px 0 32px 0;
+      text-align: center;
+    }
+    button {
+      margin-top: 16px;
+    }
+  }
+  &__label {
+    background-color: #1d3557;
+    width: 125px;
+    height: 36px;
+    padding: 8px 16px 8px 16px;
+    border-radius: 8px;
+    gap: 32px;
+    text-align: center;
+    color: #ffffff;
+    margin-top: 16px;
+  }
+}
+.btnWrapper {
+  display: flex;
+  width: 100%;
+  padding: 24px 16px 24px 16px;
+  gap: 12px;
+  margin-top: 50px;
+  justify-content: right;
+  align-items: center;
+}
+
+.editBtnWrapper {
+  display: flex;
+  width: 100%;
+  height: 84px;
+  padding: 24px 16px 24px 16px;
+  gap: 12px;
+  margin-top: 350px;
+  justify-content: right;
+  align-items: center;
+}
+
+//DeleteMemberModal
+
+.headerWrapper {
+  text-align: center;
+  padding: 24px;
+  img {
+    margin-bottom: 16px;
+  }
+}
+.headerTitle {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+.headerCaption {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #6b7280;
+  margin-top: 8px;
+}
+
+.actionWrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  margin: 28px 0px 16px 0px;
+
+  button {
+    width: 154.5px;
+  }
+}
+//usermanagementMobile
+.user {
+  &__header {
+    display: block;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    background-color: white;
+
+    &__search {
+      width: 345px;
+      display: block;
+      gap: 40px;
+
+      p {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+        letter-spacing: 0em;
+        text-align: left;
+        color: #2f3644;
+        margin-bottom: 16px;
+      }
+    }
+    &__button {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 12px;
+      margin-top: 16px;
+    }
+  }
+  &__members {
+    padding: 24px 16px 24px 16px;
+    border: 1px solid #f3f4f6;
+    &__avatar {
+      display: flex;
+      justify-content: space-between;
+      color: #6b7280;
+
+      &__name {
+        display: flex;
+        gap: 8px;
+        text {
+          color: #6b7280;
+          font-size: 14px;
+          font-weight: 500;
+        }
+        p {
+          font-size: 12px;
+        }
+      }
+      &__dateAdded {
+        font-size: 12px;
+      }
+    }
+  }
+  &__empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 68px 0;
+    text-align: center;
+    background-color: #ffffff;
+    p {
+      line-height: 20px;
+      letter-spacing: 0em;
+      text-align: center;
+      color: #6b7280;
+    }
+    &__btn {
+      margin-top: 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+  }
+  .skeleton {
+    &__head {
+      height: 100px;
+      background: linear-gradient(
+        to right,
+        #eff1f3 4%,
+        #f8f9fb 25%,
+        #eff1f3 36%
+      );
+      background-size: 1000px 100%;
+      animation: shimmer 1s infinite linear;
+      margin-bottom: 2rem;
+    }
+  }
+}
+@media screen and (min-width: 1500px) {
+  .btnWrapper {
+    margin-top: 170px;
+  }
+  .btnWrapperr {
+    margin-top: 710px;
+  }
+  .editBtnWrapper {
+    display: flex;
+    width: 100%;
+    height: 84px;
+    padding: 24px 16px 24px 16px;
+    gap: 12px;
+    margin-top: 530px;
+    justify-content: right;
+    align-items: center;
+  }
+}
+@media screen and (max-width: 768px) {
+  .management {
+    padding: 0px;
+    &__header {
+      display: none;
+    }
+    &__table {
+      display: none;
+    }
+    &__mobile {
+      display: block;
+    }
+  }
+
+  .btnWrapperr {
+    margin-top: 390px;
+  }
+  .tag {
+    display: none;
+  }
+  .editBtnWrapper {
+    margin-top: 230px;
+  }
+}

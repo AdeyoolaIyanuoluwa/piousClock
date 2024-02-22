@@ -1,41 +1,35 @@
 import React from "react";
 import styles from "./card.module.scss";
-import Indicator from "../Indicator";
-import Avatar from "../Avatar";
+import GreenLogin from "../../assets/icons/greenLoginIcon.svg";
+import BlueLogin from "../../assets/icons/blueLoginIcon.svg";
+import ContactIcon from "../../assets/icons/contactIcon.svg";
+import { useFetchTotal } from "@/admin/hooks/queries/UseFetchTotal";
 
 const Card = () => {
-  const data = [
-    {
-      active: true,
-      id: 1,
-    },
-    {
-      active: false,
-      id: 2,
-    },
-  ];
+  const { data: total } = useFetchTotal();
   return (
-    <div>
-      {data.map((el) => (
-        <div className={styles.cardWrapper}>
-          <div key={el.id} className={styles.cardWrapper__detailwrapper}>
-            <div className={styles.cardWrapper__indicator}>
-              <Indicator
-                color={el.active ? "#A7D49B" : "#FFC4D1"}
-                width="16px"
-                height="16px"
-              />
-            </div>
-            <div className={styles.cardWrapper__details}>
-              <Avatar name={"Abraham De"} />
-              <div>
-                <h6>Abraham De Lacy</h6>
-                <p>abrahamdelacy@email.com</p> <p>08124576169</p>
-              </div>
-            </div>
-          </div>
+    <div className={styles.cardWrapper}>
+      <div className={styles.cardWrapper__green}>
+        <div>
+          <img src={GreenLogin} alt="" />
+          <p>Number of clock-ins today</p>
+          <h6>{total?.getTotalNumberOfClockIn?.[0]?.count}</h6>
         </div>
-      ))}
+      </div>
+      <div className={styles.cardWrapper__blue}>
+        <div>
+          <img src={BlueLogin} alt="" />
+          <p>Number of clock-outs today</p>
+          <h6>{total?.getTotalNumberOfClockOut?.[0]?.count}</h6>
+        </div>
+      </div>
+      <div className={styles.cardWrapper__red}>
+        <div>
+          <img src={ContactIcon} alt="" />
+          <p>Total number of members</p>
+          <h6>{total?.getTotalNumberOfMembers?.[0]?.count}</h6>
+        </div>
+      </div>
     </div>
   );
 };

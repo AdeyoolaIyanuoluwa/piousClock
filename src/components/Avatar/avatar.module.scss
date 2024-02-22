@@ -1,70 +1,85 @@
 .avatar {
-    &__placeholder {
-      height: 40px;
-      width: 40px;
-      border-radius: 100%;
-      font-weight: 500;
-      font-size: 14px;
-      border: 2px solid #eef5ff;
-      color: #ffffff;
-      background: #2F3644;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      letter-spacing: 0;
-      position: relative;
-    }
-  
-    &__close__img {
-      position: absolute;
-      left: 23rem;
-      top: 10%;
-      cursor: pointer;
-    }
-  
-    &__profile {
-      background: #9cf9ff;
-      width: 94px;
-      height: 94px;
-      font-weight: 500;
-      font-size: 45px;
-      padding: 4px;
-      box-shadow: 0 0 0 10px #e6fdff;
-      box-sizing: border-box;
-      border-radius: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-  }
-  
-  .profile__img {
-    width: 94px;
-    height: 94px;
-    font-weight: 500;
-    font-size: 45px;
-    padding: 4px;
-    border: 2px solid #eef5ff;
-    box-sizing: border-box;
-    border-radius: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    object-fit: cover;
-  }
-  
-  .header__img {
-    height: 40px;
-    width: 40px;
+  &__sm {
+    height: 32px;
+    width: 32px;
     border-radius: 100%;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 12px;
     border: 2px solid #eef5ff;
+    color: #ffffff;
+    background: #1d3557;
     display: flex;
     align-items: center;
     justify-content: center;
     letter-spacing: 0;
     position: relative;
-    object-fit: cover;
   }
-  
+
+  &__close__img {
+    position: absolute;
+    left: 23rem;
+    top: 10%;
+    cursor: pointer;
+  }
+
+  &__lg {
+    width: 64px;
+    height: 64px;
+    background: #1d3557;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 20px;
+    padding: 4px;
+    box-sizing: border-box;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+  }
+  &__md {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    font-weight: 500;
+    font-size: 12px;
+    border: 2px solid #eef5ff;
+    color: #ffffff;
+    background: #1d3557;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0;
+    position: relative;
+  }
+}
+
+.profile__img {
+  width: 94px;
+  height: 94px;
+  font-weight: 500;
+  font-size: 45px;
+  padding: 4px;
+  border: 2px solid #eef5ff;
+  box-sizing: border-box;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  object-fit: cover;
+}
+
+.header__img {
+  height: 32px;
+  width: 32px;
+  border-radius: 100%;
+  font-weight: 500;
+  font-size: 14px;
+  border: 2px solid #eef5ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0;
+  position: relative;
+  object-fit: cover;
+}

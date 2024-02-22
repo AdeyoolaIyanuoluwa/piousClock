@@ -5,6 +5,7 @@ import { navLinks } from './navLinks'
 import { NavLink } from 'react-router-dom'
 import classNames from 'classnames'
 const SideBar = () => {
+ 
   return (
     <div className={styles.sidebar__wrapper}>
         <div>
@@ -16,8 +17,9 @@ const SideBar = () => {
           {navLinks.map((i)=>{
             return(
               <NavLink className={({isActive})=>(isActive ? styles.active : '')} to={i.url}>
+                
                 <li className={classNames(styles.menu__list)}>
-                  <img src={i.icon}/>
+                <img src={i.icon}/>
                  <span> {i.title}</span>
                 </li>
               </NavLink>

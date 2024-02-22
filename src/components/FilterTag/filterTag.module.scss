@@ -1,0 +1,30 @@
+.tag {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  padding: 7px 12px;
+  border-radius: 6px;
+  margin: 0 8px 9px 0;
+  gap: 8px;
+
+  p {
+    font-size: 14px;
+    margin-right: 16px;
+    color: #2f3644;
+    font-weight: 400;
+  }
+  &__range {
+    display: flex;
+    border: 1px solid #f3f4f6;
+    padding: 8px 16px 8px 16px;
+    border-radius: 8px;
+    align-items: center;
+    width: fit-content;
+    background-color: #f3f4f6;
+  }
+
+  img {
+    width: 15px;
+    height: 15px;
+  }
+}
