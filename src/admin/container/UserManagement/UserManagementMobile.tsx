@@ -14,6 +14,7 @@ import { Position } from "evergreen-ui";
 import SearchBox from "@/components/SearchBox";
 import FilterUserManagement from "./FilterUserManagement";
 import FilterTags from "@/components/FilterTag";
+import EditMember from "./EditMemberModal";
 
 export const CardLoader = () => (
   <div className={styles.skeleton}>
@@ -28,12 +29,14 @@ const UserManagementMobile = () => {
     date: "",
     to_date: "",
   });
+  const [editMember, setEditMember] = useState(false);
+  const [singleMemberId, setSingleMemberId] = useState("");
   const [searchValue, setSearchValue] = useState("");
   const [searchDebounce] = useDebounce(searchValue, 1000);
   const { toast } = useAlert();
   const [page, setPage] = useState(1);
   const [allMemberData, setAllMemberData] = useState([]);
-  const { data, isError, isSuccess, isFetching, error, refetch } =
+  const { data, isError, isSuccess, isFetching, refetch } =
     useFetchMembers({
       query: {
         page: page,
@@ -47,7 +50,7 @@ const UserManagementMobile = () => {
     if (isError) {
       toast({
         type: "error",
-        message: error?.response?.data?.message,
+        message: "Bad request",
       });
     }
   }, [isError]);
@@ -78,6 +81,10 @@ const UserManagementMobile = () => {
       refetch();
       return newFilteredData;
     });
+  };
+  const handleEditModal = (allMemberData: any) => {
+    setSingleMemberId(allMemberData[3]?.id);
+    setEditMember(true);
   };
   return (
     <div className={styles.user}>
@@ -124,7 +131,10 @@ const UserManagementMobile = () => {
         <CardLoader />
       ) : (
         allMemberData.slice(0, 10).map((i: any) => (
-          <div className={styles.user__members}>
+          <div
+            className={styles.user__members}
+            onClick={() => handleEditModal(allMemberData)}
+          >
             <div className={styles.user__members__avatar}>
               <div className={styles.user__members__avatar__name}>
                 <Avatar name={i.last_name} size="md" />
@@ -189,7 +199,17 @@ const UserManagementMobile = () => {
           setIsShown={setAddMember}
         />
       )}
-      {isFetching && allMemberData?.length===0 ? (
+      {editMember && (
+        <EditMember
+          isShown={editMember}
+          refetch={refetch}
+          setIsShown={setEditMember}
+          onCloseComplete={() => setEditMember(false)}
+          singleMemberId={singleMemberId}
+          position={Position.BOTTOM}
+        />
+      )}
+      {isFetching ? (
         <CardLoader />
       ) : (
         <Pagination
@@ -197,7 +217,7 @@ const UserManagementMobile = () => {
           currentPage={page}
           displayed={allMemberData.length}
           totalCount={data.total_count}
-          loading={isFetching}
+          // loading={isFetching}
           changeCurrentPage={(num: { selected: number }) =>
             setPage(num?.selected + 1)
           }

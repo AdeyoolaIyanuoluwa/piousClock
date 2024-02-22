@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation} from "@tanstack/react-query";
 import useAlert from "../useAlert";
 import { editMemberDetails } from "@/admin/queries/user";
 

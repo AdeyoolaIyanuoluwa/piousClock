@@ -7,7 +7,7 @@ import Button from "@/components/Button";
 import { EditMemberSchema } from "@/utils/validation";
 import { useEditMemberDetails } from "@/admin/hooks/mutations/useEditMemberDetails";
 
-const EditMember = ({ isShown, setIsShown, onCloseComplete, singleMemberId, refetch }: any) => {
+const EditMember = ({ isShown, setIsShown, onCloseComplete, singleMemberId,position, refetch }: any) => {
   const formRef = useRef<any>();
   const { mutate: editMember, isPending } = useEditMemberDetails({
     id: singleMemberId,
@@ -29,6 +29,7 @@ const EditMember = ({ isShown, setIsShown, onCloseComplete, singleMemberId, refe
         onCloseComplete={onCloseComplete}
         headingTitle="Edit member details"
         width="452px"
+        position={position}
       >
         <div>
           <Formik
@@ -45,7 +46,7 @@ const EditMember = ({ isShown, setIsShown, onCloseComplete, singleMemberId, refe
               <Form className={styles.formInput}>
                 <div className={styles.formInput__input}>
                   <Input
-                    title="Firstname"
+                    title="First name"
                     placeholder="Enter first name"
                     name="first_name"
                     type="text"

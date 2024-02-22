@@ -39,7 +39,7 @@ const UserManagement = () => {
   const [page, setPage] = useState(1);
   const [allMemberData, setAllMemberData] = useState([]);
   const [singleMemberId, setSingleMemberId] = useState("");
-  const { data, isError, isSuccess, isFetching, error, refetch } =
+  const { data, isError, isSuccess, isFetching, refetch } =
     useFetchMembers({
       query: {
         page: page,
@@ -53,7 +53,7 @@ const UserManagement = () => {
     if (isError) {
       toast({
         type: "error",
-        message: error?.response?.data?.message,
+        message: "Bad request",
       });
     }
   }, [isError]);

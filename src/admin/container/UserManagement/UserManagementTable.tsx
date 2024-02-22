@@ -11,7 +11,6 @@ import DeleteIcon from "../../../assets/deleteIcon.svg";
 import EditMember from "./EditMemberModal";
 import DeleteMemberModal from "./DeleteMemberModal";
 import { useFetchMembers } from "@/admin/hooks/queries/useFetchMembers";
-// import { useUserContext } from "@/context/userContexts";
 import useAlert from "@/admin/hooks/useAlert";
 import moment from "moment";
 
@@ -19,9 +18,9 @@ const UserManagementTable = () => {
   const [editMember, setEditMember] = useState(false);
   const [deleteMember, setDeleteMember] = useState(false);
   const { toast } = useAlert();
-  const [page, setPage] = useState(1);
+  const [page] = useState(1);
   const [allMemberData, setAllMemberData] = useState([]);
-  const { data, isError, isSuccess, isFetching, error } = useFetchMembers({
+  const { data, isError, isSuccess, isFetching } = useFetchMembers({
     query: { page: page, per_page: 10 },
   });
 
@@ -29,7 +28,7 @@ const UserManagementTable = () => {
     if (isError) {
       toast({
         type: "error",
-        message: error?.response?.data?.message,
+        message: "Bad request",
       });
     }
   }, [isError]);

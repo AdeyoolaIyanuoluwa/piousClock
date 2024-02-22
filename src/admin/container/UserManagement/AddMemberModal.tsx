@@ -6,13 +6,13 @@ import styles from "./users.module.scss";
 import Button from "@/components/Button";
 import { ProfileSchema } from "@/utils/validation";
 import { useAddMember } from "@/admin/hooks/mutations/useAddMember";
+import BulkUpload from "@/components/Csv";
 const AddMember = ({
   isShown,
   onCloseComplete,
   refetch,
   setIsShown,
   position,
-  id
 }: any) => {
   const formRef = useRef<any>();
   const { mutate: addMember, isPending } = useAddMember({
@@ -116,18 +116,10 @@ const AddMember = ({
                     onChange={(e) => changeFile(e, formik)}
                   />
                 </div>
-                <div className={styles.formInput__csv}>
+
+                  <div className={styles.formInput__csv}>
                   <p className={styles.formInput__csv__p}>Or</p>
-                  <p>
-                    Import csv file containing member details to bulk upload
-                    members
-                  </p>{" "}
-                 <div className={styles.formInput__label}> <label htmlFor='id'>Import csv file</label></div>
-                  <input
-                  hidden
-                    id='id'
-                    type="file"
-                  />
+                    <BulkUpload/>
                 </div>
 
                 <div className={styles.btnWrapper}>
@@ -157,3 +149,36 @@ const AddMember = ({
 };
 
 export default AddMember;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {/* <div className={styles.formInput__csv}>
+                  <p className={styles.formInput__csv__p}>Or</p>
+                  <p>
+                    Import csv file containing member details to bulk upload
+                    members
+                  </p>{" "}
+                 <div className={styles.formInput__label}> <label htmlFor='id' onClick={handleBulkUpload}>Import csv file</label></div>
+                  <input
+                  hidden
+                    id='id'
+                    type="file"
+                  />
+                </div> */}
