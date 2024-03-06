@@ -29,7 +29,9 @@ const AddMember = ({
       `+234${String(parseInt(values.phone_number))}`
     );
 
-    formData.append("profile_image", values.profile_image);
+    if(values.profile_image){
+      formData.append("profile_image", values.profile_image);
+    }
     addMember(formData);
   };
 
@@ -149,36 +151,3 @@ const AddMember = ({
 };
 
 export default AddMember;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    {/* <div className={styles.formInput__csv}>
-                  <p className={styles.formInput__csv__p}>Or</p>
-                  <p>
-                    Import csv file containing member details to bulk upload
-                    members
-                  </p>{" "}
-                 <div className={styles.formInput__label}> <label htmlFor='id' onClick={handleBulkUpload}>Import csv file</label></div>
-                  <input
-                  hidden
-                    id='id'
-                    type="file"
-                  />
-                </div> */}

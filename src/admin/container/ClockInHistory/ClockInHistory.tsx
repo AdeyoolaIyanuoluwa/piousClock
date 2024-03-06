@@ -50,7 +50,7 @@ const ClockInHistory = () => {
 
   useEffect(() => {
     if (isError) {
-      toast({ type: "error", message: "Bad request"});
+      toast({ type: "error", message: "Bad request" });
     }
   }, [isError]);
 
@@ -159,7 +159,7 @@ const ClockInHistory = () => {
                     </div>
                   </td>
                   <td>{row.email}</td>
-                  <td>{row.phone_number}</td>
+                  <td>{row?.phone_number?.replace("+234", "0")}</td>
                   <td>
                     {row.clock_in_time
                       ? moment(row?.clock_in_time).format("LT")

@@ -11,12 +11,11 @@ const Input = ({
   name,
   title,
   error,
-  value,
   required,
   disabled,
   max,
   placeholder,
-  inputValue,
+  value,
   ...rest
 }: InputProps) => {
   const [formType, setFormType] = useState(type);
@@ -35,7 +34,7 @@ const Input = ({
             placeholder={placeholder}
             max={max}
             noValidate={true}
-            value={inputValue}
+            value={value}
             {...rest}
           />
         )}

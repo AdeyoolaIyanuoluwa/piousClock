@@ -52,7 +52,7 @@ export type InputProps = {
   name?: string;
   id?: string;
   title?: string;
-  error?: string;
+  error?: any;
   value?: string;
   required?: boolean;
   disabled?: boolean;

@@ -39,15 +39,14 @@ const UserManagement = () => {
   const [page, setPage] = useState(1);
   const [allMemberData, setAllMemberData] = useState([]);
   const [singleMemberId, setSingleMemberId] = useState("");
-  const { data, isError, isSuccess, isFetching, refetch } =
-    useFetchMembers({
-      query: {
-        page: page,
-        per_page: 10,
-        search: searchDebounce,
-        ...filteredData,
-      }
-    });
+  const { data, isError, isSuccess, isFetching, refetch } = useFetchMembers({
+    query: {
+      page: page,
+      per_page: 10,
+      search: searchDebounce,
+      ...filteredData,
+    },
+  });
 
   useEffect(() => {
     if (isError) {
@@ -140,14 +139,14 @@ const UserManagement = () => {
       <div>
         {filteredData?.date && (
           <div className={styles.tag}>
-          <FilterTags
-            name={`${moment(filteredData?.date).format(
-              "D MMMM, YYYY"
-            )} - ${moment(filteredData?.to_date).format("D MMMM, YYYY")}`}
-            filterKey="date"
-            filteredData={filteredData}
-            handleCancelFilter={() => handleCancelFilter("date")}
-          />
+            <FilterTags
+              name={`${moment(filteredData?.date).format(
+                "D MMMM, YYYY"
+              )} - ${moment(filteredData?.to_date).format("D MMMM, YYYY")}`}
+              filterKey="date"
+              filteredData={filteredData}
+              handleCancelFilter={() => handleCancelFilter("date")}
+            />
           </div>
         )}
       </div>
@@ -163,9 +162,9 @@ const UserManagement = () => {
             totalCount={data.total_count}
             loading={isFetching}
             changeCurrentPage={(num: { selected: number }) =>
-            setPage(num?.selected + 1)
-          }
-          forcePage={page-1}
+              setPage(num?.selected + 1)
+            }
+            forcePage={page - 1}
           >
             {(row: any) => {
               return (
@@ -179,12 +178,14 @@ const UserManagement = () => {
                           url={row.profile_image}
                         />
                       </div>
-                      {row.first_name}
+                      {capitalizeFirstLetter(row.first_name)}
                     </div>
                   </td>
-                  <td>{row.last_name}</td>
+                  <td className="capitalize">
+                  {row.last_name.charAt(0).toUpperCase() + row.last_name.slice(1)}
+                  </td>
                   <td>{row.email}</td>
-                  <td>{row.phone_number}</td>
+                  <td>{row?.phone_number?.replace("+234", "0")}</td>
                   <td>{moment(row.date_added).format(" MMM D, YYYY")}</td>
                   <td>
                     <Dropdown
@@ -255,5 +256,7 @@ const UserManagement = () => {
     </div>
   );
 };
-
+function capitalizeFirstLetter(str: string): string {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
 export default UserManagement;
