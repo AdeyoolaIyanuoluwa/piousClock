@@ -36,15 +36,15 @@ const UserManagementMobile = () => {
   const { toast } = useAlert();
   const [page, setPage] = useState(1);
   const [allMemberData, setAllMemberData] = useState([]);
-  const { data, isError, isSuccess, isFetching, refetch } =
-    useFetchMembers({
-      query: {
-        page: page,
-        per_page: 10,
-        search: searchDebounce,
-        ...filteredData,
-      },
-    });
+  const [fullMemberData, setFullMemberData] = useState([]);
+  const { data, isError, isSuccess, isFetching, refetch } = useFetchMembers({
+    query: {
+      page: page,
+      per_page: 10,
+      search: searchDebounce,
+      ...filteredData,
+    },
+  });
 
   useEffect(() => {
     if (isError) {
@@ -60,6 +60,7 @@ const UserManagementMobile = () => {
       const members = data?.members;
       if (members?.length || members?.length == 0) {
         setAllMemberData(members);
+        setFullMemberData(members);
         return;
       }
     }
@@ -82,8 +83,8 @@ const UserManagementMobile = () => {
       return newFilteredData;
     });
   };
-  const handleEditModal = (allMemberData: any) => {
-    setSingleMemberId(allMemberData[3]?.id);
+  const handleEditModal = (memberId: any) => {
+    setSingleMemberId(memberId);
     setEditMember(true);
   };
   return (
@@ -130,25 +131,25 @@ const UserManagementMobile = () => {
       {isFetching ? (
         <CardLoader />
       ) : (
-        allMemberData.slice(0, 10).map((i: any) => (
+        allMemberData.slice(0, 10).map((member: any) => (
           <div
             className={styles.user__members}
-            onClick={() => handleEditModal(allMemberData)}
+            onClick={() => handleEditModal(member.id)}
           >
             <div className={styles.user__members__avatar}>
               <div className={styles.user__members__avatar__name}>
-                <Avatar name={i.last_name} size="md" />
+                <Avatar name={`${member.first_name} ${member.last_name}`} size="md" />
                 <div>
                   <text>
-                    {i.first_name} {i.last_name}
+                    {member.first_name} {member.last_name}
                   </text>
-                  <p>{i.email}</p>
-                  <p>{i.phone_number}</p>
+                  <p>{member.email}</p>
+                  <p>{member.phone_number}</p>
                 </div>
               </div>
               <div className={styles.user__members__avatar__dateAdded}>
                 {" "}
-                <p>{moment(i.date_added).format(" MMM D, YYYY")}</p>
+                <p>{moment(member.date_added).format(" MMM D, YYYY")}</p>
               </div>
             </div>
           </div>
@@ -207,6 +208,7 @@ const UserManagementMobile = () => {
           onCloseComplete={() => setEditMember(false)}
           singleMemberId={singleMemberId}
           position={Position.BOTTOM}
+          fullMemberData={fullMemberData}
         />
       )}
       {isFetching ? (
