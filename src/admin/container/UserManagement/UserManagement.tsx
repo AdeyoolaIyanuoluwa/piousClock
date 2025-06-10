@@ -39,6 +39,7 @@ const UserManagement = () => {
   const [page, setPage] = useState(1);
   const [allMemberData, setAllMemberData] = useState([]);
   const [singleMemberId, setSingleMemberId] = useState("");
+  const [fullMemberData, setFullMemberData] = useState([]);
   const { data, isError, isSuccess, isFetching, refetch } = useFetchMembers({
     query: {
       page: page,
@@ -62,6 +63,7 @@ const UserManagement = () => {
       const members = data?.members;
       if (members?.length || members?.length == 0) {
         setAllMemberData(members);
+        setFullMemberData(members)
         return;
       }
     }
@@ -221,6 +223,7 @@ const UserManagement = () => {
               setIsShown={setEditMember}
               onCloseComplete={() => setEditMember(false)}
               singleMemberId={singleMemberId}
+              fullMemberData={fullMemberData}
             />
           )}
           {deleteMember && (

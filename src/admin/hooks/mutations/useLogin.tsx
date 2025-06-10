@@ -19,7 +19,7 @@ export const useLogin = () => {
       navigate("/dashboard");
     },
     onError: () => {
-      toast({ type: "error", message: "Invalid Credentials" });
+      toast({ type: "error", message: "Invalid Login Credentials" });
     },
   });
 };

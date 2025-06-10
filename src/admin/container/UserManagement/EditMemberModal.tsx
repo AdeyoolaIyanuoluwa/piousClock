@@ -15,13 +15,15 @@ const EditMember = ({
   singleMemberId,
   position,
   refetch,
+  fullMemberData
+  
 }: any) => {
   const formRef = useRef<any>();
-  const { data, isSuccess} = useFetchMembers({ query: {} });
+  const { data, isSuccess } = useFetchMembers({ query: {} });
   const [name, setName] = useState<any>({});
   useEffect(() => {
     if (isSuccess && data.members && data.members.length > 0) {
-      const member = data.members.find((member: any) => member.id === singleMemberId);
+      const member = fullMemberData.find((member: { id: any; }) => member.id === singleMemberId);
       if (member) {
         setName({
           first_name: member.first_name,
@@ -52,7 +54,7 @@ const EditMember = ({
           <Formik
             validationSchema={EditMemberSchema}
             initialValues={{
-              first_name: name?.first_name || '',
+              first_name: name?.first_name || "",
               last_name: name?.last_name || "",
               phone_number: name?.phone_number?.replace("+234", "0") || "",
               email: name?.email || "",
